@@ -158,6 +158,7 @@ function Contacts() {
         <div className={styles.payment_systems_row}>
           {paymentSystems.map((system) => (
             <Image
+              key={system}
               className={styles.payment_system_icon}
               src={`/images/icons/payment-systems/${system}.svg`}
               width={30}
