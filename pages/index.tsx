@@ -24,13 +24,15 @@ export default function Home() {
               Перейти в каталог
             </Link>
           </div>
-          <Image
-            className={styles.hero__img}
-            src="/images/hero_image.png"
-            width={962}
-            height={944}
-            alt="акациевый мёд"
-          />
+          <div className={styles.hero__img_container}>
+            <Image
+              className={styles.hero__img}
+              src="/images/hero_image.png"
+              width={962}
+              height={944}
+              alt="акациевый мёд"
+            />
+          </div>
         </section>
       </main>
     </>
