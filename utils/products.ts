@@ -71,5 +71,20 @@ export async function getAllFilterSettings(): Promise<FilterSetting[]> {
       ],
       selected: [],
     },
+    {
+      name: "packaging",
+      displayName: "Упаковка",
+      options: [
+        {
+          value: "glass",
+          displayName: "стекло",
+        },
+        {
+          value: "plastic",
+          displayName: "пластик",
+        },
+      ],
+      selected: [],
+    },
   ];
 }

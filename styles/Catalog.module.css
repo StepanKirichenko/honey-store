@@ -1,0 +1,39 @@
+.container {
+  margin-top: 200px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.catalog {
+  width: 100%;
+  max-width: 1400px;
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  grid-template-areas:
+    ". hd"
+    "sb pr";
+}
+
+.head {
+  grid-area: hd;
+}
+
+.sidebar {
+  grid-area: sb;
+}
+
+.product_grid {
+  grid-area: pr;
+}
+
+.main_heading {
+  font-size: var(--fs-heading-2);
+  margin-bottom: 2rem;
+}
+
+.filter_settings {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
