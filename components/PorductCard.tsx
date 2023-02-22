@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./ProductCard.module.css";
 
 export default function ProductCard({ product }: any) {
@@ -5,7 +6,13 @@ export default function ProductCard({ product }: any) {
 
   return (
     <div className="product-card">
-      <img className={styles.image} src={imagePath} />
+      <Image
+        className={styles.image}
+        src={imagePath}
+        alt={product.name}
+        width={450}
+        height={602}
+      />
       <hr className={styles.divider} />
       <div className={styles.top_row}>
         <a className={styles.name}>{product.name}</a>

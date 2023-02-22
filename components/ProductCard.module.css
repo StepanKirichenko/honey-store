@@ -1,11 +1,13 @@
 .image {
   display: block;
   width: 100%;
+  height: auto;
   margin-bottom: 22px;
 }
 
 .divider {
-  border-width: 2px;
+  border: none;
+  border-bottom: 1px solid var(--primary-color-600);
 }
 
 .top_row {
