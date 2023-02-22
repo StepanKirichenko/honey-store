@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from "next/head";
 import FilterDropdown from "@/components/FilterDropdown";
 import { FilterSetting } from "@/utils/products";
@@ -18,6 +19,27 @@ interface Props {
 }
 
 export default function Catalog({ filterSettings }: Props) {
+  const [settings, setSettings] = useState(filterSettings);
+
+  function handleChangeFilterSetting(
+    settingName: string,
+    optionValue: string,
+    isSelected: boolean
+  ) {
+    setSettings((oldSettings) =>
+      oldSettings.map((setting) =>
+        setting.name === settingName
+          ? {
+              ...setting,
+              selected: isSelected
+                ? [...setting.selected, optionValue]
+                : setting.selected.filter((option) => option !== optionValue),
+            }
+          : setting
+      )
+    );
+  }
+
   return (
     <>
       <Head>
@@ -30,11 +52,11 @@ export default function Catalog({ filterSettings }: Props) {
           <div className={styles.head}>
             <h1 className={styles.main_heading}>Каталог товаров</h1>
             <div className={styles.filter_settings}>
-              {filterSettings.map((setting) => (
+              {settings.map((setting) => (
                 <FilterDropdown
                   key={setting.name}
                   {...setting}
-                  handleChangeFilterSetting={() => {}}
+                  handleChangeFilterSetting={handleChangeFilterSetting}
                 />
               ))}
             </div>
