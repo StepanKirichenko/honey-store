@@ -1,6 +1,22 @@
 import Head from "next/head";
+import FilterDropdown from "@/components/FilterDropdown";
+import { FilterSetting } from "@/utils/products";
+import { getAllFilterSettings } from "@/utils/products";
 
-export default function Catalog() {
+export async function getServerSideProps(context: any) {
+  const settings = await getAllFilterSettings();
+  return {
+    props: {
+      filterSettings: settings,
+    },
+  };
+}
+
+interface Props {
+  filterSettings: FilterSetting[];
+}
+
+export default function Catalog({ filterSettings }: Props) {
   return (
     <>
       <Head>
@@ -12,7 +28,15 @@ export default function Catalog() {
       <main
         style={{ minHeight: "100vh", display: "grid", placeContent: "center" }}
       >
-        <h1>This is catalog</h1>
+        <div style={{ display: "flex" }}>
+          {filterSettings.map((setting) => (
+            <FilterDropdown
+              key={setting.name}
+              {...setting}
+              handleChangeFilterSetting={() => {}}
+            />
+          ))}
+        </div>
       </main>
     </>
   );

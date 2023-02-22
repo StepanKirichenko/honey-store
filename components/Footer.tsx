@@ -25,11 +25,11 @@ export default function Footer() {
             <Contacts />
           </div>
         </div>
-      </div>
-      <div className={styles.bottom_row}>
-        <p className={styles.bottom_row_text}>© 2006-2023</p>
-        <p className={styles.bottom_row_text}>Карта сайта</p>
-        <p className={styles.bottom_row_text}>Политика конфиденциальности</p>
+        <div className={styles.bottom_row}>
+          <p className={styles.bottom_row_text}>© 2006-2023</p>
+          <p className={styles.bottom_row_text}>Карта сайта</p>
+          <p className={styles.bottom_row_text}>Политика конфиденциальности</p>
+        </div>
       </div>
     </footer>
   );
