@@ -9,6 +9,7 @@
 .catalog {
   width: 100%;
   max-width: 1400px;
+  margin: 0 30px;
   display: grid;
   grid-template-columns: 20% 1fr;
   grid-template-rows: auto 1fr;
