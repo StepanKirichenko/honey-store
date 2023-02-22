@@ -1,24 +1,28 @@
 import { useState } from "react";
 import Head from "next/head";
 import FilterDropdown from "@/components/FilterDropdown";
-import { FilterSetting } from "@/utils/products";
-import { getAllFilterSettings } from "@/utils/products";
+import ProductGrid from "@/components/ProductGrid";
+import { FilterSetting, Product } from "@/utils/products";
+import { getAllFilterSettings, getAllProducts } from "@/utils/products";
 import styles from "@/styles/Catalog.module.css";
 
 export async function getServerSideProps(context: any) {
   const settings = await getAllFilterSettings();
+  const products = await getAllProducts();
   return {
     props: {
       filterSettings: settings,
+      products: products,
     },
   };
 }
 
 interface Props {
   filterSettings: FilterSetting[];
+  products: Product[];
 }
 
-export default function Catalog({ filterSettings }: Props) {
+export default function Catalog({ filterSettings, products }: Props) {
   const [settings, setSettings] = useState(filterSettings);
 
   function handleChangeFilterSetting(
@@ -60,6 +64,16 @@ export default function Catalog({ filterSettings }: Props) {
                 />
               ))}
             </div>
+          </div>
+          <div className={styles.sidebar}>
+            <button className={styles.sidebar_button}>Мёд</button>
+            <button className={styles.sidebar_button}>Чайные напитки</button>
+            <button className={styles.sidebar_button}>
+              Варенье и конфитюры
+            </button>
+          </div>
+          <div className={styles.product_grid}>
+            <ProductGrid products={products} />
           </div>
         </div>
       </main>

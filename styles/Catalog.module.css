@@ -3,6 +3,7 @@
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  margin-bottom: 200px;
 }
 
 .catalog {
@@ -10,9 +11,11 @@
   max-width: 1400px;
   display: grid;
   grid-template-columns: 20% 1fr;
+  grid-template-rows: auto 1fr;
   grid-template-areas:
     ". hd"
     "sb pr";
+  row-gap: 4rem;
 }
 
 .head {
@@ -36,4 +39,16 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+
+.sidebar_button {
+  display: block;
+  border: none;
+  background: none;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.sidebar_button:hover {
+  text-decoration: underline;
 }

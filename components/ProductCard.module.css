@@ -1,14 +1,14 @@
-.product-card__image {
+.image {
   display: block;
   width: 100%;
   margin-bottom: 22px;
 }
 
-.product-card__divider {
+.divider {
   border-width: 2px;
 }
 
-.product-card__top-row {
+.top_row {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,22 +16,22 @@
   margin-bottom: 30px;
 }
 
-.product-card__name {
+.name {
   text-transform: uppercase;
   font-size: var(--fs-text-super-small);
 }
 
-.product-card__button {
+.button {
   background: none;
   border: none;
   cursor: pointer;
 }
 
-.product-card__plus {
+.plus {
   width: 16px;
 }
 
-.product-card__bottom-row {
+.bottom_row {
   display: flex;
   justify-content: space-between;
   font-size: var(--fs-text-small);
