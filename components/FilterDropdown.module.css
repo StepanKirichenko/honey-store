@@ -36,13 +36,13 @@
 }
 
 .list {
+  width: 100%;
   list-style: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding-top: 1em;
-  max-width: fit-content;
 }
 
 .option {
@@ -56,7 +56,7 @@
 .option_button {
   display: flex;
   align-items: center;
-  font-size: var(--fs-text-super-small);
+  font-size: var(--fs-text-small);
   background: none;
   border: none;
   cursor: pointer;
@@ -69,11 +69,11 @@
 .option__checkmark {
   width: 0.8em;
   height: 0.8em;
-  border: 1px solid var(--primary-color-600);
+  border: 1px solid var(--secondary-color-300);
   border-radius: 1em;
   margin-right: 1em;
 }
 
 .option__checkmark.selected {
-  background-color: var(--primary-color-600);
+  background-color: var(--secondary-color-300);
 }

@@ -110,20 +110,20 @@ const filterSettings: FilterSetting[] = [
     selected: [],
   },
   {
-    name: "weight",
-    displayName: "Вес",
+    name: "volume",
+    displayName: "Объём",
     options: [
       {
         value: "350",
-        displayName: "0,35 кг",
+        displayName: "0,35",
       },
       {
         value: "500",
-        displayName: "0,5 кг",
+        displayName: "0,5",
       },
       {
         value: "1000",
-        displayName: "1 кг",
+        displayName: "1",
       },
     ],
     selected: [],
@@ -142,6 +142,33 @@ const filterSettings: FilterSetting[] = [
       },
     ],
     selected: [],
+  },
+  {
+    name: "sorting",
+    displayName: "По популярности",
+    options: [
+      {
+        value: "popularity",
+        displayName: "По популярности",
+      },
+      {
+        value: "new",
+        displayName: "Новинки",
+      },
+      {
+        value: "cheap-first",
+        displayName: "Сначала дешёвые",
+      },
+      {
+        value: "expensive-first",
+        displayName: "Сначала дорогие",
+      },
+      {
+        value: "sale-amount",
+        displayName: "По размеру скидки",
+      },
+    ],
+    selected: ["popularity"],
   },
 ];
 
