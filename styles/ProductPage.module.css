@@ -1,5 +1,5 @@
 .page {
-  margin-top: 100px;
+  margin-top: 130px;
 }
 
 .section {
@@ -65,4 +65,16 @@
 .product_price {
   font-size: var(--fs-heading-2);
   font-weight: 300;
+}
+
+.reviews_section {
+  background-color: var(--accent-color-1);
+  color: white;
+  padding: 100px;
+}
+
+.reviews_section_heading {
+  font-size: var(--fs-heading-3);
+  font-weight: 300;
+  text-align: center;
 }

@@ -138,6 +138,17 @@ export default function ProductPage({ product }: Props) {
           </div>
         </div>
       </section>
+
+      <section className={`${styles.section} ${styles.reviews_section}`}>
+        <div className="container row">
+          <div className="col">
+            <h2 className={styles.reviews_section_heading}>Характеристики</h2>
+          </div>
+          <div className="col">
+            <h2 className={styles.reviews_section_heading}>Отзывы</h2>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
