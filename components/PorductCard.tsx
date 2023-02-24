@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./ProductCard.module.css";
 
 export default function ProductCard({ product }: any) {
   const imagePath = `/images/products/${product.image}`;
+  const productPagePath = `/products/${product.id}`;
 
   const priceParagraph = product.isOnSale ? (
     <p className={styles.price}>
@@ -18,16 +20,20 @@ export default function ProductCard({ product }: any) {
       {product.isOnSale && (
         <p className={styles.sale_bubble}>скидка {product.discount}%</p>
       )}
-      <Image
-        className={styles.image}
-        src={imagePath}
-        alt={product.name}
-        width={450}
-        height={602}
-      />
+      <Link href={productPagePath}>
+        <Image
+          className={styles.image}
+          src={imagePath}
+          alt={product.name}
+          width={450}
+          height={602}
+        />
+      </Link>
       <hr className={styles.divider} />
       <div className={styles.top_row}>
-        <a className={styles.name}>{product.name}</a>
+        <Link href={productPagePath} className={styles.name}>
+          {product.name}
+        </Link>
         <button className={styles.button}>
           <img src="/images/icons/plus.svg" className={styles.plus} />
         </button>

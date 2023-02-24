@@ -293,3 +293,8 @@ export async function getAllProducts() {
 export async function getAllFilterSettings(): Promise<FilterSetting[]> {
   return filterSettings;
 }
+
+export async function getProductById(id: number): Promise<Product | null> {
+  const res = products.find((p) => p.id === id);
+  return res ? res : null;
+}
