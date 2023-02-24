@@ -1,6 +1,7 @@
 import Image from "next/image";
 import FilterDropdown from "@/components/FilterDropdown";
 import Button from "@/components/Button";
+import ReviewCard from "@/components/ReviewCard";
 import type { Product } from "@/utils/products";
 import { getProductById } from "@/utils/products";
 import styles from "@/styles/ProductPage.module.css";
@@ -140,12 +141,52 @@ export default function ProductPage({ product }: Props) {
       </section>
 
       <section className={`${styles.section} ${styles.reviews_section}`}>
-        <div className="container row">
+        <div className="container row gap-small">
           <div className="col">
             <h2 className={styles.reviews_section_heading}>Характеристики</h2>
+            <p className={styles.characteristics_paragraph}>
+              цвет — как правило, золотистый или светло-желтый, реже
+              темно-коричневый
+            </p>
+            <hr />
+            <p className={styles.characteristics_paragraph}>
+              вкус — нежный, без горчинки, с приятным и долгим послевкусием
+            </p>
+            <hr />
+            <p className={styles.characteristics_paragraph}>
+              консистенция — тягучая, вязкая, но достаточно жидкая
+            </p>
+            <hr />
+            <p className={styles.characteristics_paragraph}>
+              аромат — насыщенный, цветочный, с многообразием оттенков
+            </p>
+            <hr />
           </div>
           <div className="col">
             <h2 className={styles.reviews_section_heading}>Отзывы</h2>
+            <div className={styles.review_cards_container}>
+              <ReviewCard
+                reviewerName="Горбунова Галина"
+                reviewText="Вкусный, запах приятный. Если поставить на водяную баню, становится тягучим, можно использовать для массажа, либо так лопать) у меня стоял в холодильнике, засахарился"
+                rating={5}
+                date="2 февраля 2021"
+              />
+              <ReviewCard
+                reviewerName="Станислав"
+                reviewText="Баночка с медом пришла в коробочке, бережно упакованная в пленку с пупырышками. Мед будем заказывать еще. Рекомендую."
+                rating={5}
+                date="13 марта 2021"
+              />
+              <ReviewCard
+                reviewerName="Анастасия Иртыш"
+                reviewText="Это какая-то фантастика. Большим любителем меда я себя не считаю и обычно банка живет у меня несколько лет, но в этот раз оказалось не так.  Он идеальный: кремообразный, не тягучий, сладкий, но не приторный, нежный, без намёка на крупицы. Идеален с сырной тарелкой, в каши/творог и просто с чаем."
+                rating={5}
+                date="31 января 2021"
+              />
+            </div>
+            <div className="row justify-end">
+              <Button>Смотреть все отзывы</Button>
+            </div>
           </div>
         </div>
       </section>

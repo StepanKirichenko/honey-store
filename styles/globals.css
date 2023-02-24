@@ -53,3 +53,11 @@ a {
   display: flex;
   flex-direction: column;
 }
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.gap-small {
+  gap: 100px;
+}
