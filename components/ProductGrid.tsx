@@ -22,6 +22,7 @@ export default function ProductGrid({ products }: Props) {
 function Pagination() {
   const pageLinkElements = [1, 2, 3, 4].map((page) => (
     <a
+      key={page}
       href="#"
       className={`${styles.pagination__link} ${
         page === 1
