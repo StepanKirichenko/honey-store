@@ -41,7 +41,7 @@ a {
 .container {
   width: 100%;
   max-width: 1400px;
-  margin: 30px;
+  margin: 0 30px;
 }
 
 .row {
