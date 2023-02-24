@@ -17,6 +17,8 @@ export interface Product {
   image: string;
   volume: number;
   price: number;
+  isOnSale: boolean;
+  discount: number;
 }
 
 const products: Product[] = [
@@ -27,6 +29,8 @@ const products: Product[] = [
     image: "мед_акациевый.png",
     volume: 350,
     price: 400,
+    isOnSale: false,
+    discount: 0,
   },
   {
     id: 2,
@@ -35,6 +39,8 @@ const products: Product[] = [
     image: "мед_майский.png",
     volume: 350,
     price: 520,
+    isOnSale: false,
+    discount: 0,
   },
   {
     id: 3,
@@ -43,6 +49,8 @@ const products: Product[] = [
     image: "мед_хлопковый.png",
     volume: 350,
     price: 380,
+    isOnSale: false,
+    discount: 0,
   },
   {
     id: 4,
@@ -51,6 +59,8 @@ const products: Product[] = [
     image: "мед_луговой.png",
     volume: 350,
     price: 420,
+    isOnSale: false,
+    discount: 0,
   },
   {
     id: 5,
@@ -59,6 +69,8 @@ const products: Product[] = [
     image: "мед_рапсовый.png",
     volume: 350,
     price: 300,
+    isOnSale: false,
+    discount: 0,
   },
   {
     id: 6,
@@ -67,6 +79,8 @@ const products: Product[] = [
     image: "мед_цветочный.png",
     volume: 350,
     price: 300,
+    isOnSale: false,
+    discount: 0,
   },
   {
     id: 7,
@@ -75,6 +89,8 @@ const products: Product[] = [
     image: "мед_подсолнечниковый.png",
     volume: 350,
     price: 280,
+    isOnSale: false,
+    discount: 0,
   },
   {
     id: 8,
@@ -83,6 +99,8 @@ const products: Product[] = [
     image: "мед_разнотравье.png",
     volume: 350,
     price: 280,
+    isOnSale: false,
+    discount: 0,
   },
   {
     id: 9,
@@ -91,6 +109,8 @@ const products: Product[] = [
     image: "мед_лесной.png",
     volume: 350,
     price: 300,
+    isOnSale: false,
+    discount: 0,
   },
   {
     id: 10,
@@ -99,6 +119,8 @@ const products: Product[] = [
     image: "мед_боярышниковый.png",
     volume: 350,
     price: 300,
+    isOnSale: false,
+    discount: 0,
   },
   {
     id: 11,
@@ -107,6 +129,8 @@ const products: Product[] = [
     image: "мед_донник_с_цветком.png",
     volume: 350,
     price: 320,
+    isOnSale: false,
+    discount: 0,
   },
   {
     id: 12,
@@ -115,6 +139,8 @@ const products: Product[] = [
     image: "мед_гречишный_с_цветком.png",
     volume: 350,
     price: 300,
+    isOnSale: true,
+    discount: 15,
   },
   {
     id: 13,
@@ -123,6 +149,8 @@ const products: Product[] = [
     image: "мед_осотовый.png",
     volume: 350,
     price: 350,
+    isOnSale: false,
+    discount: 0,
   },
   {
     id: 14,
@@ -131,6 +159,8 @@ const products: Product[] = [
     image: "мед_кипрейный.png",
     volume: 350,
     price: 370,
+    isOnSale: false,
+    discount: 0,
   },
   {
     id: 15,
@@ -139,6 +169,8 @@ const products: Product[] = [
     image: "мед_из_кориандра.png",
     volume: 350,
     price: 400,
+    isOnSale: false,
+    discount: 0,
   },
   {
     id: 16,
@@ -147,6 +179,8 @@ const products: Product[] = [
     image: "мед_горный.png",
     volume: 350,
     price: 370,
+    isOnSale: false,
+    discount: 0,
   },
 ];
 
