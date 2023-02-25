@@ -8,3 +8,11 @@ interface Props {
 export default function Button({ children }: Props) {
   return <button className={styles.button}>{children}</button>;
 }
+
+export function SmallButton({ children }: Props) {
+  return (
+    <button className={`${styles.button} ${styles.button_small}`}>
+      {children}
+    </button>
+  );
+}

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import FilterDropdown from "@/components/FilterDropdown";
 import Button from "@/components/Button";
+import { SmallButton } from "@/components/Button";
 import ReviewCard from "@/components/ReviewCard";
 import type { Product } from "@/utils/products";
 import { getProductById } from "@/utils/products";
@@ -185,7 +186,7 @@ export default function ProductPage({ product }: Props) {
               />
             </div>
             <div className="row justify-end">
-              <Button>Смотреть все отзывы</Button>
+              <SmallButton>Смотреть все отзывы</SmallButton>
             </div>
           </div>
         </div>
