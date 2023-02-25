@@ -58,6 +58,22 @@ a {
   justify-content: flex-end;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.align-center {
+  align-items: center;
+}
+
 .gap-small {
   gap: 100px;
 }
