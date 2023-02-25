@@ -3,25 +3,30 @@ import FilterDropdown from "@/components/FilterDropdown";
 import Button from "@/components/Button";
 import { SmallButton } from "@/components/Button";
 import ReviewCard from "@/components/ReviewCard";
-import type { Product } from "@/utils/products";
+import { getAllProducts, Product } from "@/utils/products";
 import { getProductById } from "@/utils/products";
 import styles from "@/styles/ProductPage.module.css";
+import ProductCard from "@/components/PorductCard";
 
 interface Props {
   product: Product;
+  recommendedProducts: Product[];
 }
 
 export async function getServerSideProps({ params }: any) {
   const { id } = params;
   const product = await getProductById(Number(id));
+  const allProducts = await getAllProducts();
+  const recommendedProducts = allProducts.filter((p) => p.id !== Number(id));
   return {
     props: {
       product: product,
+      recommendedProducts: recommendedProducts,
     },
   };
 }
 
-export default function ProductPage({ product }: Props) {
+export default function ProductPage({ product, recommendedProducts }: Props) {
   return (
     <div className={styles.page}>
       <section className={styles.section}>
@@ -191,6 +196,51 @@ export default function ProductPage({ product }: Props) {
           </div>
         </div>
       </section>
+
+      <section className={`${styles.section} ${styles.recommended_section}`}>
+        <div className="container">
+          <h2 className={styles.recommended_section_heading}>
+            Рекомендуемые товары
+          </h2>
+          <RecommendedPorductGrid recommendedProducts={recommendedProducts} />
+        </div>
+      </section>
     </div>
+  );
+}
+
+interface RecommendedProductGridProps {
+  recommendedProducts: Product[];
+}
+
+function RecommendedPorductGrid({
+  recommendedProducts,
+}: RecommendedProductGridProps) {
+  const slice = recommendedProducts.slice(0, 5);
+
+  return (
+    <>
+      <div className={styles.recommended_product_grid}>
+        {slice.map((p) => (
+          <ProductCard product={p} />
+        ))}
+      </div>
+      <div className={styles.recommended_product_grid_arrows}>
+        <Image
+          src="/images/icons/angle_arrow_left.svg"
+          alt="стрелка влево"
+          width={15}
+          height={25}
+          className={styles.recommended_product_grid_arrow}
+        />
+        <Image
+          src="/images/icons/angle_arrow_right.svg"
+          alt="стрелка влево"
+          width={15}
+          height={25}
+          className={styles.recommended_product_grid_arrow}
+        />
+      </div>
+    </>
   );
 }

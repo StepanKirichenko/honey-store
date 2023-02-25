@@ -70,7 +70,7 @@
 .reviews_section {
   background-color: var(--accent-color-1);
   color: white;
-  padding: 100px;
+  padding: 100px 0;
 }
 
 .reviews_section_heading {
@@ -90,4 +90,31 @@
 .characteristics_paragraph {
   font-size: var(--fs-text);
   margin: 20px 0;
+}
+
+.recommended_section {
+  padding: 100px 0;
+}
+
+.recommended_section_heading {
+  font-size: var(--fs-heading-3);
+  font-weight: 300;
+  margin-bottom: 50px;
+}
+
+.recommended_product_grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 2rem;
+}
+
+.recommended_product_grid_arrows {
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.recommended_product_grid_arrow {
+  cursor: pointer;
 }
