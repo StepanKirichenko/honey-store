@@ -6,7 +6,7 @@ import ReviewCard from "@/components/ReviewCard";
 import { getAllProducts, Product } from "@/utils/products";
 import { getProductById } from "@/utils/products";
 import styles from "@/styles/ProductPage.module.css";
-import ProductCard from "@/components/PorductCard";
+import ProductGrid from "@/components/ProductGrid";
 
 interface Props {
   product: Product;
@@ -220,11 +220,7 @@ function RecommendedPorductGrid({
 
   return (
     <>
-      <div className={styles.recommended_product_grid}>
-        {slice.map((p) => (
-          <ProductCard key={p.id} product={p} />
-        ))}
-      </div>
+      <ProductGrid products={slice} columns={5} />
       <div className={styles.recommended_product_grid_arrows}>
         <Image
           src="/images/icons/angle_arrow_left.svg"
