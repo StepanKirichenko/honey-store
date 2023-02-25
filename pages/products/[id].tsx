@@ -222,7 +222,7 @@ function RecommendedPorductGrid({
     <>
       <div className={styles.recommended_product_grid}>
         {slice.map((p) => (
-          <ProductCard product={p} />
+          <ProductCard key={p.id} product={p} />
         ))}
       </div>
       <div className={styles.recommended_product_grid_arrows}>
