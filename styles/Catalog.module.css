@@ -52,3 +52,25 @@
 .sidebar_button:hover {
   text-decoration: underline;
 }
+
+.pagination {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.pagination__link {
+  font-size: var(--fs-text);
+  text-decoration: none;
+  color: var(--primary-color-800);
+}
+
+.pagination__link:hover {
+  text-decoration: underline;
+  color: var(--primary-color-600);
+}
+
+.pagination__link_inactive {
+  color: var(--secondary-color-300);
+}

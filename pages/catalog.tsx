@@ -74,9 +74,27 @@ export default function Catalog({ filterSettings, products }: Props) {
           </div>
           <div className={styles.product_grid}>
             <ProductGrid products={products} />
+            <Pagination />
           </div>
         </div>
       </main>
     </>
   );
+}
+
+function Pagination() {
+  const pageLinkElements = [1, 2, 3, 4].map((page) => (
+    <a
+      key={page}
+      href="#"
+      className={`${styles.pagination__link} ${
+        page === 1
+          ? styles.pagination__link_active
+          : styles.pagination__link_inactive
+      }`}
+    >
+      {page}
+    </a>
+  ));
+  return <div className={styles.pagination}>{pageLinkElements}</div>;
 }
