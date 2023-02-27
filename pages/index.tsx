@@ -51,7 +51,7 @@ export default function Home({ popularProducts }: Props) {
           </div>
         </section>
 
-        <section className={styles.description_section}>
+        <section className={styles.section}>
           <div className="container row gap-small">
             <div className="col align-start">
               <p className={styles.description_paragraph}>
@@ -108,10 +108,109 @@ export default function Home({ popularProducts }: Props) {
           </div>
         </section>
 
-        <section className={styles.popular_section}>
+        <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.popular_heading}>Популярные товары</h2>
+            <h2 className={styles.section_heading}>Популярные товары</h2>
             <ProductGrid products={popularProducts} columns={3} />
+          </div>
+        </section>
+
+        <section
+          className={styles.section + " " + styles.collaboration_section}
+        >
+          <div className="cotainer">
+            <h2 className={styles.section_heading}>
+              Преимущества сотрудничества
+            </h2>
+            <div className={styles.collaboration_grid}>
+              <div className={styles.collaboration_point}>
+                <Image
+                  src="images/icons/collaboration/quality.svg"
+                  alt="отличное качество"
+                  width={150}
+                  height={150}
+                />
+                <h3 className={styles.collaboration_point_heading}>
+                  Отличное качетсво
+                </h3>
+                <p className={styles.collaboration_point_paragraph}>
+                  Мы вручную собираем мёд с наших пасек и проверяем качество
+                  каждой соты.
+                </p>
+              </div>{" "}
+              <div className={styles.collaboration_point}>
+                <Image
+                  src="images/icons/collaboration/prices.svg"
+                  alt="Низкие цены"
+                  width={150}
+                  height={150}
+                />
+                <h3 className={styles.collaboration_point_heading}>
+                  Низкие цены
+                </h3>
+                <p className={styles.collaboration_point_paragraph}>
+                  Мелкий и крупный опт по приемлимой цене.
+                </p>
+              </div>{" "}
+              <div className={styles.collaboration_point}>
+                <Image
+                  src="images/icons/collaboration/experience.svg"
+                  alt="21 год опыта"
+                  width={150}
+                  height={150}
+                />
+                <h3 className={styles.collaboration_point_heading}>
+                  21 год опыта
+                </h3>
+                <p className={styles.collaboration_point_paragraph}>
+                  Имеем богатый опыт работы с мёдом и его продуктами.
+                </p>
+              </div>{" "}
+              <div className={styles.collaboration_point}>
+                <Image
+                  src="images/icons/collaboration/service.svg"
+                  alt="Отзывчивый сервис"
+                  width={150}
+                  height={150}
+                />
+                <h3 className={styles.collaboration_point_heading}>
+                  Отзывчивый сервис
+                </h3>
+                <p className={styles.collaboration_point_paragraph}>
+                  Грамотная консультация специалиста в режиме онлайн.
+                </p>
+              </div>{" "}
+              <div className={styles.collaboration_point}>
+                <Image
+                  src="images/icons/collaboration/product_range.svg"
+                  alt="Большой выбор"
+                  width={150}
+                  height={150}
+                />
+                <h3 className={styles.collaboration_point_heading}>
+                  Большой выбор
+                </h3>
+                <p className={styles.collaboration_point_paragraph}>
+                  Большой выбор, включающий практически все существующие сорта
+                  мёда в Иркутской области.
+                </p>
+              </div>{" "}
+              <div className={styles.collaboration_point}>
+                <Image
+                  src="images/icons/collaboration/gost.svg"
+                  alt="Соответствие ГОСТам"
+                  width={150}
+                  height={150}
+                />
+                <h3 className={styles.collaboration_point_heading}>
+                  Соответствие ГОСТам
+                </h3>
+                <p className={styles.collaboration_point_paragraph}>
+                  ГОСТ 54644-2011 и ГОСТ Р52451-2005, и справки о соответствии
+                  стандартам качества,сертификаты, ветеринарные свидетельства.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
       </main>
