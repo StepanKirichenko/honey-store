@@ -58,7 +58,7 @@
 }
 
 .description_section {
-  padding: 90px;
+  padding: 90px 0;
   display: flex;
   justify-content: center;
 }
