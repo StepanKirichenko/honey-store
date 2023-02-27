@@ -13,6 +13,7 @@ import {
 import { getProductById } from "@/utils/products";
 import styles from "@/styles/ProductPage.module.css";
 import ProductGrid from "@/components/ProductGrid";
+import ListScrollArrows from "@/components/ListScrollArrows";
 
 interface Props {
   product: Product;
@@ -231,22 +232,7 @@ function RecommendedPorductGrid({
   return (
     <>
       <ProductGrid products={slice} columns={5} />
-      <div className={styles.recommended_product_grid_arrows}>
-        <Image
-          src="/images/icons/angle_arrow_left.svg"
-          alt="стрелка влево"
-          width={15}
-          height={25}
-          className={styles.recommended_product_grid_arrow}
-        />
-        <Image
-          src="/images/icons/angle_arrow_right.svg"
-          alt="стрелка влево"
-          width={15}
-          height={25}
-          className={styles.recommended_product_grid_arrow}
-        />
-      </div>
+      <ListScrollArrows />
     </>
   );
 }

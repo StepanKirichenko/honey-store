@@ -10,6 +10,7 @@ import {
 } from "@/utils/products";
 import ProductGrid from "@/components/ProductGrid";
 import ReviewCard from "@/components/ReviewCard";
+import ListScrollArrows from "@/components/ListScrollArrows";
 
 export async function getServerSideProps(context: any) {
   const products = await getAllProducts();
@@ -231,6 +232,7 @@ export default function Home({ popularProducts, comments }: Props) {
                 <ReviewCard key={c.id} {...c} />
               ))}
             </div>
+            <ListScrollArrows />
           </div>
         </section>
       </main>
