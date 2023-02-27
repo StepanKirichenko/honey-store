@@ -2,8 +2,25 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/Home.module.css";
+import { getAllProducts, Product } from "@/utils/products";
+import ProductGrid from "@/components/ProductGrid";
 
-export default function Home() {
+export async function getServerSideProps(context: any) {
+  const products = await getAllProducts();
+  const popularProducts = products.slice(0, 6);
+
+  return {
+    props: {
+      popularProducts: popularProducts,
+    },
+  };
+}
+
+interface Props {
+  popularProducts: Product[];
+}
+
+export default function Home({ popularProducts }: Props) {
   return (
     <>
       <Head>
@@ -88,6 +105,13 @@ export default function Home() {
               </Link>
               <hr className={styles.category_underline} />
             </div>
+          </div>
+        </section>
+
+        <section className={styles.popular_section}>
+          <div className="container">
+            <h2 className={styles.popular_heading}>Популярные товары</h2>
+            <ProductGrid products={popularProducts} columns={3} />
           </div>
         </section>
       </main>
