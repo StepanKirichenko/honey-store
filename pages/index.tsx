@@ -2,25 +2,34 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/Home.module.css";
-import { getAllProducts, Product } from "@/utils/products";
+import {
+  getAllProducts,
+  Product,
+  Comment,
+  getAllComments,
+} from "@/utils/products";
 import ProductGrid from "@/components/ProductGrid";
+import ReviewCard from "@/components/ReviewCard";
 
 export async function getServerSideProps(context: any) {
   const products = await getAllProducts();
   const popularProducts = products.slice(0, 6);
+  const comments = await getAllComments();
 
   return {
     props: {
       popularProducts: popularProducts,
+      comments: comments,
     },
   };
 }
 
 interface Props {
   popularProducts: Product[];
+  comments: Comment[];
 }
 
-export default function Home({ popularProducts }: Props) {
+export default function Home({ popularProducts, comments }: Props) {
   return (
     <>
       <Head>
@@ -217,6 +226,11 @@ export default function Home({ popularProducts }: Props) {
         <section className={styles.section}>
           <div className="container">
             <h2 className={styles.section_heading}>Отзывы</h2>
+            <div className={styles.reviews_grid}>
+              {comments.map((c) => (
+                <ReviewCard key={c.id} {...c} />
+              ))}
+            </div>
           </div>
         </section>
       </main>
