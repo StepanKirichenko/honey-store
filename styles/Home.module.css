@@ -180,4 +180,5 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 26px;
+  min-height: 450px;
 }
