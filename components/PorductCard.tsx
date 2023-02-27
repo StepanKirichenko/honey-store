@@ -40,7 +40,7 @@ export default function ProductCard({ product }: any) {
       </div>
       <div className={styles.bottom_row}>
         <p className={styles.volume}>{product.volume} мл</p>
-        <p className={styles.price}>{priceParagraph}</p>
+        {priceParagraph}
       </div>
       <hr className={styles.divider} />
     </div>
