@@ -50,7 +50,7 @@ export default function Home() {
                 проблем с опорно-двигательным аппаратом.
               </p>
             </div>
-            <div className="col align-end">
+            <div className="col align-end justify-center">
               <p className={styles.description_paragraph_big}>
                 Мы радуем наших клиентов с 2002 года
               </p>
