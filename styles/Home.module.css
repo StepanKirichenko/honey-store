@@ -175,3 +175,9 @@
   font-size: var(--fs-text-small);
   text-align: center;
 }
+
+.reviews_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 26px;
+}
