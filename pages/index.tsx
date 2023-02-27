@@ -213,6 +213,12 @@ export default function Home({ popularProducts }: Props) {
             </div>
           </div>
         </section>
+
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.section_heading}>Отзывы</h2>
+          </div>
+        </section>
       </main>
     </>
   );

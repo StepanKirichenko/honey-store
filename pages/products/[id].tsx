@@ -4,7 +4,12 @@ import FilterDropdown from "@/components/FilterDropdown";
 import Button from "@/components/Button";
 import { SmallButton } from "@/components/Button";
 import ReviewCard from "@/components/ReviewCard";
-import { getAllProducts, Product } from "@/utils/products";
+import {
+  getAllProducts,
+  Product,
+  getAllComments,
+  Comment,
+} from "@/utils/products";
 import { getProductById } from "@/utils/products";
 import styles from "@/styles/ProductPage.module.css";
 import ProductGrid from "@/components/ProductGrid";
@@ -12,6 +17,7 @@ import ProductGrid from "@/components/ProductGrid";
 interface Props {
   product: Product;
   recommendedProducts: Product[];
+  comments: Comment[];
 }
 
 export async function getServerSideProps({ params }: any) {
@@ -19,15 +25,22 @@ export async function getServerSideProps({ params }: any) {
   const product = await getProductById(Number(id));
   const allProducts = await getAllProducts();
   const recommendedProducts = allProducts.filter((p) => p.id !== Number(id));
+  const allComments = await getAllComments();
+  const comments = allComments.slice(0, 3);
   return {
     props: {
       product: product,
       recommendedProducts: recommendedProducts,
+      comments: comments,
     },
   };
 }
 
-export default function ProductPage({ product, recommendedProducts }: Props) {
+export default function ProductPage({
+  product,
+  recommendedProducts,
+  comments,
+}: Props) {
   return (
     <>
       <Head>
@@ -182,24 +195,9 @@ export default function ProductPage({ product, recommendedProducts }: Props) {
             <div className="col">
               <h2 className={styles.reviews_section_heading}>Отзывы</h2>
               <div className={styles.review_cards_container}>
-                <ReviewCard
-                  reviewerName="Горбунова Галина"
-                  reviewText="Вкусный, запах приятный. Если поставить на водяную баню, становится тягучим, можно использовать для массажа, либо так лопать) у меня стоял в холодильнике, засахарился"
-                  rating={5}
-                  date="2 февраля 2021"
-                />
-                <ReviewCard
-                  reviewerName="Станислав"
-                  reviewText="Баночка с медом пришла в коробочке, бережно упакованная в пленку с пупырышками. Мед будем заказывать еще. Рекомендую."
-                  rating={5}
-                  date="13 марта 2021"
-                />
-                <ReviewCard
-                  reviewerName="Анастасия Иртыш"
-                  reviewText="Это какая-то фантастика. Большим любителем меда я себя не считаю и обычно банка живет у меня несколько лет, но в этот раз оказалось не так.  Он идеальный: кремообразный, не тягучий, сладкий, но не приторный, нежный, без намёка на крупицы. Идеален с сырной тарелкой, в каши/творог и просто с чаем."
-                  rating={5}
-                  date="31 января 2021"
-                />
+                {comments.map((c) => (
+                  <ReviewCard key={c.id} {...c} />
+                ))}
               </div>
               <div className="row justify-end">
                 <SmallButton>Смотреть все отзывы</SmallButton>

@@ -21,6 +21,14 @@ export interface Product {
   discount: number;
 }
 
+export interface Comment {
+  id: number;
+  date: string;
+  reviewerName: string;
+  reviewText: string;
+  rating: number;
+}
+
 const products: Product[] = [
   {
     id: 1,
@@ -286,6 +294,41 @@ const filterSettings: FilterSetting[] = [
   },
 ];
 
+const comments: Comment[] = [
+  {
+    id: 1,
+    reviewerName: "Горбунова Галина",
+    reviewText:
+      "Вкусный, запах приятный. Если поставить на водяную баню, становится тягучим, можно использовать для массажа, либо так лопать) у меня стоял в холодильнике, засахарился",
+    rating: 5,
+    date: "2 февраля 2021",
+  },
+  {
+    id: 2,
+    reviewerName: "Станислав",
+    reviewText:
+      "Баночка с медом пришла в коробочке, бережно упакованная в пленку с пупырышками. Мед будем заказывать еще. Рекомендую.",
+    rating: 5,
+    date: "13 марта 2021",
+  },
+  {
+    id: 3,
+    reviewerName: "Анастасия Иртыш",
+    reviewText:
+      "Это какая-то фантастика. Большим любителем меда я себя не считаю и обычно банка живет у меня несколько лет, но в этот раз оказалось не так.  Он идеальный: кремообразный, не тягучий, сладкий, но не приторный, нежный, без намёка на крупицы. Идеален с сырной тарелкой, в каши/творог и просто с чаем.",
+    rating: 5,
+    date: "31 января 2021",
+  },
+  {
+    id: 4,
+    reviewerName: "Светлана",
+    reviewText:
+      "покупала для рождественских имбирных пряников , со своей задачей мёд справился - аромат от выпечки стоял на весь дом!",
+    rating: 5,
+    date: "24 декабря 2021",
+  },
+];
+
 export async function getAllProducts() {
   return products;
 }
@@ -297,4 +340,8 @@ export async function getAllFilterSettings(): Promise<FilterSetting[]> {
 export async function getProductById(id: number): Promise<Product | null> {
   const res = products.find((p) => p.id === id);
   return res ? res : null;
+}
+
+export async function getAllComments() {
+  return comments;
 }
