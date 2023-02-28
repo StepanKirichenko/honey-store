@@ -11,6 +11,7 @@ import {
 import ProductGrid from "@/components/ProductGrid";
 import ReviewCard from "@/components/ReviewCard";
 import ListScrollArrows from "@/components/ListScrollArrows";
+import Button from "@/components/Button";
 
 export async function getServerSideProps(context: any) {
   const products = await getAllProducts();
@@ -122,6 +123,28 @@ export default function Home({ popularProducts, comments }: Props) {
           <div className="container">
             <h2 className={styles.section_heading}>Популярные товары</h2>
             <ProductGrid products={popularProducts} columns={3} />
+          </div>
+        </section>
+
+        <section className={styles.offer_section}>
+          <div className={styles.offer_text_column}>
+            <h2 className={styles.offer_heading}>
+              Получите скидку на первый заказ
+            </h2>
+            <p className={styles.offer_description}>
+              Подпишитесь на наши новости и получите промо&#8209;код на первую
+              покупку.
+            </p>
+            <Button>Получить скидку</Button>
+          </div>
+          <div className={styles.offer_image_container}>
+            <Image
+              className={styles.offer_image}
+              src="/images/tea_and_honey.png"
+              alt="чай и мёд"
+              width={1220}
+              height={498}
+            />
           </div>
         </section>
 
