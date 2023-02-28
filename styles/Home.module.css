@@ -16,9 +16,9 @@
   margin-bottom: 70px;
 }
 
+/* --- HERO SECTION --- */
+
 .hero {
-  /* display: flex;
-  justify-content: flex-end; */
   display: grid;
   grid-template-columns:
     minmax(30px, 1fr)
@@ -71,6 +71,8 @@
   text-transform: uppercase;
 }
 
+/* --- DESCRIPTION SECTION --- */
+
 .description_section {
   padding: 90px 0;
   display: flex;
@@ -89,6 +91,8 @@
   font-size: var(--fs-heading-3);
   text-align: center;
 }
+
+/* --- PRODUCT CATEGORIES SECTION --- */
 
 .product_categories_section {
   display: grid;
@@ -145,6 +149,8 @@
   margin-top: 16px;
 }
 
+/* --- OFFER SECTION --- */
+
 .offer_section {
   padding: 90px 0 90px;
   display: grid;
@@ -173,11 +179,6 @@
   margin: 10px 0 30px;
 }
 
-.collaboration_section {
-  background-color: var(--accent-color-1);
-  color: white;
-}
-
 .offer_image_container {
   grid-column: 3 / -1;
 }
@@ -185,6 +186,13 @@
 .offer_image {
   width: 100%;
   height: auto;
+}
+
+/* --- COLLABORATION SECTION --- */
+
+.collaboration_section {
+  background-color: var(--accent-color-1);
+  color: white;
 }
 
 .collaboration_grid {
@@ -212,6 +220,8 @@
   font-size: var(--fs-text-small);
   text-align: center;
 }
+
+/* --- REVIEWS SECTION --- */
 
 .reviews_grid {
   display: grid;
