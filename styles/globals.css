@@ -77,3 +77,7 @@ a {
 .gap-small {
   gap: 100px;
 }
+
+.mt-page-start {
+  margin-top: 130px;
+}

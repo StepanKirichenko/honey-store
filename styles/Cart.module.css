@@ -1,0 +1,10 @@
+.cart {
+  margin-bottom: 90px;
+  display: flex;
+  justify-content: center;
+}
+
+.page_heading {
+  font-size: var(--fs-heading-2);
+  font-weight: 300;
+}

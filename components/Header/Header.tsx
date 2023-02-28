@@ -32,7 +32,7 @@ export default function Header() {
         <Link href="/" className={styles.link}>
           Контакты
         </Link>
-        <Link href="/" className={styles.link}>
+        <Link href="/cart" className={styles.link}>
           Корзина
         </Link>
       </nav>
