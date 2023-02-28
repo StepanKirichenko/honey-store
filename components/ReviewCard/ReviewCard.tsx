@@ -1,4 +1,4 @@
-import styles from "@/components/ReviewCard.module.css";
+import styles from "./ReviewCard.module.css";
 import Image from "next/image";
 
 interface Props {

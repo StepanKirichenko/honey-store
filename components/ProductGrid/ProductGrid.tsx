@@ -1,5 +1,5 @@
 import styles from "./ProductGrid.module.css";
-import ProductCard from "@/components/PorductCard";
+import ProductCard from "@/components/ProductCard";
 import { Product } from "@/utils/products";
 
 interface Props {

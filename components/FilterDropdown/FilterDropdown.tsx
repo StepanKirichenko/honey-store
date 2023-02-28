@@ -7,10 +7,10 @@ export default function FilterDropdown({
   options,
   selected,
   handleChangeFilterSetting,
-}) {
+}: any) {
   const [isShown, setIsShown] = useState(false);
 
-  const optionElements = options.map((option) => {
+  const optionElements = options.map((option: any) => {
     const isSelected = selected.includes(option.value);
     return (
       <li key={option.value} className={styles.option}>
