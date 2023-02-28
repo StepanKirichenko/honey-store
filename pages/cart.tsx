@@ -1,3 +1,4 @@
+import CartProductCard from "@/components/CartProductCard";
 import styles from "@/styles/Cart.module.css";
 import Head from "next/head";
 
@@ -11,6 +12,10 @@ export default function Cart() {
         <section className={styles.cart}>
           <div className="container">
             <h1 className={styles.page_heading}>Корзина</h1>
+            <hr className={styles.divider} />
+            <CartProductCard />
+            <CartProductCard />
+            <CartProductCard />
           </div>
         </section>
       </main>

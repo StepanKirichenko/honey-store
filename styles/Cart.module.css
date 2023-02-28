@@ -7,4 +7,10 @@
 .page_heading {
   font-size: var(--fs-heading-2);
   font-weight: 300;
+  margin-bottom: 70px;
+}
+
+.divider {
+  border: none;
+  border-bottom: 1px solid var(--secondary-color-500);
 }
