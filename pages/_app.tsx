@@ -25,9 +25,28 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }
 
+  function handleRemoveFromCart(productId: number, amount: number = 0) {
+    if (amount !== 0) {
+      setCart(
+        cart
+          .map((i) => {
+            if (i.productId !== productId) {
+              return i;
+            } else {
+              return { productId, amount: i.amount - amount };
+            }
+          })
+          .filter((i) => i.amount > 0)
+      );
+    } else {
+      setCart(cart.filter((i) => i.productId !== productId));
+    }
+  }
+
   const cartContext = {
     items: cart,
-    handleAddToCart: handleAddToCart,
+    handleAddToCart,
+    handleRemoveFromCart,
   };
 
   return (

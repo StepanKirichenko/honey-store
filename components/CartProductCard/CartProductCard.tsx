@@ -1,5 +1,7 @@
+import { CartContext } from "@/contexts/CartContext";
 import { Product } from "@/utils/products";
 import Image from "next/image";
+import { useContext } from "react";
 import RatingDisplay from "../RatingDisplay";
 import styles from "./CartProductCard.module.css";
 
@@ -9,14 +11,18 @@ interface Props {
 }
 
 export default function CartProductCard({ product, amount }: Props) {
+  const cart = useContext(CartContext);
+
   return (
     <div>
       <div className={styles.row}>
         <Image
+          className={styles.remove_button}
           src="/images/icons/cross.svg"
           alt="удалить"
           width={25}
           height={25}
+          onClick={() => cart.handleRemoveFromCart(product.id)}
         />
         <div className={styles.product_info}>
           <Image
@@ -41,9 +47,19 @@ export default function CartProductCard({ product, amount }: Props) {
           <button className={styles.empty_button}>
             <h4 className={styles.button_title}>Количество</h4>
             <div className={styles.button_content}>
-              <p>-</p>
+              <button
+                className={styles.adjust_amount_button}
+                onClick={() => cart.handleRemoveFromCart(product.id, 1)}
+              >
+                -
+              </button>
               <p>{amount}</p>
-              <p>+</p>
+              <button
+                className={styles.adjust_amount_button}
+                onClick={() => cart.handleAddToCart(product.id, 1)}
+              >
+                +
+              </button>
             </div>
           </button>
         </div>

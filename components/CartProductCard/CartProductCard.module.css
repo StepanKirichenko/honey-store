@@ -10,6 +10,10 @@
   padding: 35px 0;
 }
 
+.remove_button {
+  cursor: pointer;
+}
+
 .product_image {
   width: 220px;
   height: 220px;
@@ -75,4 +79,10 @@
 .price {
   font-size: var(--fs-heading-3);
   font-weight: 300;
+}
+
+.adjust_amount_button {
+  cursor: pointer;
+  background: none;
+  border: none;
 }
