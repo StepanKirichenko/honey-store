@@ -14,3 +14,19 @@
   border: none;
   border-bottom: 1px solid var(--secondary-color-500);
 }
+
+.total_price_row {
+  display: flex;
+  justify-content: flex-end;
+  margin: 36px 0 56px;
+}
+
+.total_price {
+  font-size: var(--fs-heading-3);
+  font-weight: 500;
+}
+
+.bottom_buttons_row {
+  display: flex;
+  justify-content: space-between;
+}

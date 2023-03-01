@@ -1,28 +1,47 @@
 .button {
-  background-color: var(--primary-color-800);
-  color: white;
   padding: 0.8em 2em;
-  border: none;
   border-radius: 2em;
   font-size: var(--fs-button-text);
   text-transform: uppercase;
   cursor: pointer;
 }
 
-.button.button_small {
+.button_primary {
+  background-color: var(--primary-color-800);
+  color: white;
+  border: none;
+}
+
+.button_small {
   text-transform: initial;
 }
 
-.button:hover {
+.button_primary:hover {
   background-color: var(--primary-color-600);
   box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.05);
 }
 
-.button:active {
+.button_primary:active {
   background-color: var(--accent-color-2);
   color: var(--primary-color-800);
 }
 
-.button:disabled {
+.button_primary:disabled {
   background-color: var(--secondary-color-300);
+}
+
+.button_secondary {
+  background: none;
+  color: var(--primary-color-800);
+  border: 1px solid currentColor;
+}
+
+.button_secondary:hover {
+  color: var(--primary-color-600);
+}
+
+.button_secondary:active {
+  background-color: var(--accent-color-2);
+  color: var(--primary-color-800);
+  border-color: var(--accent-color-2);
 }

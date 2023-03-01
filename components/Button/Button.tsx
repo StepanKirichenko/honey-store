@@ -6,12 +6,26 @@ interface Props {
 }
 
 export default function Button({ children }: Props) {
-  return <button className={styles.button}>{children}</button>;
+  return (
+    <button className={styles.button + " " + styles.button_primary}>
+      {children}
+    </button>
+  );
+}
+
+export function SecondaryButton({ children }: Props) {
+  return (
+    <button className={styles.button + " " + styles.button_secondary}>
+      {children}
+    </button>
+  );
 }
 
 export function SmallButton({ children }: Props) {
   return (
-    <button className={`${styles.button} ${styles.button_small}`}>
+    <button
+      className={`${styles.button} ${styles.button_primary} ${styles.button_small}`}
+    >
       {children}
     </button>
   );

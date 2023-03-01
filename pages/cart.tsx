@@ -1,10 +1,11 @@
 import CartProductCard from "@/components/CartProductCard";
-import ProductCard from "@/components/ProductCard";
 import { CartContext } from "@/contexts/CartContext";
 import styles from "@/styles/Cart.module.css";
 import { getAllProducts, Product } from "@/utils/products";
 import Head from "next/head";
 import { useContext } from "react";
+import Button from "@/components/Button";
+import { SecondaryButton } from "@/components/Button";
 
 interface Props {
   allProducts: Product[];
@@ -32,6 +33,11 @@ export default function Cart({ allProducts }: Props) {
     <CartProductCard key={p.product.id} product={p.product} amount={p.amount} />
   ));
 
+  const totalPrice = productsInCart.reduce(
+    (total, p) => total + p.product.price * p.amount,
+    0
+  );
+
   return (
     <>
       <Head>
@@ -43,6 +49,13 @@ export default function Cart({ allProducts }: Props) {
             <h1 className={styles.page_heading}>Корзина</h1>
             <hr className={styles.divider} />
             {productCards}
+            <div className={styles.total_price_row}>
+              <p className={styles.total_price}>{totalPrice} р</p>
+            </div>
+            <div className={styles.bottom_buttons_row}>
+              <SecondaryButton>Продолжить просмотр</SecondaryButton>
+              <Button>Оформить заказ</Button>
+            </div>
           </div>
         </section>
       </main>
