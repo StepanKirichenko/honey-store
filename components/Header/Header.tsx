@@ -1,8 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./Header.module.css";
+import { useContext } from "react";
+import { CartContext } from "@/contexts/CartContext";
 
 export default function Header() {
+  const cart = useContext(CartContext);
+
   return (
     <header className={styles.background}>
       <nav className={styles.container}>
@@ -32,7 +36,8 @@ export default function Header() {
         <Link href="/" className={styles.link}>
           Контакты
         </Link>
-        <Link href="/cart" className={styles.link}>
+        <Link href="/cart" className={`${styles.link} ${styles.cart_link}`}>
+          <p className={styles.cart_counter}>{cart.items.length}</p>
           Корзина
         </Link>
       </nav>

@@ -31,3 +31,15 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.cart_link {
+  position: relative;
+  padding-right: 1em;
+}
+
+.cart_counter {
+  position: absolute;
+  top: -1em;
+  right: 5px;
+  font-size: var(--fs-button-text);
+}
