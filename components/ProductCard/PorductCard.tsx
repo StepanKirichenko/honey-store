@@ -1,8 +1,12 @@
+import { CartContext } from "@/contexts/CartContext";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 import styles from "./ProductCard.module.css";
 
 export default function ProductCard({ product }: any) {
+  const cart = useContext(CartContext);
+
   const imagePath = `/images/products/${product.image}`;
   const productPagePath = `/products/${product.id}`;
 
@@ -34,7 +38,10 @@ export default function ProductCard({ product }: any) {
         <Link href={productPagePath} className={styles.name}>
           {product.name}
         </Link>
-        <button className={styles.button}>
+        <button
+          className={styles.button}
+          onClick={() => cart.handleAddToCart(product.id, 1)}
+        >
           <img src="/images/icons/plus.svg" className={styles.plus} />
         </button>
       </div>

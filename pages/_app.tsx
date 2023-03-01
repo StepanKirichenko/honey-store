@@ -4,15 +4,25 @@ import { Inter } from "@next/font/google";
 import Header from "../components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
-import { CartContext } from "@/contexts/CartContext";
+import { CartContext, CartItem } from "@/contexts/CartContext";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [cart, setCart] = useState([0, 1, 2, 3]);
+  const [cart, setCart] = useState([] as CartItem[]);
 
-  function handleAddToCart() {
-    setCart([...cart, cart.length]);
+  function handleAddToCart(productId: number, amount: number) {
+    if (cart.findIndex((i) => i.productId === productId) !== -1) {
+      setCart(
+        cart.map((i) =>
+          i.productId === productId
+            ? { productId, amount: i.amount + amount }
+            : i
+        )
+      );
+    } else {
+      setCart([...cart, { productId, amount }]);
+    }
   }
 
   const cartContext = {

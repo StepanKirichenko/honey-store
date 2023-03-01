@@ -37,7 +37,9 @@ export default function Header() {
           Контакты
         </Link>
         <Link href="/cart" className={`${styles.link} ${styles.cart_link}`}>
-          <p className={styles.cart_counter}>{cart.items.length}</p>
+          {cart.items.length > 0 && (
+            <p className={styles.cart_counter}>{cart.items.length}</p>
+          )}
           Корзина
         </Link>
       </nav>

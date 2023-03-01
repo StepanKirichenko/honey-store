@@ -1,10 +1,14 @@
+import { Product } from "@/utils/products";
 import Image from "next/image";
 import RatingDisplay from "../RatingDisplay";
 import styles from "./CartProductCard.module.css";
 
-interface Props {}
+interface Props {
+  product: Product;
+  amount: number;
+}
 
-export default function CartProductCard() {
+export default function CartProductCard({ product, amount }: Props) {
   return (
     <div>
       <div className={styles.row}>
@@ -17,13 +21,13 @@ export default function CartProductCard() {
         <div className={styles.product_info}>
           <Image
             className={styles.product_image}
-            src="/images/products/мед_акациевый.png"
-            alt="продукт"
+            src={`/images/products/${product.image}`}
+            alt={product.name}
             width={220}
             height={220}
           />
           <div className={styles.product_description}>
-            <h3 className={styles.product_name}>Мёд акациевый</h3>
+            <h3 className={styles.product_name}>{product.name}</h3>
             <RatingDisplay />
             <p className={styles.product_description_paragraph}>
               Мёд из цветов — полифлерный продукт. Приставка «поли» означает,
@@ -38,7 +42,7 @@ export default function CartProductCard() {
             <h4 className={styles.button_title}>Количество</h4>
             <div className={styles.button_content}>
               <p>-</p>
-              <p>5</p>
+              <p>{amount}</p>
               <p>+</p>
             </div>
           </button>
@@ -51,7 +55,7 @@ export default function CartProductCard() {
             </div>
           </button>
         </div>
-        <p className={styles.price}>2250 р</p>
+        <p className={styles.price}>{product.price * amount} р</p>
       </div>
       <hr className={styles.divider} />
     </div>

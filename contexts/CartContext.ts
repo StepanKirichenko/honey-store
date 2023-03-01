@@ -1,9 +1,14 @@
 import { Context, createContext } from "react";
 
+export interface CartItem {
+  productId: number;
+  amount: number;
+}
+
 export const CartContext: Context<{
-  items: number[];
-  handleAddToCart: () => void;
+  items: CartItem[];
+  handleAddToCart: (productId: number, amount: number) => void;
 }> = createContext({
-  items: [0],
-  handleAddToCart: () => {},
+  items: [] as CartItem[],
+  handleAddToCart: (productId, amount) => {},
 });
