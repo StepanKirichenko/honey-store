@@ -29,7 +29,7 @@ export default function Cart({ allProducts }: Props) {
   }));
 
   const productCards = productsInCart.map((p) => (
-    <CartProductCard product={p.product} amount={p.amount} />
+    <CartProductCard key={p.product.id} product={p.product} amount={p.amount} />
   ));
 
   return (
