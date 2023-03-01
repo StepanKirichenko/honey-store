@@ -3,11 +3,15 @@ import styles from "@/components/Button/Button.module.css";
 
 interface Props {
   children?: ReactNode;
+  disabled?: boolean;
 }
 
-export default function Button({ children }: Props) {
+export default function Button({ children, disabled = false }: Props) {
   return (
-    <button className={styles.button + " " + styles.button_primary}>
+    <button
+      disabled={disabled}
+      className={styles.button + " " + styles.button_primary}
+    >
       {children}
     </button>
   );

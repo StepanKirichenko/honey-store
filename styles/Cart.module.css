@@ -30,3 +30,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+.cart_empty_text {
+  font-size: var(--fs-heading-4);
+  margin: 40px 0 80px;
+  text-align: center;
+}

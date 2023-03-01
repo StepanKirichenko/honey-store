@@ -38,6 +38,8 @@ export default function Cart({ allProducts }: Props) {
     0
   );
 
+  const isCartEmpty = productCards.length === 0;
+
   return (
     <>
       <Head>
@@ -48,13 +50,19 @@ export default function Cart({ allProducts }: Props) {
           <div className="container">
             <h1 className={styles.page_heading}>Корзина</h1>
             <hr className={styles.divider} />
-            {productCards}
-            <div className={styles.total_price_row}>
-              <p className={styles.total_price}>{totalPrice} р</p>
-            </div>
+            {productCards.length === 0 ? (
+              <h2 className={styles.cart_empty_text}>Ваша корзина пуста</h2>
+            ) : (
+              <>
+                {productCards}
+                <div className={styles.total_price_row}>
+                  <p className={styles.total_price}>{totalPrice} р</p>
+                </div>
+              </>
+            )}
             <div className={styles.bottom_buttons_row}>
               <SecondaryButton>Продолжить просмотр</SecondaryButton>
-              <Button>Оформить заказ</Button>
+              <Button disabled={isCartEmpty}>Оформить заказ</Button>
             </div>
           </div>
         </section>
