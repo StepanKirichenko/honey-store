@@ -1,4 +1,5 @@
 import Button from "@/components/Button";
+import { ButtonLink } from "@/components/Button";
 import Pagination from "@/components/Pagination";
 import styles from "@/styles/Blog.module.css";
 import Image from "next/image";
@@ -34,7 +35,7 @@ export default function Blog() {
             каждый человек сможет найти для себя идеальный вариант меда.
           </p>
           <div className="row mt-medium">
-            <Button>Читать</Button>
+            <ButtonLink href="/blog/honey_in_winter">Читать</ButtonLink>
           </div>
         </div>
         <Image

@@ -100,8 +100,16 @@ a {
   margin-top: 130px;
 }
 
+.mt-small {
+  margin-top: 30px;
+}
+
 .mt-medium {
   margin-top: 45px;
+}
+
+.mb-xl {
+  margin-bottom: 150px;
 }
 
 .mb-page-end {

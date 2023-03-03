@@ -1,9 +1,15 @@
 import { ReactNode } from "react";
 import styles from "@/components/Button/Button.module.css";
+import Link from "next/link";
 
 interface Props {
   children?: ReactNode;
   disabled?: boolean;
+}
+
+interface LinkProps {
+  children?: ReactNode;
+  href: string;
 }
 
 export default function Button({ children, disabled = false }: Props) {
@@ -32,5 +38,13 @@ export function SmallButton({ children }: Props) {
     >
       {children}
     </button>
+  );
+}
+
+export function ButtonLink({ children, href }: LinkProps) {
+  return (
+    <Link className={`${styles.button} ${styles.button_primary}`} href={href}>
+      {children}
+    </Link>
   );
 }
