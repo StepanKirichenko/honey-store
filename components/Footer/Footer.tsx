@@ -102,7 +102,7 @@ function FooterNavigation() {
       <Link href="/" className={styles.navigation_link}>
         Сотрудничество
       </Link>
-      <Link href="/" className={styles.navigation_link}>
+      <Link href="/contacts" className={styles.navigation_link}>
         Контакты
       </Link>
     </nav>
