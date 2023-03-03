@@ -63,7 +63,7 @@ export default function Home({ popularProducts, comments }: Props) {
         </section>
 
         <section className={styles.section}>
-          <div className="container row gap-small">
+          <div className="container row gap-large">
             <div className="col align-start">
               <p className={styles.description_paragraph}>
                 Наш интернет-магазин меда готов предложить самые разные сорта

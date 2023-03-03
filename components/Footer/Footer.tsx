@@ -96,7 +96,7 @@ function FooterNavigation() {
       <Link href="/" className={styles.navigation_link}>
         Акции
       </Link>
-      <Link href="/" className={styles.navigation_link}>
+      <Link href="/reviews" className={styles.navigation_link}>
         Отзывы
       </Link>
       <Link href="/" className={styles.navigation_link}>

@@ -62,6 +62,10 @@ a {
   justify-content: center;
 }
 
+.justify-space-between {
+  justify-content: space-between;
+}
+
 .align-start {
   align-items: flex-start;
 }
@@ -74,10 +78,22 @@ a {
   align-items: center;
 }
 
+.gap-xs {
+  gap: 20px;
+}
+
 .gap-small {
+  gap: 30px;
+}
+
+.gap-large {
   gap: 100px;
 }
 
 .mt-page-start {
   margin-top: 130px;
+}
+
+.mb-page-end {
+  margin-bottom: 80px;
 }

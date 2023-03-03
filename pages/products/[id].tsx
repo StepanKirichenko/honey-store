@@ -172,7 +172,7 @@ export default function ProductPage({
         </section>
 
         <section className={`${styles.section} ${styles.reviews_section}`}>
-          <div className="container row gap-small">
+          <div className="container row gap-large">
             <div className="col">
               <h2 className={styles.reviews_section_heading}>Характеристики</h2>
               <p className={styles.characteristics_paragraph}>
