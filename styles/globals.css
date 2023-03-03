@@ -3,6 +3,7 @@
 
   --primary-color-800: #303030;
   --primary-color-600: #454545;
+  --secondary-color-600: #ededed;
   --secondary-color-500: #d4d4d4;
   --secondary-color-300: #afafaf;
   --accent-color-1: #58755b;
@@ -78,6 +79,11 @@ a {
   align-items: center;
 }
 
+.my-xs {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
 .gap-xs {
   gap: 20px;
 }
@@ -94,6 +100,19 @@ a {
   margin-top: 130px;
 }
 
+.mt-medium {
+  margin-top: 45px;
+}
+
 .mb-page-end {
   margin-bottom: 80px;
+}
+
+.mb-medium {
+  margin-bottom: 70px;
+}
+
+.page-title {
+  font-size: var(--fs-heading-2);
+  font-weight: 300;
 }

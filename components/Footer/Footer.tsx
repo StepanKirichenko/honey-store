@@ -87,7 +87,7 @@ function FooterNavigation() {
       <Link href="/catalog" className={styles.navigation_link}>
         Каталог
       </Link>
-      <Link href="/" className={styles.navigation_link}>
+      <Link href="/blog" className={styles.navigation_link}>
         Блог
       </Link>
       <Link href="/" className={styles.navigation_link}>
