@@ -4,7 +4,7 @@ import styles from "@/styles/Cart.module.css";
 import { getAllProducts, Product } from "@/utils/products";
 import Head from "next/head";
 import { useContext } from "react";
-import Button from "@/components/Button";
+import Button, { SecondaryButtonLink } from "@/components/Button";
 import { SecondaryButton } from "@/components/Button";
 
 interface Props {
@@ -61,7 +61,9 @@ export default function Cart({ allProducts }: Props) {
               </>
             )}
             <div className={styles.bottom_buttons_row}>
-              <SecondaryButton>Продолжить просмотр</SecondaryButton>
+              <SecondaryButtonLink href="/catalog">
+                Продолжить просмотр
+              </SecondaryButtonLink>
               <Button disabled={isCartEmpty}>Оформить заказ</Button>
             </div>
           </div>
