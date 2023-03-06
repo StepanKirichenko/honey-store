@@ -6,6 +6,7 @@
 .page_heading {
   font-size: var(--fs-heading-2);
   font-weight: 300;
+  margin-bottom: 58px;
 }
 
 .grid {

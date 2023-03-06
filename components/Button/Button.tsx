@@ -49,6 +49,17 @@ export function ButtonLink({ children, href }: LinkProps) {
   );
 }
 
+export function SmallButtonLink({ children, href }: LinkProps) {
+  return (
+    <Link
+      className={`${styles.button} ${styles.button_primary} ${styles.button_small}`}
+      href={href}
+    >
+      {children}
+    </Link>
+  );
+}
+
 export function SecondaryButtonLink({ children, href }: LinkProps) {
   return (
     <Link className={`${styles.button} ${styles.button_secondary}`} href={href}>

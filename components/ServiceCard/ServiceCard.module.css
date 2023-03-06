@@ -1,0 +1,25 @@
+.image_container {
+  margin-bottom: 38px;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.divider {
+  border: none;
+  border-bottom: 1.5px solid var(--primary-color-800);
+  margin-bottom: 18px;
+}
+
+.title {
+  font-size: var(--fs-text);
+  color: var(--primary-color-600);
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.button {
+  margin-top: auto;
+}
