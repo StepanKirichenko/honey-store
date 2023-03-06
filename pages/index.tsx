@@ -11,7 +11,7 @@ import {
 import ProductGrid from "@/components/ProductGrid";
 import ReviewCard from "@/components/ReviewCard";
 import ListScrollArrows from "@/components/ListScrollArrows";
-import Button from "@/components/Button";
+import Button, { ButtonLink } from "@/components/Button";
 
 export async function getServerSideProps(context: any) {
   const products = await getAllProducts();
@@ -243,6 +243,9 @@ export default function Home({ popularProducts, comments }: Props) {
                   стандартам качества,сертификаты, ветеринарные свидетельства.
                 </p>
               </div>
+            </div>
+            <div className="row justify-center mt-medium">
+              <ButtonLink href="#">Вариатны сотрудничества</ButtonLink>
             </div>
           </div>
         </section>

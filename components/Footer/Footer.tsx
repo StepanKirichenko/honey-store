@@ -75,7 +75,7 @@ function FooterNavigation() {
       <Link href="/" className={styles.navigation_link}>
         Услуги
       </Link>
-      <Link href="/" className={styles.navigation_link}>
+      <Link href="/about" className={styles.navigation_link}>
         О компании
       </Link>
       <Link href="/" className={styles.navigation_link}>

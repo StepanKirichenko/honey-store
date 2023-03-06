@@ -30,7 +30,7 @@ export default function Header() {
             height={55}
           />
         </Link>
-        <Link href="/" className={styles.link}>
+        <Link href="/about" className={styles.link}>
           О компании
         </Link>
         <Link href="/contacts" className={styles.link}>

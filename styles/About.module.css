@@ -1,0 +1,131 @@
+.section {
+  padding: 90px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section_heading {
+  font-size: var(--fs-heading-2);
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+/* --- HERO SECTION --- */
+
+.hero {
+  display: grid;
+  grid-template-columns:
+    minmax(30px, 1fr)
+    repeat(2, minmax(100px, 700px))
+    minmax(30px, 1fr);
+}
+
+.hero__img_container {
+  grid-column: 3 / 5;
+}
+
+.hero__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-column: 2 / 3;
+  padding-right: 3rem;
+  padding-top: 100px;
+}
+
+.hero__heading {
+  font-weight: 300;
+  /* font-size: clamp(3rem, 6vw, 5.5rem); */
+  font-size: var(--fs-heading-2);
+  margin-bottom: 85px;
+}
+
+.hero__description {
+  font-size: 22px;
+  line-height: 25px;
+  color: var(--primary-color-600);
+  margin-bottom: 1.5rem;
+}
+
+/* --- COLLABORATION SECTION --- */
+
+.collaboration_section {
+  background-color: var(--accent-color-1);
+  color: white;
+}
+
+.collaboration_grid {
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 40px;
+  row-gap: 50px;
+}
+
+.collaboration_point {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.collaboration_point_heading {
+  font-size: var(--fs-heading-4);
+  margin: 12px 0;
+  text-align: center;
+}
+
+.collaboration_point_paragraph {
+  font-size: var(--fs-text-small);
+  text-align: center;
+}
+
+/* --- OFFER SECTION --- */
+
+.offer_section {
+  /* padding: 90px 0 90px; */
+  display: grid;
+  grid-template-columns:
+    minmax(30px, 1fr)
+    repeat(3, minmax(100px, calc(1400px / 3)))
+    minmax(30px, 1fr);
+}
+
+.offer_text_column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  grid-column: 2 / 3;
+  padding-right: 30px;
+}
+
+.offer_heading {
+  font-size: var(--fs-heading-3);
+  font-weight: 300;
+}
+
+.offer_description {
+  font-size: var(--fs-text-small);
+  margin: 10px 0 30px;
+}
+
+.offer_image_container {
+  grid-column: 3 / -1;
+}
+
+.offer_image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
