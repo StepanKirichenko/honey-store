@@ -65,7 +65,7 @@
 .button_content {
   display: flex;
   justify-content: space-between;
-  gap: 24px;
+  /* gap: 24px; */
 }
 
 .button_title {
@@ -79,10 +79,17 @@
 .price {
   font-size: var(--fs-heading-3);
   font-weight: 300;
+  text-align: end;
+  min-width: 15%;
 }
 
 .adjust_amount_button {
   cursor: pointer;
   background: none;
   border: none;
+}
+
+.adjust_amount_button__numbers {
+  min-width: 4em;
+  text-align: center;
 }

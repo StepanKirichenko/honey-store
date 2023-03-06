@@ -53,7 +53,7 @@ export default function CartProductCard({ product, amount }: Props) {
               >
                 -
               </button>
-              <p>{amount}</p>
+              <p className={styles.adjust_amount_button__numbers}>{amount}</p>
               <button
                 className={styles.adjust_amount_button}
                 onClick={() => cart.handleAddToCart(product.id, 1)}
