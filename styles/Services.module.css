@@ -1,0 +1,16 @@
+.page_content {
+  margin-top: 130px;
+  margin-bottom: 130px;
+}
+
+.page_heading {
+  font-size: var(--fs-heading-2);
+  font-weight: 300;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 60px;
+}

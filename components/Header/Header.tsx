@@ -16,7 +16,7 @@ export default function Header() {
         <Link href="/catalog" className={styles.link}>
           Каталог
         </Link>
-        <Link href="/" className={styles.link}>
+        <Link href="/services" className={styles.link}>
           Услуги
         </Link>
         <Link href="/" className={styles.link}>

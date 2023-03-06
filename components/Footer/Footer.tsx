@@ -72,7 +72,7 @@ function FooterForm() {
 function FooterNavigation() {
   return (
     <nav className={styles.navigation}>
-      <Link href="/" className={styles.navigation_link}>
+      <Link href="/services" className={styles.navigation_link}>
         Услуги
       </Link>
       <Link href="/about" className={styles.navigation_link}>
