@@ -47,9 +47,7 @@ export default function Home({ popularProducts, comments }: Props) {
               Мы продаем мед с нашей пасеки, контролируя весь процесс создания
               продукции, а также последующее хранение и доставку.
             </p>
-            <Link href="/catalog" className={styles.hero__catalog_link}>
-              Перейти в каталог
-            </Link>
+            <ButtonLink href="/catalog">Перейти в каталог</ButtonLink>
           </div>
           <div className={styles.hero__img_container}>
             <Image
