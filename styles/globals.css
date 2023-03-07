@@ -120,6 +120,10 @@ a {
   margin-bottom: 70px;
 }
 
+.mb-small {
+  margin-bottom: 50px;
+}
+
 .page-title {
   font-size: var(--fs-heading-2);
   font-weight: 300;

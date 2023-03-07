@@ -12,27 +12,27 @@ const allServices: Service[] = [
   },
   {
     id: "your_own_trademark",
-    title: "собственная торговая марка",
+    title: "Собственная торговая марка",
     image: "/images/services/2.png",
   },
   {
     id: "honey_compositions",
-    title: "разработка и выпуск медовых композиций",
+    title: "Разработка и выпуск медовых композиций",
     image: "/images/services/3.png",
   },
   {
     id: "individual_order",
-    title: "разработка индивидуального заказа",
+    title: "Разработка индивидуального заказа",
     image: "/images/services/4.png",
   },
   {
     id: "labeling",
-    title: "этикетирование",
+    title: "Этикетирование",
     image: "/images/services/5.png",
   },
   {
     id: "processing_into_cream",
-    title: "переработка мёда в крем",
+    title: "Переработка мёда в крем",
     image: "/images/services/6.png",
   },
 ];
