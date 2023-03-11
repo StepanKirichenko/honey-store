@@ -1,0 +1,16 @@
+.page_title {
+  font-size: var(--fs-heading-2);
+  font-weight: 300;
+  margin-bottom: 52px;
+}
+
+.section_title {
+  font-size: var(--fs-heading-3);
+  font-weight: 300;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 60px;
+}

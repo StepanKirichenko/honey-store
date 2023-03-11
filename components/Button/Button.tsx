@@ -10,6 +10,7 @@ interface Props {
 interface LinkProps {
   children?: ReactNode;
   href: string;
+  disabled?: boolean;
 }
 
 export default function Button({ children, disabled = false }: Props) {
@@ -41,8 +42,10 @@ export function SmallButton({ children }: Props) {
   );
 }
 
-export function ButtonLink({ children, href }: LinkProps) {
-  return (
+export function ButtonLink({ children, href, disabled = false }: LinkProps) {
+  return disabled ? (
+    <Button disabled={disabled} children={children} />
+  ) : (
     <Link className={`${styles.button} ${styles.button_primary}`} href={href}>
       {children}
     </Link>
