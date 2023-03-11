@@ -52,7 +52,60 @@ export default function Checkout(props: { allProducts: Product[] }) {
         <div className={styles.grid}>
           <div className="col">
             <h2 className={styles.section_title}>Адрес и доставка</h2>
-            <div className="row"></div>
+            <div className="row gap-small">
+              <Dropdown>Выберите город</Dropdown>
+              <Dropdown>Способ доставки</Dropdown>
+            </div>
+            <h2 className={styles.section_title + " " + "mt-medium"}>
+              Получатель
+            </h2>
+            <input
+              className={styles.text_input}
+              type="text"
+              name="first_name"
+              placeholder="Имя"
+            />
+            <input
+              className={styles.text_input}
+              type="text"
+              name="last_name"
+              placeholder="Фамилия"
+            />
+            <input
+              className={styles.text_input}
+              type="text"
+              name="patronymic"
+              placeholder="Отчество"
+            />
+            <p className={styles.secondary_text}>
+              Обязательно при доставке почтой
+            </p>
+            <input
+              className={styles.text_input}
+              type="tel"
+              name="tel"
+              placeholder="Телефон"
+            />
+            <input
+              className={styles.text_input}
+              type="email"
+              name="email"
+              placeholder="E-mail"
+            />
+            <p className={styles.secondary_text}>Необходим для отправки чека</p>
+            <label className={styles.checkbox}>
+              <input type="checkbox" className={styles.checkbox__checkmark} />я
+              ознакомился и согласен с политикой обработки персональных данных и
+              пользовательским соглашением
+            </label>
+            <label className={styles.checkbox}>
+              <input type="checkbox" className={styles.checkbox__checkmark} />я
+              согласен получать новости об акциях и специальных предложениях
+            </label>
+
+            <div className="mt-medium"></div>
+            <h2 className={styles.section_title}>Оплата заказа</h2>
+            <Dropdown>Выберите способ оплаты</Dropdown>
           </div>
           <div className="col">
             <h2 className={styles.section_title}>Ваш заказ</h2>
@@ -78,5 +131,23 @@ export default function Checkout(props: { allProducts: Product[] }) {
         </div>
       </div>
     </main>
+  );
+}
+
+function Dropdown({ children }: any) {
+  const arrowUp = "/images/icons/dropdown_arrow_up.svg";
+  const arrowDown = "/images/icons/dropdown_arrow_down.svg";
+
+  return (
+    <div className={styles.dropdown}>
+      <div className={`${styles.dropdown__content}`}>
+        <div className={styles.dropdown__name_row}>
+          <h2 className={styles.dropdown__title}>{children}</h2>
+          <button className={styles.dropdown__arrow_button}>
+            <img src={arrowDown} />
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
