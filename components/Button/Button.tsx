@@ -44,7 +44,7 @@ export function SmallButton({ children }: Props) {
 
 export function ButtonLink({ children, href, disabled = false }: LinkProps) {
   return disabled ? (
-    <Button disabled={disabled} children={children} />
+    <Button disabled={disabled}>{children}</Button>
   ) : (
     <Link className={`${styles.button} ${styles.button_primary}`} href={href}>
       {children}
