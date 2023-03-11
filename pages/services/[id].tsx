@@ -3,6 +3,7 @@ import { getAllServices, Service } from "@/utils/services";
 import styles from "@/styles/Service.module.css";
 import { SmallButton } from "@/components/Button";
 import ServiceCard from "@/components/ServiceCard";
+import ListScrollArrows from "@/components/ListScrollArrows";
 
 export async function getStaticPaths() {
   const allServices = await getAllServices();
@@ -94,6 +95,7 @@ export default function ServicePage(props: {
                 />
               ))}
           </div>
+          <ListScrollArrows />
         </div>
       </section>
     </main>
