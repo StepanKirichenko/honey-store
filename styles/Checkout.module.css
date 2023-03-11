@@ -7,10 +7,39 @@
 .section_title {
   font-size: var(--fs-heading-3);
   font-weight: 300;
+  margin-bottom: 40px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 60px;
+}
+
+.product_images_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 10px;
+}
+
+.product_image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+.price_text {
+  font-size: var(--fs-heading-4);
+}
+
+.price_text_total {
+  font-size: var(--fs-heading-3);
+  font-size: 300;
+}
+
+.divider {
+  border: none;
+  border-bottom: 2px solid var(--secondary-color-500);
+  margin: 25px 0 25px;
 }
