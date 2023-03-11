@@ -36,6 +36,7 @@ export default function Checkout(props: { allProducts: Product[] }) {
     .slice(0, 3)
     .map((item) => (
       <Image
+        key={item.product.id}
         className={styles.product_image}
         src={`/images/products/${item.product.image}`}
         alt=""
