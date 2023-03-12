@@ -83,19 +83,6 @@ export default function ServicePage(props: {
       <section className="col align-center mb-page-end">
         <div className="container">
           <h2 className={styles.recommended__heading}>Другие услуги</h2>
-          {/* <div className={styles.recommended__grid}>
-            {props.allServices
-              .filter((service) => service.id !== props.service.id)
-              .slice(0, 3)
-              .map((service) => (
-                <ServiceCard
-                  key={service.id}
-                  title={service.title}
-                  img={service.image}
-                  link={`/services/${service.id}`}
-                />
-              ))}
-          </div> */}
           <ScrollableList showCount={3}>
             {props.allServices
               .filter((service) => service.id !== props.service.id)
