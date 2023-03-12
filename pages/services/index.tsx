@@ -19,7 +19,7 @@ export default function Services(props: { allServices: Service[] }) {
       <Head>
         <title>Sota | Услуги</title>
       </Head>
-      <main className={styles.page_content + " " + "col align-center"}>
+      <main className={styles.page_content}>
         <div className="container">
           <h1 className={styles.page_heading}>Услуги</h1>
           <div className={styles.grid}>
