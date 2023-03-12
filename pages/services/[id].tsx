@@ -4,6 +4,7 @@ import styles from "@/styles/Service.module.css";
 import { SmallButton } from "@/components/Button";
 import ServiceCard from "@/components/ServiceCard";
 import ListScrollArrows from "@/components/ListScrollArrows";
+import ScrollableList from "@/components/ScrollableList";
 
 export async function getStaticPaths() {
   const allServices = await getAllServices();
@@ -82,7 +83,7 @@ export default function ServicePage(props: {
       <section className="col align-center mb-page-end">
         <div className="container">
           <h2 className={styles.recommended__heading}>Другие услуги</h2>
-          <div className={styles.recommended__grid}>
+          {/* <div className={styles.recommended__grid}>
             {props.allServices
               .filter((service) => service.id !== props.service.id)
               .slice(0, 3)
@@ -94,8 +95,20 @@ export default function ServicePage(props: {
                   link={`/services/${service.id}`}
                 />
               ))}
-          </div>
-          <ListScrollArrows />
+          </div> */}
+          <ScrollableList showCount={3}>
+            {props.allServices
+              .filter((service) => service.id !== props.service.id)
+              // .slice(0, 3)
+              .map((service) => (
+                <ServiceCard
+                  key={service.id}
+                  title={service.title}
+                  img={service.image}
+                  link={`/services/${service.id}`}
+                />
+              ))}
+          </ScrollableList>
         </div>
       </section>
     </main>

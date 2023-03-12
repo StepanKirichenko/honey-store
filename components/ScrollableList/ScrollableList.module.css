@@ -1,0 +1,15 @@
+.grid {
+  display: grid;
+  column-gap: 30px;
+}
+
+.arrows_container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.arrow {
+  cursor: pointer;
+}
