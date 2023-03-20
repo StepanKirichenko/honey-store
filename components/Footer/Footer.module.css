@@ -143,17 +143,15 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
   height: 30px;
   margin-top: 20px;
 }
 
-.payment_system_icon {
+/* .payment_system_icon {
   height: 100%;
-}
-
-.payment_system_icon + .payment_system_icon {
-  margin-left: 1rem;
-}
+} */
 
 .bottom_row {
   display: flex;

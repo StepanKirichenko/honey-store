@@ -155,7 +155,7 @@ function SocialMediaLinks() {
   );
 }
 
-const paymentSystems = ["visa", "mastercard", "qiwi", "yandex-money"];
+const paymentSystems = ["visa", "mastercard", "qivi", "yandex_money"];
 
 function Contacts() {
   return (
@@ -173,9 +173,9 @@ function Contacts() {
             <Image
               key={system}
               className={styles.payment_system_icon}
-              src={`/images/icons/payment-systems/${system}.svg`}
-              width={30}
-              height={30}
+              src={`/images/icons/payment-systems/${system}.png`}
+              width={42}
+              height={42}
               alt={`логотип ${system}`}
             />
           ))}
