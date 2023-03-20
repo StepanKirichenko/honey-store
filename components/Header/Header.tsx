@@ -10,10 +10,10 @@ export default function Header() {
   return (
     <header className={styles.background}>
       <nav className={styles.container}>
-        <PageLink href="/blog">Блог</PageLink>
         <PageLink href="/catalog">Каталог</PageLink>
         <PageLink href="/services">Услуги</PageLink>
         <PageLink href="/reviews">Отзывы</PageLink>
+        <PageLink href="/blog">Блог</PageLink>
         <Link href="/">
           <Image
             src="/images/logos/sota_logo_dark.svg"
