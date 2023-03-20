@@ -24,6 +24,11 @@
   grid-column: 3 / -1;
 }
 
+.map_container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
 .title {
   font-size: var(--fs-heading-2);
   font-size: 300;
