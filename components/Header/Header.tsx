@@ -13,7 +13,7 @@ export default function Header() {
         <PageLink href="/blog">Блог</PageLink>
         <PageLink href="/catalog">Каталог</PageLink>
         <PageLink href="/services">Услуги</PageLink>
-        <PageLink href="/">Акции</PageLink>
+        <PageLink href="/reviews">Отзывы</PageLink>
         <Link href="/">
           <Image
             src="/images/logos/sota_logo_dark.svg"
