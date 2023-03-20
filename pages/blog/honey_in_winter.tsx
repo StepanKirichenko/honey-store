@@ -85,7 +85,7 @@ export default function Article() {
             </div>
             <div className="col">
               <Image
-                className={styles.article__image}
+                className={styles.recommended__image}
                 src="/images/articles/article_honey_alternative_to_sugar.png"
                 alt="мёд"
                 width={680}
@@ -100,7 +100,7 @@ export default function Article() {
             </div>
             <div className="col">
               <Image
-                className={styles.article__image}
+                className={styles.recommended__image}
                 src="/images/articles/article_honey_with_ginger.png"
                 alt="мёд"
                 width={680}
