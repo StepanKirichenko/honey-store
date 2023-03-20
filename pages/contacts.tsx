@@ -30,13 +30,15 @@ export default function Contacts() {
                 <h2 className={styles.subheading}>Режим работы</h2>
                 <p className={styles.paragraph}>Ежедневно, 10:00-18:00</p>
               </div>
-              <div className={styles.wide_col}>
+              <div className="col">
                 <h2 className={styles.subheading}>Реквизиты компании</h2>
                 <p className={styles.paragraph_small}>
                   Юридическое наименование и адрес: ООО ПК «ОО»ИНН: 000000000
-                  ОГРН: 000000000000 Адрес: Россия, 141011, Московская область,
-                  Мытищи, 4-я Парковая, строение 17 Оптово-розничная продажа
-                  мёда и продуктов пчеловодства.
+                  ОГРН: 000000000000 <br /> Адрес: Россия, 141011, Московская
+                  область, Мытищи, 4-я Парковая, строение 17
+                </p>
+                <p className={styles.paragraph_small + " mt-small"}>
+                  Оптово-розничная продажа мёда и продуктов пчеловодства.
                 </p>
               </div>
               <div className={styles.wide_col}>
@@ -48,13 +50,6 @@ export default function Contacts() {
               </div>
             </div>
           </div>
-          {/* <Image
-          className={styles.map_image}
-          src="/images/map.png"
-          alt="карта с местоположением компании"
-          width={940}
-          height={940}
-        /> */}
           <Map
             defaultState={{ center: [47.698559, 40.16647], zoom: 12 }}
             className={styles.map_container}
