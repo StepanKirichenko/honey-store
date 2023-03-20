@@ -120,8 +120,21 @@ function SocialMediaLinks() {
         <Image
           className={styles.social_media_icon}
           src="images/icons/social-media/vk.svg"
-          width={60}
-          height={36}
+          width={30}
+          height={18}
+          alt="логотип ВКонтакте"
+        />
+      </Link>
+      <Link
+        href="https://whatsapp.com/"
+        className={styles.social_media_link}
+        target="_black"
+      >
+        <Image
+          className={styles.social_media_icon}
+          src="/images/icons/social-media/whatsapp.png"
+          width={25}
+          height={25}
           alt="логотип ВКонтакте"
         />
       </Link>
@@ -133,8 +146,8 @@ function SocialMediaLinks() {
         <Image
           className={styles.social_media_icon}
           src="images/icons/social-media/instagram.svg"
-          width={60}
-          height={36}
+          width={28}
+          height={28}
           alt="логотип ВКонтакте"
         />
       </Link>
