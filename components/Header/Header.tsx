@@ -1,28 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./Header.module.css";
-import { useContext } from "react";
+import { FC, ReactNode, useContext } from "react";
 import { CartContext } from "@/contexts/CartContext";
+import { useRouter } from "next/router";
+import { JsxElement } from "typescript";
 
 export default function Header() {
-  const cart = useContext(CartContext);
-
   return (
     <header className={styles.background}>
       <nav className={styles.container}>
-        <Link href="/blog" className={styles.link}>
-          Блог
-        </Link>
-        <Link href="/catalog" className={styles.link}>
-          Каталог
-        </Link>
-        <Link href="/services" className={styles.link}>
-          Услуги
-        </Link>
-        <Link href="/" className={styles.link}>
-          Акции
-        </Link>
-        <Link href="/" className={styles.link}>
+        <PageLink href="/blog">Блог</PageLink>
+        <PageLink href="/catalog">Каталог</PageLink>
+        <PageLink href="/services">Услуги</PageLink>
+        <PageLink href="/">Акции</PageLink>
+        <Link href="/">
           <Image
             src="/images/logos/sota_logo_dark.svg"
             alt="Логотип Sota"
@@ -30,19 +22,49 @@ export default function Header() {
             height={55}
           />
         </Link>
-        <Link href="/about" className={styles.link}>
-          О компании
-        </Link>
-        <Link href="/contacts" className={styles.link}>
-          Контакты
-        </Link>
-        <Link href="/cart" className={`${styles.link} ${styles.cart_link}`}>
-          {cart.items.length > 0 && (
-            <p className={styles.cart_counter}>{cart.items.length}</p>
-          )}
-          Корзина
-        </Link>
+        <PageLink href="/about">О компании</PageLink>
+        <PageLink href="/contacts">Контакты</PageLink>
+        <CartLink />
       </nav>
     </header>
   );
 }
+
+type PageLinkProps = {
+  href: string;
+  children: ReactNode;
+};
+
+const PageLink: FC<PageLinkProps> = (props) => {
+  const currentRoute = useRouter();
+  const currentPage = currentRoute.pathname;
+  const className =
+    props.href === currentPage
+      ? `${styles.link} ${styles.link__current}`
+      : styles.link;
+
+  return (
+    <Link href={props.href} className={className}>
+      {props.children}
+    </Link>
+  );
+};
+
+const CartLink: FC = () => {
+  const cart = useContext(CartContext);
+  const currentRoute = useRouter();
+  const currentPage = currentRoute.pathname;
+  const className =
+    "/cart" === currentPage
+      ? `${styles.link} ${styles.cart_link} ${styles.link__current}`
+      : `${styles.link} ${styles.cart_link}`;
+
+  return (
+    <Link href="/cart" className={className}>
+      {cart.items.length > 0 && (
+        <p className={styles.cart_counter}>{cart.items.length}</p>
+      )}
+      Корзина
+    </Link>
+  );
+};

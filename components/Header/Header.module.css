@@ -27,6 +27,10 @@
   color: #303030;
 }
 
+.link__current {
+  font-weight: 500;
+}
+
 .link:hover {
   text-decoration: underline;
   cursor: pointer;
