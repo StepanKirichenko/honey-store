@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./ImageGallery.module.css";
 
 export default function ImageGallery() {
@@ -11,6 +11,23 @@ export default function ImageGallery() {
   ];
 
   const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    let isChangeCancelled = false;
+    setTimeout(() => {
+      if (!isChangeCancelled) {
+        setCurrentImage((currentImage + 1) % images.length);
+      }
+    }, 5000);
+
+    return () => {
+      isChangeCancelled = true;
+    };
+  }, [currentImage]);
+
+  function handleChangeImage(index: number) {
+    setCurrentImage(index);
+  }
 
   return (
     <div className={styles.gallery}>
@@ -33,7 +50,7 @@ export default function ImageGallery() {
             className={`${styles.button} ${
               i === currentImage ? styles.current : ""
             }`}
-            onClick={() => setCurrentImage(i)}
+            onClick={() => handleChangeImage(i)}
           />
         ))}
       </div>
