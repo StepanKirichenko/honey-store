@@ -12,6 +12,7 @@ import ProductGrid from "@/components/ProductGrid";
 import ReviewCard from "@/components/ReviewCard";
 import ListScrollArrows from "@/components/ListScrollArrows";
 import Button, { ButtonLink } from "@/components/Button";
+import ImageGallery from "@/components/ImageGallery";
 
 export async function getServerSideProps(context: any) {
   const products = await getAllProducts();
@@ -50,13 +51,14 @@ export default function Home({ popularProducts, comments }: Props) {
             <ButtonLink href="/catalog">Перейти в каталог</ButtonLink>
           </div>
           <div className={styles.hero__img_container}>
-            <Image
+            {/* <Image
               className={styles.hero__img}
               src="/images/hero_image.png"
               width={962}
               height={944}
               alt="акациевый мёд"
-            />
+            /> */}
+            <ImageGallery />
           </div>
         </section>
 

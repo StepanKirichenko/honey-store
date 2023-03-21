@@ -24,6 +24,7 @@
     minmax(30px, 1fr)
     repeat(2, minmax(100px, 700px))
     minmax(30px, 1fr);
+  min-height: 100vh;
 }
 
 .hero__img_container {
