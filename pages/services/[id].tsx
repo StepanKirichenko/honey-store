@@ -86,13 +86,13 @@ export default function ServicePage(props: {
           <ScrollableList showCount={3}>
             {props.allServices
               .filter((service) => service.id !== props.service.id)
-              // .slice(0, 3)
               .map((service) => (
                 <ServiceCard
                   key={service.id}
                   title={service.title}
                   img={service.image}
                   link={`/services/${service.id}`}
+                  square={true}
                 />
               ))}
           </ScrollableList>

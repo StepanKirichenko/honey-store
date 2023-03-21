@@ -6,14 +6,17 @@ interface Props {
   title: string;
   img: string;
   link: string;
+  square?: boolean;
 }
 
-export default function ServiceCard({ title, img, link }: Props) {
+export default function ServiceCard({ title, img, link, square }: Props) {
   return (
     <div className="col">
       <div className={styles.image_container}>
         <Image
-          className={styles.image}
+          className={`${styles.image} ${
+            square ? styles.image_square : styles.image_tall
+          }`}
           src={img}
           alt={title}
           width={450}
