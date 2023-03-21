@@ -5,19 +5,22 @@ import styles from "./ScrollableList.module.css";
 export default function ScrollableList({ children, showCount }: any) {
   const [startIndex, setStartIndex] = useState(0);
 
+  const canScrollBack = startIndex - showCount >= 0;
+  const canScrollForward = startIndex + showCount < children.length;
+
   function handleIncreaseStartIndex() {
-    let newIndex = startIndex + showCount;
-    if (newIndex >= children.length) {
-      newIndex = 0;
+    if (!canScrollForward) {
+      return;
     }
+    let newIndex = startIndex + showCount;
     setStartIndex(newIndex);
   }
 
   function handleDecreaseStartIndex() {
-    let newIndex = startIndex - showCount;
-    if (newIndex < 0) {
-      newIndex = 0;
+    if (!canScrollBack) {
+      return;
     }
+    let newIndex = startIndex - showCount;
     setStartIndex(newIndex);
   }
 
@@ -35,7 +38,7 @@ export default function ScrollableList({ children, showCount }: any) {
           alt="стрелка влево"
           width={15}
           height={25}
-          className={styles.arrow}
+          className={`${styles.arrow} ${canScrollBack ? "" : styles.inactive}`}
           onClick={handleDecreaseStartIndex}
         />
         <Image
@@ -43,7 +46,9 @@ export default function ScrollableList({ children, showCount }: any) {
           alt="стрелка влево"
           width={15}
           height={25}
-          className={styles.arrow}
+          className={`${styles.arrow} ${
+            canScrollForward ? "" : styles.inactive
+          }`}
           onClick={handleIncreaseStartIndex}
         />
       </div>
