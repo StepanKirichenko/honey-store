@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Head from "next/head";
 import FilterDropdown from "@/components/FilterDropdown";
+import DropdownSelector from "@/components/DropdownSelector";
 import ProductGrid from "@/components/ProductGrid";
 import { FilterSetting, Product } from "@/utils/products";
 import { getAllFilterSettings, getAllProducts } from "@/utils/products";
@@ -44,6 +45,21 @@ export default function Catalog({ filterSettings, products }: Props) {
     );
   }
 
+  let filteredProducts = products;
+  // const weightSetting = settings[2];
+  // filteredProducts = products.filter(
+  //   (p) =>
+  //     weightSetting.selected.length == 0 ||
+  //     weightSetting.selected.includes(p.weight)
+  // );
+  settings.forEach((setting) => {
+    filteredProducts = filteredProducts.filter(
+      (product) =>
+        setting.selected.length == 0 ||
+        setting.selected.includes((product as any)[setting.name])
+    );
+  });
+
   return (
     <>
       <Head>
@@ -73,7 +89,7 @@ export default function Catalog({ filterSettings, products }: Props) {
             </button>
           </div>
           <div className={styles.product_grid}>
-            <ProductGrid products={products} />
+            <ProductGrid products={filteredProducts} />
             <Pagination />
           </div>
         </div>

@@ -56,6 +56,21 @@ const products: Product[] = [
     packaging: "glass",
   },
   {
+    groupId: "1",
+    id: "1-2",
+    name: "Мёд акациевый",
+    category: "honey",
+    image: "мед_акациевый.png",
+    price: 650,
+    isOnSale: false,
+    discount: 0,
+    popularity: 800,
+    weight: "500",
+    year: "2022",
+    honeyType: "liquid",
+    packaging: "glass",
+  },
+  {
     groupId: "2",
     id: "2-1",
     name: "Мёд майский",
@@ -68,6 +83,21 @@ const products: Product[] = [
     weight: "350",
     year: "2022",
     honeyType: "liquid",
+    packaging: "glass",
+  },
+  {
+    groupId: "2",
+    id: "2-2",
+    name: "Мёд майский",
+    category: "honey",
+    image: "мед_майский.png",
+    price: 480,
+    isOnSale: false,
+    discount: 0,
+    popularity: 500,
+    weight: "350",
+    year: "2022",
+    honeyType: "crystal",
     packaging: "glass",
   },
   {
@@ -86,6 +116,21 @@ const products: Product[] = [
     packaging: "glass",
   },
   {
+    groupId: "3",
+    id: "3-2",
+    name: "Мёд хлопковый",
+    image: "мед_хлопковый.png",
+    category: "honey",
+    price: 520,
+    isOnSale: false,
+    discount: 0,
+    popularity: 100,
+    weight: "350",
+    year: "2021",
+    honeyType: "liquid",
+    packaging: "glass",
+  },
+  {
     groupId: "4",
     id: "4-1",
     name: "Мёд луговой",
@@ -99,6 +144,21 @@ const products: Product[] = [
     year: "2022",
     honeyType: "liquid",
     packaging: "glass",
+  },
+  {
+    groupId: "4",
+    id: "4-2",
+    name: "Мёд луговой",
+    image: "мед_луговой.png",
+    category: "honey",
+    price: 400,
+    isOnSale: false,
+    discount: 0,
+    popularity: 100,
+    weight: "350",
+    year: "2022",
+    honeyType: "liquid",
+    packaging: "plastic",
   },
   {
     groupId: "5",
@@ -303,7 +363,7 @@ const filterSettings: FilterSetting[] = [
     selected: [],
   },
   {
-    name: "sort",
+    name: "honeyType",
     displayName: "Сорт",
     options: [
       {
@@ -322,8 +382,8 @@ const filterSettings: FilterSetting[] = [
     selected: [],
   },
   {
-    name: "volume",
-    displayName: "Объём",
+    name: "weight",
+    displayName: "Вес",
     options: [
       {
         value: "350",
@@ -355,33 +415,33 @@ const filterSettings: FilterSetting[] = [
     ],
     selected: [],
   },
-  {
-    name: "sorting",
-    displayName: "По популярности",
-    options: [
-      {
-        value: "popularity",
-        displayName: "По популярности",
-      },
-      {
-        value: "new",
-        displayName: "Новинки",
-      },
-      {
-        value: "cheap-first",
-        displayName: "Сначала дешёвые",
-      },
-      {
-        value: "expensive-first",
-        displayName: "Сначала дорогие",
-      },
-      {
-        value: "sale-amount",
-        displayName: "По размеру скидки",
-      },
-    ],
-    selected: ["popularity"],
-  },
+  // {
+  //   name: "sorting",
+  //   displayName: "По популярности",
+  //   options: [
+  //     {
+  //       value: "popularity",
+  //       displayName: "По популярности",
+  //     },
+  //     {
+  //       value: "new",
+  //       displayName: "Новинки",
+  //     },
+  //     {
+  //       value: "cheap-first",
+  //       displayName: "Сначала дешёвые",
+  //     },
+  //     {
+  //       value: "expensive-first",
+  //       displayName: "Сначала дорогие",
+  //     },
+  //     {
+  //       value: "sale-amount",
+  //       displayName: "По размеру скидки",
+  //     },
+  //   ],
+  //   selected: ["popularity"],
+  // },
 ];
 
 const comments: Comment[] = [
