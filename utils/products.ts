@@ -482,8 +482,8 @@ const comments: Comment[] = [
 ];
 
 export async function getAllProducts() {
-  return allProducts;
-  // return products;
+  // return allProducts;
+  return products;
 }
 
 export async function getAllFilterSettings(): Promise<FilterSetting[]> {
