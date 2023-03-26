@@ -1,3 +1,5 @@
+import allProducts from "./allProdutcs.json" assert { type: "json" };
+
 export type ProductCategory = "honey" | "tea" | "jam";
 export type Weight = "350" | "500" | "1000";
 export type Packaging = "glass" | "plastic";
@@ -480,7 +482,8 @@ const comments: Comment[] = [
 ];
 
 export async function getAllProducts() {
-  return products;
+  return allProducts;
+  // return products;
 }
 
 export async function getAllFilterSettings(): Promise<FilterSetting[]> {
