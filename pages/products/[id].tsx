@@ -23,9 +23,9 @@ interface Props {
 
 export async function getServerSideProps({ params }: any) {
   const { id } = params;
-  const product = await getProductById(Number(id));
+  const product = await getProductById(id);
   const allProducts = await getAllProducts();
-  const recommendedProducts = allProducts.filter((p) => p.id !== Number(id));
+  const recommendedProducts = allProducts.filter((p) => p.id !== id);
   const allComments = await getAllComments();
   const comments = allComments.slice(0, 3);
   return {
