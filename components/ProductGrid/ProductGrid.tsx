@@ -9,7 +9,7 @@ interface Props {
 
 export default function ProductGrid({ products, columns = 4 }: Props) {
   const productElements = products.map((product) => (
-    <ProductCard key={product.name} product={product} />
+    <ProductCard key={product.id} product={product} />
   ));
 
   return (
