@@ -1,7 +1,7 @@
 import { Context, createContext } from "react";
 
 export interface CartItem {
-  productId: number;
+  productId: string;
   amount: number;
 }
 

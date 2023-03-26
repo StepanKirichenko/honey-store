@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin", "cyrillic"] });
 export default function App({ Component, pageProps }: AppProps) {
   const [cart, setCart] = useState([] as CartItem[]);
 
-  function handleAddToCart(productId: number, amount: number) {
+  function handleAddToCart(productId: string, amount: number) {
     if (cart.findIndex((i) => i.productId === productId) !== -1) {
       setCart(
         cart.map((i) =>
@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }
 
-  function handleRemoveFromCart(productId: number, amount: number = 0) {
+  function handleRemoveFromCart(productId: string, amount: number = 0) {
     if (amount !== 0) {
       setCart(
         cart
