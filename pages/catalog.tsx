@@ -73,10 +73,10 @@ export default function Catalog({ filterSettings, products }: Props) {
             <h1 className={styles.main_heading}>Каталог товаров</h1>
             <div className={styles.filter_settings}>
               {settings.map((setting) => (
-                <FilterDropdown
+                <DropdownSelector
                   key={setting.name}
                   {...setting}
-                  handleChangeFilterSetting={handleChangeFilterSetting}
+                  handleChangeSelection={handleChangeFilterSetting}
                 />
               ))}
             </div>
