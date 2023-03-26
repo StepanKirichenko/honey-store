@@ -4,9 +4,13 @@ import styles from "./DropdownSelector.module.css";
 interface Props {
   name: string;
   displayName: string;
-  options: {value: string; displayName: string}[];
+  options: { value: string; displayName: string }[];
   selected: string[];
-  handleChangeSelection: (name: string, value: string, isSeleted: boolean) => void;
+  handleChangeSelection: (
+    name: string,
+    value: string,
+    isSeleted: boolean
+  ) => void;
 }
 
 export default function DropdownSelector({
@@ -24,9 +28,7 @@ export default function DropdownSelector({
       <li key={option.value} className={styles.option}>
         <button
           className={styles.option_button}
-          onClick={() =>
-            handleChangeSelection(name, option.value, !isSelected)
-          }
+          onClick={() => handleChangeSelection(name, option.value, !isSelected)}
         >
           <div
             className={`${styles.option__checkmark} ${
@@ -52,7 +54,14 @@ export default function DropdownSelector({
           </button>
         </div>
       </div>
-      <div className={`${styles.content} ${styles.shown}`}>
+      <div
+        className={`${styles.content} ${styles.shown}`}
+        onBlur={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget)) {
+            setIsShown(false);
+          }
+        }}
+      >
         <button
           className={styles.name_row}
           onClick={() => setIsShown((x) => !x)}
