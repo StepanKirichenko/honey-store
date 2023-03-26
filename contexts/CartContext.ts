@@ -7,8 +7,8 @@ export interface CartItem {
 
 export const CartContext: Context<{
   items: CartItem[];
-  handleAddToCart: (productId: number, amount: number) => void;
-  handleRemoveFromCart: (productId: number, amount?: number) => void;
+  handleAddToCart: (productId: string, amount: number) => void;
+  handleRemoveFromCart: (productId: string, amount?: number) => void;
 }> = createContext({
   items: [] as CartItem[],
   handleAddToCart: (productId, amount) => {},

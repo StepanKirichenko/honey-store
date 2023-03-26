@@ -1,10 +1,15 @@
 import { CartContext } from "@/contexts/CartContext";
+import { Product } from "@/utils/products";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 import styles from "./ProductCard.module.css";
 
-export default function ProductCard({ product }: any) {
+interface Props {
+  product: Product;
+}
+
+export default function ProductCard({ product }: Props) {
   const cart = useContext(CartContext);
 
   const imagePath = `/images/products/${product.image}`;
@@ -46,7 +51,7 @@ export default function ProductCard({ product }: any) {
         </button>
       </div>
       <div className={styles.bottom_row}>
-        <p className={styles.volume}>{product.volume} мл</p>
+        <p className={styles.volume}>{product.weight} мл</p>
         {priceParagraph}
       </div>
       <hr className={styles.divider} />
