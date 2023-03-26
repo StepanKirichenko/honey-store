@@ -309,12 +309,13 @@ function generateAllProducts(): Product[] {
                 name: group.name,
                 image: `${group.image}.png`,
                 category: group.category,
-                price:
+                price: Math.floor(
                   group.basePrice *
-                  weightMultipliers[weight] *
-                  yearMultipliers[year] *
-                  honeyTypeMultipliers[honeyType] *
-                  packagingTypeMultipliers[packagingType],
+                    weightMultipliers[weight] *
+                    yearMultipliers[year] *
+                    honeyTypeMultipliers[honeyType] *
+                    packagingTypeMultipliers[packagingType]
+                ),
                 isOnSale: group.isOnSale,
                 discount: group.discount,
                 popularity: Math.floor(Math.random() * 10000),
@@ -336,10 +337,11 @@ function generateAllProducts(): Product[] {
             name: group.name,
             image: `${group.image}.png`,
             category: group.category,
-            price:
+            price: Math.floor(
               group.basePrice *
-              weightMultipliers[weight] *
-              yearMultipliers[year],
+                weightMultipliers[weight] *
+                yearMultipliers[year]
+            ),
             isOnSale: group.isOnSale,
             discount: group.discount,
             popularity: Math.floor(Math.random() * 10000),
