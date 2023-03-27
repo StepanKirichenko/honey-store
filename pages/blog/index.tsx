@@ -206,7 +206,7 @@ export default function Blog() {
             </div>
           </div>
           <div className="row justify-center">
-            <Pagination />
+            <Pagination pageCount={4} currentPage={1} />
           </div>
         </div>
       </section>
