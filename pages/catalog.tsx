@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Head from "next/head";
 import DropdownSelector from "@/components/DropdownSelector";
 import ProductGrid from "@/components/ProductGrid";
@@ -80,6 +80,10 @@ export default function Catalog({ filterSettings }: Props) {
     );
   }
 
+  function handleChangeCategory(newCaterogy: string) {
+    setCategory(newCaterogy);
+  }
+
   return (
     <>
       <Head>
@@ -102,30 +106,27 @@ export default function Catalog({ filterSettings }: Props) {
             </div>
           </div>
           <div className={styles.sidebar}>
-            <button
-              className={`${styles.sidebar_button} ${
-                category === "honey" && styles.sidebar_button__current
-              }`}
-              onClick={() => setCategory("honey")}
+            <SidebarButton
+              category="honey"
+              currentCategory={category}
+              handleClick={handleChangeCategory}
             >
               Мёд
-            </button>
-            <button
-              className={`${styles.sidebar_button} ${
-                category === "tea" && styles.sidebar_button__current
-              }`}
-              onClick={() => setCategory("tea")}
+            </SidebarButton>
+            <SidebarButton
+              category="tea"
+              currentCategory={category}
+              handleClick={handleChangeCategory}
             >
               Чайные напитки
-            </button>
-            <button
-              className={`${styles.sidebar_button} ${
-                category === "jam" && styles.sidebar_button__current
-              }`}
-              onClick={() => setCategory("jam")}
+            </SidebarButton>
+            <SidebarButton
+              category="jam"
+              currentCategory={category}
+              handleClick={handleChangeCategory}
             >
               Варенье и конфитюры
-            </button>
+            </SidebarButton>
           </div>
           <div className={styles.product_grid}>
             <ProductGrid products={products} isLoading={isLoading} />
@@ -138,5 +139,30 @@ export default function Catalog({ filterSettings }: Props) {
         </div>
       </main>
     </>
+  );
+}
+
+interface SidebarButtonProps {
+  category: string;
+  currentCategory: string;
+  handleClick: (category: string) => void;
+  children: ReactNode;
+}
+
+function SidebarButton({
+  category,
+  currentCategory,
+  children,
+  handleClick,
+}: SidebarButtonProps) {
+  return (
+    <button
+      className={`${styles.sidebar_button} ${
+        category === currentCategory && styles.sidebar_button__current
+      }`}
+      onClick={() => handleClick(category)}
+    >
+      {children}
+    </button>
   );
 }
