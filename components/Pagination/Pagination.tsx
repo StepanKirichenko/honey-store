@@ -25,5 +25,31 @@ export default function Pagination({
       {i + 1}
     </button>
   ));
-  return <div className={styles.pagination}>{pageLinkElements}</div>;
+
+  if (pageCount < 11) {
+    return <div className={styles.pagination}>{pageLinkElements}</div>;
+  }
+
+  if (currentPage < 6) {
+    return (
+      <div className={styles.pagination}>
+        {pageLinkElements.slice(0, 9)}
+        <p>..</p>
+        {pageLinkElements[pageCount - 1]}
+      </div>
+    );
+  }
+
+  const start = currentPage - 4;
+  const end = currentPage + 3;
+
+  return (
+    <div className={styles.pagination}>
+      {pageLinkElements[0]}
+      <p>..</p>
+      {pageLinkElements.slice(start, end)}
+      {end + 1 < pageCount && <p>..</p>}
+      {end + 1 <= pageCount && pageLinkElements[pageCount - 1]}
+    </div>
+  );
 }
