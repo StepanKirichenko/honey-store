@@ -1,30 +1,56 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
-import FilterDropdown from "@/components/FilterDropdown";
 import DropdownSelector from "@/components/DropdownSelector";
 import ProductGrid from "@/components/ProductGrid";
-import { FilterSetting, Product } from "@/utils/products";
+import { CatalogPageResponse, FilterSetting, Product } from "@/utils/products";
 import { getAllFilterSettings, getAllProducts } from "@/utils/products";
 import styles from "@/styles/Catalog.module.css";
 
 export async function getServerSideProps(context: any) {
   const settings = await getAllFilterSettings();
-  const products = await getAllProducts();
+  // const products = await getAllProducts();
   return {
     props: {
       filterSettings: settings,
-      products: products,
+      // products: products,
     },
   };
 }
 
 interface Props {
   filterSettings: FilterSetting[];
-  products: Product[];
+  // products: Product[];
 }
 
-export default function Catalog({ filterSettings, products }: Props) {
-  const [settings, setSettings] = useState(filterSettings);
+export default function Catalog({ filterSettings }: Props) {
+  const [settings, setSettings] = useState<FilterSetting[]>(filterSettings);
+  const [category, setCategory] = useState("honey");
+  const [sortingMethod, setSortingMethod] = useState("cheapest");
+  const [products, setProducts] = useState<Product[]>([]);
+
+  function formRequest(): string {
+    const opts = [];
+    opts.push(`category=${category}`);
+    opts.push(`sorting-method=${sortingMethod}`);
+    settings.forEach((setting) => {
+      setting.selected.forEach((value) => {
+        opts.push(`${setting.name}=${value}`);
+      });
+    });
+    return opts.join("&");
+  }
+
+  useEffect(() => {
+    fetch(`/api/products/catalog?${formRequest()}`)
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .then((data) => {
+        const pageData = data as CatalogPageResponse;
+        setProducts(pageData.products);
+      });
+  }, [settings]);
 
   function handleChangeFilterSetting(
     settingName: string,
@@ -45,20 +71,20 @@ export default function Catalog({ filterSettings, products }: Props) {
     );
   }
 
-  let filteredProducts = products;
+  // let filteredProducts = products;
   // const weightSetting = settings[2];
   // filteredProducts = products.filter(
   //   (p) =>
   //     weightSetting.selected.length == 0 ||
   //     weightSetting.selected.includes(p.weight)
   // );
-  settings.forEach((setting) => {
-    filteredProducts = filteredProducts.filter(
-      (product) =>
-        setting.selected.length == 0 ||
-        setting.selected.includes((product as any)[setting.name])
-    );
-  });
+  // settings.forEach((setting) => {
+  //   filteredProducts = filteredProducts.filter(
+  //     (product) =>
+  //       setting.selected.length == 0 ||
+  //       setting.selected.includes((product as any)[setting.name])
+  //   );
+  // });
 
   return (
     <>
@@ -89,7 +115,7 @@ export default function Catalog({ filterSettings, products }: Props) {
             </button>
           </div>
           <div className={styles.product_grid}>
-            <ProductGrid products={filteredProducts} />
+            <ProductGrid products={products} />
             <Pagination />
           </div>
         </div>

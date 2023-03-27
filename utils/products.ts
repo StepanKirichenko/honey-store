@@ -486,6 +486,56 @@ export async function getAllProducts() {
   return products;
 }
 
+export interface CatalogPageRequest {
+  limit: number;
+  page: number;
+  sortingMethod: string;
+  category: ProductCategory;
+  weight: Weight[] | null;
+  year: string[] | null;
+  honeyType: HoneyType[] | null;
+  packaging: Packaging[] | null;
+}
+
+export interface CatalogPageResponse {
+  pageCount: number;
+  page: number;
+  products: Product[];
+}
+
+export function getCatalogPage(req: CatalogPageRequest): CatalogPageResponse {
+  let res = allProducts;
+  res = res
+    .filter((p) => req.category === p.category)
+    .filter(
+      (p) => req.weight === null || req.weight.includes(p.weight as Weight)
+    )
+    .filter((p) => req.year === null || req.year.includes(p.year));
+  if (req.category === "honey") {
+    res = res
+      .filter(
+        (p) =>
+          req.honeyType === null ||
+          req.honeyType.includes(p.honeyType as HoneyType)
+      )
+      .filter(
+        (p) =>
+          req.packaging === null ||
+          req.packaging.includes(p.packaging as Packaging)
+      );
+  }
+  res = res.sort((a, b) => (a.price < b.price ? -1 : 1));
+  const pageCount = Math.ceil(res.length / req.limit);
+  const pageStartIndex = (req.page - 1) * req.limit;
+  res = res.slice(pageStartIndex, pageStartIndex + req.limit);
+
+  return {
+    pageCount: pageCount,
+    page: req.page,
+    products: res as Product[],
+  };
+}
+
 export async function getAllFilterSettings(): Promise<FilterSetting[]> {
   return filterSettings;
 }
