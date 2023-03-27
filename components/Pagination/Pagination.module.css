@@ -5,17 +5,20 @@
   gap: 1em;
 }
 
-.pagination__link {
+.pagination__button {
+  background: none;
+  border: none;
   font-size: var(--fs-text);
   text-decoration: none;
   color: var(--primary-color-800);
+  cursor: pointer;
 }
 
-.pagination__link:hover {
+.pagination__button:hover {
   text-decoration: underline;
   color: var(--primary-color-600);
 }
 
-.pagination__link_inactive {
+.pagination__button_inactive {
   color: var(--secondary-color-300);
 }
