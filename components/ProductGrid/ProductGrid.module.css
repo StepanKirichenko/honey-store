@@ -6,6 +6,28 @@
   row-gap: 70px;
 }
 
+.loading {
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingIcon {
+  width: 48px;
+  height: 48px;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 .pagination {
   margin-top: 60px;
   display: flex;
