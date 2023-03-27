@@ -103,18 +103,27 @@ export default function Catalog({ filterSettings }: Props) {
           </div>
           <div className={styles.sidebar}>
             <button
-              className={styles.sidebar_button}
+              className={`${styles.sidebar_button} ${
+                category === "honey" && styles.sidebar_button__current
+              }`}
               onClick={() => setCategory("honey")}
             >
               Мёд
             </button>
             <button
-              className={styles.sidebar_button}
+              className={`${styles.sidebar_button} ${
+                category === "tea" && styles.sidebar_button__current
+              }`}
               onClick={() => setCategory("tea")}
             >
               Чайные напитки
             </button>
-            <button className={styles.sidebar_button}>
+            <button
+              className={`${styles.sidebar_button} ${
+                category === "jam" && styles.sidebar_button__current
+              }`}
+              onClick={() => setCategory("jam")}
+            >
               Варенье и конфитюры
             </button>
           </div>
