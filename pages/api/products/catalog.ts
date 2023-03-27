@@ -15,7 +15,7 @@ export default function handler(
 ) {
   const limit = Number(req.query["limit"]);
   const page = Number(req.query["page"]);
-  const sortingMethod = req.query["sorting-method"];
+  const sortingMethod = req.query["sorting-method"] as string;
   const category = req.query["category"] as ProductCategory;
 
   const yearQuery = req.query["year"];
@@ -51,9 +51,9 @@ export default function handler(
       : ([packagingQuery] as Packaging[]);
 
   const result = getCatalogPage({
-    limit: 16,
-    page: 1,
-    sortingMethod: "cheapest",
+    limit: limit,
+    page: page,
+    sortingMethod: sortingMethod,
     category: category,
     year,
     weight,

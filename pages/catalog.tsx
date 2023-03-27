@@ -5,24 +5,25 @@ import ProductGrid from "@/components/ProductGrid";
 import { CatalogPageResponse, FilterSetting, Product } from "@/utils/products";
 import { getAllFilterSettings, getAllProducts } from "@/utils/products";
 import styles from "@/styles/Catalog.module.css";
+import Pagination from "@/components/Pagination";
 
 export async function getServerSideProps(context: any) {
   const settings = await getAllFilterSettings();
-  // const products = await getAllProducts();
   return {
     props: {
       filterSettings: settings,
-      // products: products,
     },
   };
 }
 
 interface Props {
   filterSettings: FilterSetting[];
-  // products: Product[];
 }
 
 export default function Catalog({ filterSettings }: Props) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageCount, setPageCount] = useState(1);
   const [settings, setSettings] = useState<FilterSetting[]>(filterSettings);
   const [category, setCategory] = useState("honey");
   const [sortingMethod, setSortingMethod] = useState("cheapest");
@@ -30,6 +31,8 @@ export default function Catalog({ filterSettings }: Props) {
 
   function formRequest(): string {
     const opts = [];
+    opts.push(`limit=${16}`);
+    opts.push(`page=${currentPage}`);
     opts.push(`category=${category}`);
     opts.push(`sorting-method=${sortingMethod}`);
     settings.forEach((setting) => {
@@ -41,16 +44,22 @@ export default function Catalog({ filterSettings }: Props) {
   }
 
   useEffect(() => {
+    setCurrentPage(1);
+  }, [category]);
+
+  useEffect(() => {
+    setIsLoading(true);
     fetch(`/api/products/catalog?${formRequest()}`)
       .then((res) => {
-        console.log(res);
         return res.json();
       })
       .then((data) => {
         const pageData = data as CatalogPageResponse;
+        setPageCount(pageData.pageCount);
+        setIsLoading(false);
         setProducts(pageData.products);
       });
-  }, [settings]);
+  }, [category, settings, currentPage]);
 
   function handleChangeFilterSetting(
     settingName: string,
@@ -70,21 +79,6 @@ export default function Catalog({ filterSettings }: Props) {
       )
     );
   }
-
-  // let filteredProducts = products;
-  // const weightSetting = settings[2];
-  // filteredProducts = products.filter(
-  //   (p) =>
-  //     weightSetting.selected.length == 0 ||
-  //     weightSetting.selected.includes(p.weight)
-  // );
-  // settings.forEach((setting) => {
-  //   filteredProducts = filteredProducts.filter(
-  //     (product) =>
-  //       setting.selected.length == 0 ||
-  //       setting.selected.includes((product as any)[setting.name])
-  //   );
-  // });
 
   return (
     <>
@@ -108,35 +102,32 @@ export default function Catalog({ filterSettings }: Props) {
             </div>
           </div>
           <div className={styles.sidebar}>
-            <button className={styles.sidebar_button}>Мёд</button>
-            <button className={styles.sidebar_button}>Чайные напитки</button>
+            <button
+              className={styles.sidebar_button}
+              onClick={() => setCategory("honey")}
+            >
+              Мёд
+            </button>
+            <button
+              className={styles.sidebar_button}
+              onClick={() => setCategory("tea")}
+            >
+              Чайные напитки
+            </button>
             <button className={styles.sidebar_button}>
               Варенье и конфитюры
             </button>
           </div>
           <div className={styles.product_grid}>
-            <ProductGrid products={products} />
-            <Pagination />
+            <ProductGrid products={products} isLoading={isLoading} />
+            <Pagination
+              pageCount={pageCount}
+              currentPage={currentPage}
+              handleChangePage={setCurrentPage}
+            />
           </div>
         </div>
       </main>
     </>
   );
-}
-
-function Pagination() {
-  const pageLinkElements = [1, 2, 3, 4].map((page) => (
-    <a
-      key={page}
-      href="#"
-      className={`${styles.pagination__link} ${
-        page === 1
-          ? styles.pagination__link_active
-          : styles.pagination__link_inactive
-      }`}
-    >
-      {page}
-    </a>
-  ));
-  return <div className={styles.pagination}>{pageLinkElements}</div>;
 }
