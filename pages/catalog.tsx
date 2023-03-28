@@ -6,6 +6,7 @@ import { CatalogPageResponse, FilterSetting, Product } from "@/utils/products";
 import { getAllFilterSettings, getAllProducts } from "@/utils/products";
 import styles from "@/styles/Catalog.module.css";
 import Pagination from "@/components/Pagination";
+import FilterDropdown from "@/components/FilterDropdown";
 
 export async function getServerSideProps(context: any) {
   const settings = await getAllFilterSettings();
@@ -19,6 +20,25 @@ export async function getServerSideProps(context: any) {
 interface Props {
   filterSettings: FilterSetting[];
 }
+
+const sortingMethods = [
+  {
+    value: "cheapest",
+    displayName: "Сначала дешёвые",
+  },
+  {
+    value: "most-expensive",
+    displayName: "Сначала дорогие",
+  },
+  {
+    value: "popularity",
+    displayName: "По популярности",
+  },
+  {
+    value: "discount",
+    displayName: "По размеру скидки",
+  },
+]
 
 export default function Catalog({ filterSettings }: Props) {
   const [isLoading, setIsLoading] = useState(false);
@@ -59,7 +79,7 @@ export default function Catalog({ filterSettings }: Props) {
         setIsLoading(false);
         setProducts(pageData.products);
       });
-  }, [category, settings, currentPage]);
+  }, [category, sortingMethod, settings, currentPage]);
 
   function handleChangeFilterSetting(
     settingName: string,
@@ -103,6 +123,13 @@ export default function Catalog({ filterSettings }: Props) {
                   handleChangeSelection={handleChangeFilterSetting}
                 />
               ))}
+	      <DropdownSelector
+                options={sortingMethods}
+		selected={[sortingMethod]}
+                name="sorting-method"
+		displayName={sortingMethods.find(m => m.value === sortingMethod)?.displayName || ""}
+		handleChangeSelection={(name, value, isSelected) => {setSortingMethod(value)}}
+	      />
             </div>
           </div>
           <div className={styles.sidebar}>

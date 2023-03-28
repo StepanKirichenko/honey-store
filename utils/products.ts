@@ -524,7 +524,15 @@ export function getCatalogPage(req: CatalogPageRequest): CatalogPageResponse {
           req.packaging.includes(p.packaging as Packaging)
       );
   }
-  res = res.sort((a, b) => (a.price < b.price ? -1 : 1));
+  if (req.sortingMethod === "cheapest") {
+    res = res.sort((a, b) => (a.price < b.price ? -1 : 1));
+  } else if (req.sortingMethod === "most-expensive") {
+    res = res.sort((a, b) => (a.price < b.price ? 1 : -1));
+  } else if (req.sortingMethod === "popularity") {
+    res = res.sort((a, b) => (a.popularity < b.popularity) ? 1 : -1)
+  } else if (req.sortingMethod === "discount") {
+    res = res.sort((a, b) => (a.discount < b.discount) ? 1 : -1)
+  }
   const pageCount = Math.ceil(res.length / req.limit);
   const pageStartIndex = (req.page - 1) * req.limit;
   res = res.slice(pageStartIndex, pageStartIndex + req.limit);
