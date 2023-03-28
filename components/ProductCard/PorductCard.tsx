@@ -1,5 +1,5 @@
 import { CartContext } from "@/contexts/CartContext";
-import { Product } from "@/utils/products";
+import { getAllProducts, getProductById, getProductPrice, Product } from "@/utils/products";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
@@ -17,7 +17,7 @@ export default function ProductCard({ product }: Props) {
 
   const priceParagraph = product.isOnSale ? (
     <p className={styles.price}>
-      {(product.price * (100 - product.discount)) / 100} р
+      {getProductPrice(product)} р
       <span className={styles.full_price}>{product.price} р</span>
     </p>
   ) : (

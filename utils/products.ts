@@ -548,3 +548,7 @@ export async function getProductById(id: string): Promise<Product | null> {
 export async function getAllComments() {
   return comments;
 }
+
+export function getProductPrice(product: Product) {
+  return Math.floor(product.price * (1 - product.discount / 100));
+}
