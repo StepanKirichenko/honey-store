@@ -344,7 +344,7 @@ const products: Product[] = [
   },
 ];
 
-const filterSettings: FilterSetting[] = [
+const honeyFilterSettings: FilterSetting[] = [
   {
     name: "year",
     displayName: "Год сбора",
@@ -417,33 +417,43 @@ const filterSettings: FilterSetting[] = [
     ],
     selected: [],
   },
-  // {
-  //   name: "sorting",
-  //   displayName: "По популярности",
-  //   options: [
-  //     {
-  //       value: "popularity",
-  //       displayName: "По популярности",
-  //     },
-  //     {
-  //       value: "new",
-  //       displayName: "Новинки",
-  //     },
-  //     {
-  //       value: "cheap-first",
-  //       displayName: "Сначала дешёвые",
-  //     },
-  //     {
-  //       value: "expensive-first",
-  //       displayName: "Сначала дорогие",
-  //     },
-  //     {
-  //       value: "sale-amount",
-  //       displayName: "По размеру скидки",
-  //     },
-  //   ],
-  //   selected: ["popularity"],
-  // },
+];
+
+const teaAndJamFilterSettings: FilterSetting[] = [
+  {
+    name: "year",
+    displayName: "Год сбора",
+    options: [
+      {
+        value: "2022",
+        displayName: "2022",
+      },
+      {
+        value: "2021",
+        displayName: "2021",
+      },
+      {
+        value: "2020",
+        displayName: "2020",
+      },
+    ],
+    selected: [],
+  },
+  {
+    name: "weight",
+    displayName: "Вес",
+    options: [
+      {
+        value: "350",
+        displayName: "0,35",
+      },
+      {
+        value: "500",
+        displayName: "0,5",
+      },
+    ],
+    selected: [],
+  },
 ];
 
 const comments: Comment[] = [
@@ -529,9 +539,9 @@ export function getCatalogPage(req: CatalogPageRequest): CatalogPageResponse {
   } else if (req.sortingMethod === "most-expensive") {
     res = res.sort((a, b) => (a.price < b.price ? 1 : -1));
   } else if (req.sortingMethod === "popularity") {
-    res = res.sort((a, b) => (a.popularity < b.popularity) ? 1 : -1)
+    res = res.sort((a, b) => (a.popularity < b.popularity ? 1 : -1));
   } else if (req.sortingMethod === "discount") {
-    res = res.sort((a, b) => (a.discount < b.discount) ? 1 : -1)
+    res = res.sort((a, b) => (a.discount < b.discount ? 1 : -1));
   }
   const pageCount = Math.ceil(res.length / req.limit);
   const pageStartIndex = (req.page - 1) * req.limit;
@@ -544,8 +554,12 @@ export function getCatalogPage(req: CatalogPageRequest): CatalogPageResponse {
   };
 }
 
-export async function getAllFilterSettings(): Promise<FilterSetting[]> {
-  return filterSettings;
+export async function getHoneyFilterSettings(): Promise<FilterSetting[]> {
+  return honeyFilterSettings;
+}
+
+export async function getTeaAndJamFilterSettings(): Promise<FilterSetting[]> {
+  return teaAndJamFilterSettings;
 }
 
 export async function getProductById(id: string): Promise<Product | null> {

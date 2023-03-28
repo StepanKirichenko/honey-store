@@ -3,22 +3,29 @@ import Head from "next/head";
 import DropdownSelector from "@/components/DropdownSelector";
 import ProductGrid from "@/components/ProductGrid";
 import { CatalogPageResponse, FilterSetting, Product } from "@/utils/products";
-import { getAllFilterSettings, getAllProducts } from "@/utils/products";
+import {
+  getHoneyFilterSettings,
+  getTeaAndJamFilterSettings,
+  getAllProducts,
+} from "@/utils/products";
 import styles from "@/styles/Catalog.module.css";
 import Pagination from "@/components/Pagination";
 import FilterDropdown from "@/components/FilterDropdown";
 
 export async function getServerSideProps(context: any) {
-  const settings = await getAllFilterSettings();
+  const honeySettings = await getHoneyFilterSettings();
+  const teaSettings = await getTeaAndJamFilterSettings();
   return {
     props: {
-      filterSettings: settings,
+      honeyFilterSettings: honeySettings,
+      teaAndJamFilterSettings: teaSettings,
     },
   };
 }
 
 interface Props {
-  filterSettings: FilterSetting[];
+  honeyFilterSettings: FilterSetting[];
+  teaAndJamFilterSettings: FilterSetting[];
 }
 
 const sortingMethods = [
@@ -38,13 +45,17 @@ const sortingMethods = [
     value: "discount",
     displayName: "По размеру скидки",
   },
-]
+];
 
-export default function Catalog({ filterSettings }: Props) {
+export default function Catalog({
+  honeyFilterSettings,
+  teaAndJamFilterSettings,
+}: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
-  const [settings, setSettings] = useState<FilterSetting[]>(filterSettings);
+  const [settings, setSettings] =
+    useState<FilterSetting[]>(honeyFilterSettings);
   const [category, setCategory] = useState("honey");
   const [sortingMethod, setSortingMethod] = useState("cheapest");
   const [products, setProducts] = useState<Product[]>([]);
@@ -63,8 +74,15 @@ export default function Catalog({ filterSettings }: Props) {
     return opts.join("&");
   }
 
+  function resetFilters() {
+    setSettings(
+      category === "honey" ? honeyFilterSettings : teaAndJamFilterSettings
+    );
+  }
+
   useEffect(() => {
     setCurrentPage(1);
+    resetFilters();
   }, [category]);
 
   useEffect(() => {
@@ -123,13 +141,26 @@ export default function Catalog({ filterSettings }: Props) {
                   handleChangeSelection={handleChangeFilterSetting}
                 />
               ))}
-	      <DropdownSelector
+              <DropdownSelector
                 options={sortingMethods}
-		selected={[sortingMethod]}
+                selected={[sortingMethod]}
                 name="sorting-method"
-		displayName={sortingMethods.find(m => m.value === sortingMethod)?.displayName || ""}
-		handleChangeSelection={(name, value, isSelected) => {setSortingMethod(value)}}
-	      />
+                displayName={
+                  sortingMethods.find((m) => m.value === sortingMethod)
+                    ?.displayName || ""
+                }
+                handleChangeSelection={(name, value, isSelected) => {
+                  setSortingMethod(value);
+                }}
+              />
+            </div>
+            <div className={styles.filter_settings__reset_row}>
+              <button
+                className={styles.filter_settings__reset_button}
+                onClick={resetFilters}
+              >
+                Сбросить фильтры
+              </button>
             </div>
           </div>
           <div className={styles.sidebar}>

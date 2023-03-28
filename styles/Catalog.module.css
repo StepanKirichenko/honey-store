@@ -15,7 +15,7 @@
   grid-template-areas:
     ". hd"
     "sb pr";
-  row-gap: 4rem;
+  row-gap: 2rem;
 }
 
 .head {
@@ -40,6 +40,23 @@
   gap: 10px;
   width: 100%;
 }
+
+.filter_settings__reset_row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.filter_settings__reset_button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: var(--fs-text-super-small);
+  text-decoration: underline;
+  text-transform: uppercase;
+  color: var(--secondary-color-300);
+}
+
 
 .sidebar_button {
   display: block;
