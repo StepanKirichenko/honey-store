@@ -9,28 +9,33 @@ import {
   Product,
   getAllComments,
   Comment,
+  getProductGroup,
+  getRecommendedProducts,
+  getProductPrice,
 } from "@/utils/products";
 import { getProductById } from "@/utils/products";
 import styles from "@/styles/ProductPage.module.css";
 import ProductGrid from "@/components/ProductGrid";
 import ListScrollArrows from "@/components/ListScrollArrows";
+import { useState } from "react";
 
 interface Props {
-  product: Product;
+  initialProductId: string;
+  products: Product[];
   recommendedProducts: Product[];
   comments: Comment[];
 }
 
 export async function getServerSideProps({ params }: any) {
   const { id } = params;
-  const product = await getProductById(id);
-  const allProducts = await getAllProducts();
-  const recommendedProducts = allProducts.filter((p) => p.id !== id);
+  const products = await getProductGroup(id);
+  const recommendedProducts = await getRecommendedProducts();
   const allComments = await getAllComments();
   const comments = allComments.slice(0, 3);
   return {
     props: {
-      product: product,
+      initialProductId: id,
+      products: products,
       recommendedProducts: recommendedProducts,
       comments: comments,
     },
@@ -38,21 +43,26 @@ export async function getServerSideProps({ params }: any) {
 }
 
 export default function ProductPage({
-  product,
+  initialProductId,
+  products,
   recommendedProducts,
   comments,
 }: Props) {
+  const [currentProduct, setCurrentProduct] = useState(
+    products.find((p) => p.id === initialProductId) as Product
+  );
+
   return (
     <>
       <Head>
-        <title>{product.name} | Sota</title>
+        <title>{currentProduct.name} | Sota</title>
       </Head>
       <div className={styles.page}>
         <section className={styles.section}>
           <div className="container row">
             <div className="col">
               <div className={styles.product_info_column}>
-                <h1 className={styles.product_name}>{product.name}</h1>
+                <h1 className={styles.product_name}>{currentProduct.name}</h1>
                 <div className={styles.rating_row}>
                   <img src="/images/icons/full_heart.svg" />
                   <img src="/images/icons/full_heart.svg" />
@@ -154,15 +164,17 @@ export default function ProductPage({
                   />
                 </div>
                 <div className={styles.add_to_cart_row}>
-                  <p className={styles.product_price}>{product.price}р</p>
+                  <p className={styles.product_price}>
+                    {getProductPrice(currentProduct)}р
+                  </p>
                   <Button>Добавить в корзину</Button>
                 </div>
               </div>
             </div>
             <div className="col">
               <Image
-                src={`/images/products/${product.image}`}
-                alt={product.name}
+                src={`/images/products/${currentProduct.image}`}
+                alt={currentProduct.name}
                 width={450}
                 height={602}
                 className={styles.product_image}

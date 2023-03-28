@@ -567,6 +567,23 @@ export async function getProductById(id: string): Promise<Product | null> {
   return res ? res : null;
 }
 
+export async function getProductGroup(id: string): Promise<Product[]> {
+  const groupId = id.split("-")[0];
+  const productsInGroup = allProducts
+    .filter((p) => p.groupId === groupId)
+    .map((p) => p as Product);
+  return productsInGroup;
+}
+
+export async function getRecommendedProducts(): Promise<Product[]> {
+  const recommended = allProducts
+    .sort((a, b) => (a.popularity < b.popularity ? 1 : -1))
+    .slice(0, 6)
+    .map((p) => p as Product);
+
+  return recommended;
+}
+
 export async function getAllComments() {
   return comments;
 }
