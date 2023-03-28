@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { DOMElement, ReactNode, useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import DropdownSelector from "@/components/DropdownSelector";
 import ProductGrid from "@/components/ProductGrid";
@@ -57,6 +57,8 @@ export default function Catalog({
   const [category, setCategory] = useState("honey");
   const [sortingMethod, setSortingMethod] = useState("cheapest");
   const [products, setProducts] = useState<Product[]>([]);
+
+  const topPageRef = useRef<null | HTMLDivElement>(null);
 
   function formRequest(): string {
     const opts = [];
@@ -131,7 +133,7 @@ export default function Catalog({
         <div className={styles.catalog}>
           <div className={styles.head}>
             <h1 className={styles.main_heading}>Каталог товаров</h1>
-            <div className={styles.filter_settings}>
+            <div className={styles.filter_settings} ref={topPageRef}>
               {settings.map((setting) => (
                 <DropdownSelector
                   key={setting.name}
@@ -189,7 +191,14 @@ export default function Catalog({
             <Pagination
               pageCount={pageCount}
               currentPage={currentPage}
-              handleChangePage={setCurrentPage}
+              handleChangePage={(page) => {
+                topPageRef.current?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                  inline: "nearest",
+                });
+                setCurrentPage(page);
+              }}
             />
           </div>
         </div>
