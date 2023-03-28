@@ -6,11 +6,9 @@ import { CatalogPageResponse, FilterSetting, Product } from "@/utils/products";
 import {
   getHoneyFilterSettings,
   getTeaAndJamFilterSettings,
-  getAllProducts,
 } from "@/utils/products";
 import styles from "@/styles/Catalog.module.css";
 import Pagination from "@/components/Pagination";
-import FilterDropdown from "@/components/FilterDropdown";
 
 export async function getServerSideProps(context: any) {
   const honeySettings = await getHoneyFilterSettings();
