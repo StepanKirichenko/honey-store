@@ -15,11 +15,14 @@ import {
   getTeaAndJamFilterSettings,
   FilterSetting,
   Weight,
+  HoneyType,
+  Packaging,
 } from "@/utils/products";
 import styles from "@/styles/ProductPage.module.css";
 import ProductGrid from "@/components/ProductGrid";
 import ListScrollArrows from "@/components/ListScrollArrows";
 import { useEffect, useState } from "react";
+import DropdownSelector from "@/components/DropdownSelector";
 
 interface Props {
   initialProduct: Product;
@@ -144,7 +147,29 @@ export default function ProductPage({
                 </div>
                 <div className={styles.buying_options_container}>
                   {currentProduct.category === "honey" ? (
-                    <p>honey</p>
+                    <>
+                      <DropdownSelector
+                        {...yearVariants}
+                        selected={[year]}
+                        handleChangeSelection={(name, value, isSelected) =>
+                          setYear(value)
+                        }
+                      />
+                      <DropdownSelector
+                        {...honeyTypeVariants}
+                        selected={[honeyType]}
+                        handleChangeSelection={(name, value, isSelected) =>
+                          setHoneyType(value as HoneyType)
+                        }
+                      />
+                      <DropdownSelector
+                        {...packagingVariants}
+                        selected={[packaging]}
+                        handleChangeSelection={(name, value, isSelected) =>
+                          setPackaging(value as Packaging)
+                        }
+                      />
+                    </>
                   ) : (
                     <div className={styles.buying_options_group}>
                       <h3 className={styles.buying_options_group_heading}>
