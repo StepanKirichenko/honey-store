@@ -122,6 +122,7 @@ export default function ProductPage({
                     <div className={styles.buying_options_group_options}>
                       {weightVariants.options.map((o) => (
                         <ButtonSelector
+                          key={o.value}
                           value={o.value}
                           displayName={o.displayName}
                           isSelected={o.value === weight}
@@ -142,62 +143,26 @@ export default function ProductPage({
                   </div>
                 </div>
                 <div className={styles.buying_options_container}>
-                  <FilterDropdown
-                    name="year"
-                    displayName="Год сбора"
-                    options={[
-                      {
-                        value: "2022",
-                        displayName: "2022",
-                      },
-                      {
-                        value: "2021",
-                        displayName: "2021",
-                      },
-                      {
-                        value: "2020",
-                        displayName: "2020",
-                      },
-                    ]}
-                    selected={[]}
-                    handleChangeFilterSetting={() => {}}
-                  />
-                  <FilterDropdown
-                    name="sort"
-                    displayName="Сорт"
-                    options={[
-                      {
-                        value: "liquid",
-                        displayName: "жидкий",
-                      },
-                      {
-                        value: "crystal",
-                        displayName: "кристалл",
-                      },
-                      {
-                        value: "creme",
-                        displayName: "крем",
-                      },
-                    ]}
-                    selected={[]}
-                    handleChangeFilterSetting={() => {}}
-                  />
-                  <FilterDropdown
-                    name="packaging"
-                    displayName="Упаковка"
-                    options={[
-                      {
-                        value: "glass",
-                        displayName: "стекло",
-                      },
-                      {
-                        value: "plastic",
-                        displayName: "пластик",
-                      },
-                    ]}
-                    selected={[]}
-                    handleChangeFilterSetting={() => {}}
-                  />
+                  {currentProduct.category === "honey" ? (
+                    <p>honey</p>
+                  ) : (
+                    <div className={styles.buying_options_group}>
+                      <h3 className={styles.buying_options_group_heading}>
+                        Год сбора
+                      </h3>
+                      <div className={styles.buying_options_group_options}>
+                        {yearVariants.options.map((o) => (
+                          <ButtonSelector
+                            key={o.value}
+                            value={o.value}
+                            displayName={o.displayName}
+                            isSelected={year === o.value}
+                            handleClick={(y) => setYear(y)}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <div className={styles.add_to_cart_row}>
                   <p className={styles.product_price}>
