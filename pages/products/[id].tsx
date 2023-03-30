@@ -21,8 +21,9 @@ import {
 import styles from "@/styles/ProductPage.module.css";
 import ProductGrid from "@/components/ProductGrid";
 import ListScrollArrows from "@/components/ListScrollArrows";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DropdownSelector from "@/components/DropdownSelector";
+import { CartContext } from "@/contexts/CartContext";
 
 interface Props {
   initialProduct: Product;
@@ -63,6 +64,7 @@ export default function ProductPage({
   recommendedProducts,
   comments,
 }: Props) {
+  const cart = useContext(CartContext);
   const [currentProduct, setCurrentProduct] = useState(initialProduct);
   const [weight, setWeight] = useState(initialProduct.weight);
   const [year, setYear] = useState(initialProduct.year);
@@ -144,7 +146,6 @@ export default function ProductPage({
                         <button onClick={() => setAmount(amount - 1)}>-</button>
                         <p>{amount}</p>
                         <button onClick={() => setAmount(amount + 1)}>+</button>
-                        {/* - <span style={{ margin: "0 16px " }}>{amount}</span> + */}
                       </div>
                     </div>
                   </div>
@@ -197,7 +198,13 @@ export default function ProductPage({
                   <p className={styles.product_price}>
                     {getProductPrice(currentProduct)}р
                   </p>
-                  <Button>Добавить в корзину</Button>
+                  <Button
+                    onClick={() =>
+                      cart.handleAddToCart(currentProduct.id, amount)
+                    }
+                  >
+                    Добавить в корзину
+                  </Button>
                 </div>
               </div>
             </div>
