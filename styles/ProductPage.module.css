@@ -64,6 +64,23 @@
   color: var(--primary-color-800);
 }
 
+.adjust_amount_button {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-button-text);
+  padding: 0.625em 2em;
+  background: none;
+  border: 1px solid var(--primary-color-800);
+  border-radius: 100px;
+  min-width: 9em;
+}
+
+.adjust_amount_button button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 .add_to_cart_row {
   margin-top: 74px;
   display: flex;

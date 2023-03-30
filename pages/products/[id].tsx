@@ -68,6 +68,7 @@ export default function ProductPage({
   const [year, setYear] = useState(initialProduct.year);
   const [honeyType, setHoneyType] = useState(initialProduct.honeyType);
   const [packaging, setPackaging] = useState(initialProduct.packaging);
+  const [amount, setAmount] = useState(10);
 
   useEffect(() => {
     if (currentProduct.category === "honey") {
@@ -139,9 +140,12 @@ export default function ProductPage({
                       Количество
                     </h3>
                     <div className={styles.buying_options_group_options}>
-                      <button className={styles.buying_option_button}>
-                        - <span style={{ margin: "0 16px " }}>10</span> +
-                      </button>
+                      <div className={styles.adjust_amount_button}>
+                        <button onClick={() => setAmount(amount - 1)}>-</button>
+                        <p>{amount}</p>
+                        <button onClick={() => setAmount(amount + 1)}>+</button>
+                        {/* - <span style={{ margin: "0 16px " }}>{amount}</span> + */}
+                      </div>
                     </div>
                   </div>
                 </div>
