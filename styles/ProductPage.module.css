@@ -55,6 +55,7 @@
   border: 1px solid var(--primary-color-800);
   border-radius: 100px;
   cursor: pointer;
+  min-width: 6em;
 }
 
 .buying_option_button.current {
