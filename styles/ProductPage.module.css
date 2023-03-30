@@ -54,6 +54,13 @@
   background: none;
   border: 1px solid var(--primary-color-800);
   border-radius: 100px;
+  cursor: pointer;
+}
+
+.buying_option_button.current {
+  background-color: var(--accent-color-2);
+  border-color: var(--accent-color-2);
+  color: var(--primary-color-800);
 }
 
 .add_to_cart_row {

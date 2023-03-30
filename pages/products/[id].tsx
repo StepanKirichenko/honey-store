@@ -5,23 +5,26 @@ import Button from "@/components/Button";
 import { SmallButton } from "@/components/Button";
 import ReviewCard from "@/components/ReviewCard";
 import {
-  getAllProducts,
   Product,
   getAllComments,
   Comment,
   getProductGroup,
   getRecommendedProducts,
   getProductPrice,
+  getHoneyFilterSettings,
+  getTeaAndJamFilterSettings,
+  FilterSetting,
+  Weight,
 } from "@/utils/products";
-import { getProductById } from "@/utils/products";
 import styles from "@/styles/ProductPage.module.css";
 import ProductGrid from "@/components/ProductGrid";
 import ListScrollArrows from "@/components/ListScrollArrows";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
-  initialProductId: string;
+  initialProduct: Product;
   products: Product[];
+  filterSettings: FilterSetting[];
   recommendedProducts: Product[];
   comments: Comment[];
 }
@@ -29,13 +32,21 @@ interface Props {
 export async function getServerSideProps({ params }: any) {
   const { id } = params;
   const products = await getProductGroup(id);
+  const initialProduct = products.find((p) => p.id === id)!;
+  let filterSettings;
+  if (products[0].category === "honey") {
+    filterSettings = await getHoneyFilterSettings();
+  } else {
+    filterSettings = await getTeaAndJamFilterSettings();
+  }
   const recommendedProducts = await getRecommendedProducts();
   const allComments = await getAllComments();
   const comments = allComments.slice(0, 3);
   return {
     props: {
-      initialProductId: id,
+      initialProduct: initialProduct,
       products: products,
+      filterSettings: filterSettings,
       recommendedProducts: recommendedProducts,
       comments: comments,
     },
@@ -43,14 +54,40 @@ export async function getServerSideProps({ params }: any) {
 }
 
 export default function ProductPage({
-  initialProductId,
+  initialProduct,
   products,
+  filterSettings,
   recommendedProducts,
   comments,
 }: Props) {
-  const [currentProduct, setCurrentProduct] = useState(
-    products.find((p) => p.id === initialProductId) as Product
-  );
+  const [currentProduct, setCurrentProduct] = useState(initialProduct);
+  const [weight, setWeight] = useState(initialProduct.weight);
+  const [year, setYear] = useState(initialProduct.year);
+  const [honeyType, setHoneyType] = useState(initialProduct.honeyType);
+  const [packaging, setPackaging] = useState(initialProduct.packaging);
+
+  useEffect(() => {
+    if (currentProduct.category === "honey") {
+      setCurrentProduct(
+        products.find(
+          (p) =>
+            p.weight === weight &&
+            p.year === year &&
+            p.honeyType === honeyType &&
+            p.packaging === packaging
+        )!
+      );
+    } else {
+      setCurrentProduct(
+        products.find((p) => p.weight === weight && p.year === year)!
+      );
+    }
+  }, [weight, year, honeyType, packaging]);
+
+  const weightVariants = filterSettings.find((s) => s.name === "weight")!;
+  const yearVariants = filterSettings.find((s) => s.name === "year")!;
+  const honeyTypeVariants = filterSettings.find((s) => s.name === "honeyType")!;
+  const packagingVariants = filterSettings.find((s) => s.name === "packaging")!;
 
   return (
     <>
@@ -81,17 +118,16 @@ export default function ProductPage({
                 </p>
                 <div className={styles.buying_options_container}>
                   <div className={styles.buying_options_group}>
-                    <h3 className={styles.buying_options_group_heading}>
-                      Объём
-                    </h3>
+                    <h3 className={styles.buying_options_group_heading}>Вес</h3>
                     <div className={styles.buying_options_group_options}>
-                      <button className={styles.buying_option_button}>
-                        0.3
-                      </button>
-                      <button className={styles.buying_option_button}>
-                        0.5
-                      </button>
-                      <button className={styles.buying_option_button}>1</button>
+                      {weightVariants.options.map((o) => (
+                        <ButtonSelector
+                          value={o.value}
+                          displayName={o.displayName}
+                          isSelected={o.value === weight}
+                          handleClick={(v) => setWeight(v as Weight)}
+                        />
+                      ))}
                     </div>
                   </div>
                   <div className={styles.buying_options_group}>
@@ -246,5 +282,30 @@ function RecommendedPorductGrid({
       <ProductGrid products={slice} columns={5} />
       <ListScrollArrows />
     </>
+  );
+}
+
+interface ButtonSelectorProps {
+  value: string;
+  displayName: string;
+  isSelected: boolean;
+  handleClick: (value: string) => void;
+}
+
+function ButtonSelector({
+  value,
+  displayName,
+  isSelected,
+  handleClick,
+}: ButtonSelectorProps) {
+  return (
+    <button
+      className={`${styles.buying_option_button} ${
+        isSelected ? styles.current : ""
+      }`}
+      onClick={() => handleClick(value)}
+    >
+      {displayName}
+    </button>
   );
 }
