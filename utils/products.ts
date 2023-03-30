@@ -563,8 +563,8 @@ export async function getTeaAndJamFilterSettings(): Promise<FilterSetting[]> {
 }
 
 export async function getProductById(id: string): Promise<Product | null> {
-  const res = products.find((p) => p.id === id);
-  return res ? res : null;
+  const res = allProducts.find((p) => p.id === id);
+  return res ? (res as Product) : null;
 }
 
 export async function getProductGroup(id: string): Promise<Product[]> {

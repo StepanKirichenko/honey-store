@@ -3,31 +3,46 @@ import { CartContext } from "@/contexts/CartContext";
 import styles from "@/styles/Cart.module.css";
 import { getAllProducts, Product } from "@/utils/products";
 import Head from "next/head";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button, { ButtonLink, SecondaryButtonLink } from "@/components/Button";
 import { SecondaryButton } from "@/components/Button";
 
 interface Props {
-  allProducts: Product[];
+  // allProducts: Product[];
 }
 
 export async function getServerSideProps({ params }: any) {
-  const allProducts = await getAllProducts();
+  // const allProducts = await getAllProducts();
 
   return {
     props: {
-      allProducts,
+      // allProducts,
     },
   };
 }
 
-export default function Cart({ allProducts }: Props) {
+export default function Cart() {
   const cart = useContext(CartContext);
+  const [products, setProducts] = useState<Product[]>([]);
 
-  const productsInCart = cart.items.map((i) => ({
-    product: allProducts.find((p) => p.id === i.productId) as Product,
-    amount: i.amount,
-  }));
+  useEffect(() => {
+    if (cart.items.length > 0) {
+      Promise.all(
+        cart.items.map((item) =>
+          fetch(`/api/products/get-product-by-id?id=${item.productId}`)
+            .then((res) => res.json())
+            .then((product) => product as Product)
+        )
+      ).then((value) => setProducts(value));
+    }
+  }, []);
+
+  const productsInCart = products
+    .filter((p) => cart.items.find((i) => i.productId === p.id) !== undefined)
+    .map((p) => ({
+      product: p,
+      amount: cart.items.find((i) => i.productId === p.id)!.amount,
+    }));
 
   const productCards = productsInCart.map((p) => (
     <CartProductCard key={p.product.id} product={p.product} amount={p.amount} />
@@ -38,7 +53,7 @@ export default function Cart({ allProducts }: Props) {
     0
   );
 
-  const isCartEmpty = productCards.length === 0;
+  const isCartEmpty = cart.items.length === 0;
 
   return (
     <>
@@ -50,7 +65,7 @@ export default function Cart({ allProducts }: Props) {
           <div className="container">
             <h1 className={styles.page_heading}>Корзина</h1>
             <hr className={styles.divider} />
-            {productCards.length === 0 ? (
+            {isCartEmpty ? (
               <h2 className={styles.cart_empty_text}>Ваша корзина пуста</h2>
             ) : (
               <>
