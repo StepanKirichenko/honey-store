@@ -5,6 +5,7 @@ import Link from "next/link";
 interface Props {
   children?: ReactNode;
   disabled?: boolean;
+  onClick?: () => void;
 }
 
 interface LinkProps {
@@ -13,11 +14,12 @@ interface LinkProps {
   disabled?: boolean;
 }
 
-export default function Button({ children, disabled = false }: Props) {
+export default function Button({ children, disabled = false, onClick }: Props) {
   return (
     <button
       disabled={disabled}
       className={styles.button + " " + styles.button_primary}
+      onClick={() => onClick?.()}
     >
       {children}
     </button>
