@@ -20,6 +20,9 @@
   --fs-text-small: 1rem;
   --fs-text-super-small: 0.75rem;
   --fs-button-text: 1.125rem;
+
+  /* -- SPACING -- */
+  --margin-page-x: 70px;
 }
 
 * {

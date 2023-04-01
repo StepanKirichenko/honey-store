@@ -8,10 +8,10 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.content}>
         <div className={styles.columns}>
-          <div className={styles.column}>
+          <div>
             <FooterForm />
           </div>
-          <div className={`${styles.column} ${styles.right}`}>
+          <div>
             <div className={styles.sota_logo_holder}>
               <Image
                 src="/images/logos/sota_logo_light.svg"

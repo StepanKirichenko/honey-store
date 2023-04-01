@@ -3,37 +3,21 @@
   color: white;
   padding-top: 80px;
   padding-bottom: 40px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: var(--margin-page-x);
+  padding-right: var(--margin-page-x);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .content {
-  width: 100%;
   max-width: 1400px;
-  /* margin: 0 30px; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .columns {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.column {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.column.right {
-  align-items: flex-end;
-  margin-left: 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15%;
 }
 
 .form_heading {
