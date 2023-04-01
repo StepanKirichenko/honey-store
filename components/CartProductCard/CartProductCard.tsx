@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useContext } from "react";
 import RatingDisplay from "../RatingDisplay";
 import styles from "./CartProductCard.module.css";
+import Link from "next/link";
 
 interface Props {
   product: Product;
@@ -33,7 +34,9 @@ export default function CartProductCard({ product, amount }: Props) {
             height={220}
           />
           <div className={styles.product_description}>
-            <h3 className={styles.product_name}>{product.name}</h3>
+            <Link href={`/products/${product.id}`}>
+              <h3 className={styles.product_name}>{product.name}</h3>
+            </Link>
             <RatingDisplay />
             <p className={styles.product_description_paragraph}>
               Мёд из цветов — полифлерный продукт. Приставка «поли» означает,
