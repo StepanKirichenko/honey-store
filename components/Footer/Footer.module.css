@@ -96,9 +96,9 @@
 }
 
 .social_media_row {
-  width: 100%;
   display: flex;
   align-items: center;
+  height: 22px;
   gap: 10px;
   margin-bottom: 10px;
 }
@@ -139,11 +139,6 @@
   margin-top: auto;
 }
 
-.payment_system_icon {
-  height: 100%;
-  width: auto;
-}
-
 .bottom_row {
   display: flex;
   justify-content: center;
@@ -155,6 +150,19 @@
   font-weight: 300;
   font-size: var(--fs-text-super-small);
   color: var(--secondary-color-300);
+}
+
+.social_media_row {
+  height: 22px;
+}
+
+.social_media_link {
+  height: 100%;
+}
+
+.icon {
+  height: 100%;
+  width: auto;
 }
 
 @media (max-width: 1400px) {
@@ -190,6 +198,10 @@
 
   .bottom_row_text {
     font-size: 8px;
+  }
+
+  .social_media_row {
+    height: 14px;
   }
 
   .payment_systems_row {

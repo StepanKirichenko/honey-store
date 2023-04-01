@@ -117,7 +117,7 @@ function SocialMediaLinks() {
         target="_black"
       >
         <Image
-          className={styles.social_media_icon}
+          className={styles.icon}
           src="images/icons/social-media/vk.svg"
           width={30}
           height={18}
@@ -130,7 +130,7 @@ function SocialMediaLinks() {
         target="_black"
       >
         <Image
-          className={styles.social_media_icon}
+          className={styles.icon}
           src="/images/icons/social-media/whatsapp.png"
           width={25}
           height={25}
@@ -143,7 +143,7 @@ function SocialMediaLinks() {
         target="_blank"
       >
         <Image
-          className={styles.social_media_icon}
+          className={styles.icon}
           src="images/icons/social-media/instagram.svg"
           width={28}
           height={28}
@@ -171,7 +171,7 @@ function Contacts() {
           {paymentSystems.map((system) => (
             <Image
               key={system}
-              className={styles.payment_system_icon}
+              className={styles.icon}
               src={`/images/icons/payment-systems/${system}.png`}
               width={42}
               height={42}
