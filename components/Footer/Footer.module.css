@@ -2,7 +2,7 @@
   background-color: var(--primary-color-600);
   color: white;
   padding-top: 80px;
-  padding-bottom: 40px;
+  padding-bottom: 30px;
   padding-left: var(--margin-page-x);
   padding-right: var(--margin-page-x);
   display: flex;
@@ -12,6 +12,7 @@
 
 .content {
   max-width: 1400px;
+  width: 100%;
 }
 
 .columns {
@@ -23,7 +24,7 @@
 .form_heading {
   font-size: var(--fs-heading-3);
   font-weight: 300;
-  margin-bottom: 60px;
+  margin-bottom: 2em;
 }
 
 .form {
@@ -166,6 +167,10 @@
 }
 
 @media (max-width: 1400px) {
+  .footer {
+    padding-top: 70px;
+  }
+
   .form_heading {
     font-size: 30px;
   }
@@ -207,5 +212,83 @@
   .payment_systems_row {
     height: 26px;
     gap: 10px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .footer {
+    padding-top: 60px;
+  }
+
+  .form_heading {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 960px) {
+  .footer {
+    padding-top: 35px;
+  }
+
+  .form_heading {
+    font-size: 14px;
+  }
+
+  .form_textbox {
+    font-size: 8px;
+    margin-bottom: 16px;
+  }
+
+  .sota_logo,
+  .navigation {
+    display: none;
+  }
+
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 8px;
+  }
+
+  .contacts_column.right {
+    align-items: flex-start;
+  }
+
+  .payment_systems_row {
+    justify-content: flex-start;
+  }
+
+  .bottom_row {
+    font-size: 6px;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .columns {
+    display: block;
+  }
+
+  .form_container {
+    display: none;
+  }
+
+  .contacts {
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  .contacts_column.right {
+    align-items: flex-end;
+  }
+
+  .payment_systems_row {
+    justify-content: flex-end;
+    height: 20px;
+  }
+
+  .bottom_row {
+    gap: 16px;
   }
 }

@@ -8,9 +8,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.content}>
         <div className={styles.columns}>
-          <div>
-            <FooterForm />
-          </div>
+          <FooterForm />
           <div>
             <Image
               src="/images/logos/sota_logo_light.svg"
@@ -36,7 +34,7 @@ export default function Footer() {
 
 function FooterForm() {
   return (
-    <>
+    <div className={styles.form_container}>
       <h2 className={styles.form_heading}>
         Получите за две минуты персональное предложение
       </h2>
@@ -64,7 +62,7 @@ function FooterForm() {
           <Button>Получить</Button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 

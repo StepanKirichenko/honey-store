@@ -131,3 +131,15 @@ a {
   font-size: var(--fs-heading-2);
   font-weight: 300;
 }
+
+@media (max-width: 1200px) {
+  :root {
+    --margin-page-x: 50px;
+  }
+}
+
+@media (max-width: 960px) {
+  :root {
+    --margin-page-x: 30px;
+  }
+}
