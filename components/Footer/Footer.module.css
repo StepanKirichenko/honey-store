@@ -17,14 +17,13 @@
 .columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15%;
+  gap: 12%;
 }
 
 .form_heading {
   font-size: var(--fs-heading-3);
   font-weight: 300;
-  text-align: center;
-  margin-bottom: 2em;
+  margin-bottom: 60px;
 }
 
 .form {
@@ -55,10 +54,12 @@
 .personal_data_agreement {
   margin-bottom: 20px;
   font-weight: 300;
+  display: flex;
+  align-items: center;
 }
 
 .personal_data_agreement_checkbox {
-  margin-right: 24px;
+  margin-right: 10px;
 }
 
 .form_submit_button_container {
@@ -68,9 +69,10 @@
   margin-top: 1rem;
 }
 
-.sota_logo_holder {
-  width: 100%;
-  display: flex;
+.sota_logo {
+  width: 186px;
+  height: 72px;
+  margin-top: 20px;
 }
 
 .navigation {
@@ -123,23 +125,29 @@
   margin-bottom: 0.4em;
 }
 
+.contacts__phone_number {
+  margin-bottom: 12px;
+}
+
 .payment_systems_row {
   width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 16px;
-  height: 30px;
-  margin-top: 20px;
+  height: 36px;
+  margin-top: auto;
 }
 
-/* .payment_system_icon {
+.payment_system_icon {
   height: 100%;
-} */
+  width: auto;
+}
 
 .bottom_row {
   display: flex;
   justify-content: center;
+  gap: 30px;
   margin-top: 5rem;
 }
 
@@ -149,6 +157,43 @@
   color: var(--secondary-color-300);
 }
 
-.bottom_row_text + .bottom_row_text {
-  margin-left: 3rem;
+@media (max-width: 1400px) {
+  .form_heading {
+    font-size: 30px;
+  }
+
+  .form_textbox {
+    font-size: 12px;
+  }
+
+  .personal_data_agreement {
+    font-size: 10px;
+  }
+
+  .sota_logo {
+    width: 116px;
+    height: 45px;
+  }
+
+  .navigation {
+    row-gap: 10px;
+  }
+
+  .navigation_link,
+  .contacts {
+    font-size: 10px;
+  }
+
+  .bottom_row {
+    margin-top: 40px;
+  }
+
+  .bottom_row_text {
+    font-size: 8px;
+  }
+
+  .payment_systems_row {
+    height: 26px;
+    gap: 10px;
+  }
 }

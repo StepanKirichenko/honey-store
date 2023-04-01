@@ -12,14 +12,13 @@ export default function Footer() {
             <FooterForm />
           </div>
           <div>
-            <div className={styles.sota_logo_holder}>
-              <Image
-                src="/images/logos/sota_logo_light.svg"
-                alt="логотип Sota"
-                width={186}
-                height={72}
-              />
-            </div>
+            <Image
+              src="/images/logos/sota_logo_light.svg"
+              alt="логотип Sota"
+              width={186}
+              height={72}
+              className={styles.sota_logo}
+            />
             <FooterNavigation />
             <SocialMediaLinks />
             <Contacts />
@@ -39,7 +38,7 @@ function FooterForm() {
   return (
     <>
       <h2 className={styles.form_heading}>
-        Получите персональное предложение за две минуты
+        Получите за две минуты персональное предложение
       </h2>
       <form className={styles.form}>
         <input type="text" placeholder="Имя" className={styles.form_textbox} />
@@ -167,7 +166,7 @@ function Contacts() {
       </div>
       <div className={`${styles.contacts_column} ${styles.right}`}>
         <p>sota_honey@mail.ru</p>
-        <p>+7 800 000-00-00</p>
+        <p className={styles.contacts__phone_number}>+7 800 000-00-00</p>
         <div className={styles.payment_systems_row}>
           {paymentSystems.map((system) => (
             <Image
