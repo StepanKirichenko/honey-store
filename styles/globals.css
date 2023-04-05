@@ -23,6 +23,8 @@
 
   /* -- SPACING -- */
   --margin-page-x: 70px;
+
+  --margin-section-y: 90px;
 }
 
 * {
@@ -136,6 +138,8 @@ a {
   :root {
     --fs-button-text: 15px;
     --fs-text-small: 14px;
+
+    --margin-section-y: 80px;
   }
 }
 
@@ -143,6 +147,7 @@ a {
   :root {
     --fs-text-small: 12px;
     --margin-page-x: 50px;
+    --margin-section-y: 56px;
   }
 }
 
@@ -150,6 +155,7 @@ a {
   :root {
     --fs-button-text: 12px;
     --margin-page-x: 30px;
+    --margin-section-y: 45px;
   }
 }
 
@@ -157,5 +163,6 @@ a {
   :root {
     --fs-button-text: 10px;
     --margin-page-x: 10px;
+    --margin-section-y: 24px;
   }
 }
