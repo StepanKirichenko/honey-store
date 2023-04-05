@@ -591,3 +591,35 @@ export async function getAllComments() {
 export function getProductPrice(product: Product) {
   return Math.floor(product.price * (1 - product.discount / 100));
 }
+
+export interface CategoryCounts {
+  honey: number;
+  tea: number;
+  jam: number;
+}
+
+export async function getCategoryCounts(): Promise<CategoryCounts> {
+  let honey = new Set<string>();
+  let tea = new Set<string>();
+  let jam = new Set<string>();
+
+  allProducts.forEach((product) => {
+    switch (product.category) {
+      case "honey":
+        honey.add(product.groupId);
+        break;
+      case "tea":
+        tea.add(product.groupId);
+        break;
+      case "jam":
+        jam.add(product.groupId);
+        break;
+    }
+  });
+
+  return {
+    honey: honey.size,
+    tea: tea.size,
+    jam: jam.size,
+  };
+}

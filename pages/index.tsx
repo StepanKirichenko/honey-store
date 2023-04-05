@@ -7,6 +7,8 @@ import {
   Product,
   Comment,
   getAllComments,
+  getCategoryCounts,
+  CategoryCounts,
 } from "@/utils/products";
 import ProductGrid from "@/components/ProductGrid";
 import ReviewCard from "@/components/ReviewCard";
@@ -18,11 +20,13 @@ export async function getServerSideProps() {
   const products = await getAllProducts();
   const popularProducts = products.slice(0, 6);
   const comments = await getAllComments();
+  const categoryCounts = await getCategoryCounts();
 
   return {
     props: {
-      popularProducts: popularProducts,
-      comments: comments,
+      popularProducts,
+      comments,
+      categoryCounts,
     },
   };
 }
@@ -30,9 +34,14 @@ export async function getServerSideProps() {
 interface Props {
   popularProducts: Product[];
   comments: Comment[];
+  categoryCounts: CategoryCounts;
 }
 
-export default function Home({ popularProducts, comments }: Props) {
+export default function Home({
+  popularProducts,
+  comments,
+  categoryCounts,
+}: Props) {
   return (
     <>
       <Head>
@@ -82,20 +91,24 @@ export default function Home({ popularProducts, comments }: Props) {
           <div className={styles.categories_links}>
             <div className={styles.category_link_container}>
               <Link href="#" className={styles.category_link}>
-                Мёд <p className={styles.category_counter}>50</p>
+                Мёд{" "}
+                <p className={styles.category_counter}>
+                  {categoryCounts.honey}
+                </p>
               </Link>
               <hr className={styles.category_underline} />
             </div>
             <div className={styles.category_link_container}>
               <Link href="#" className={styles.category_link}>
-                Чайные напитки <p className={styles.category_counter}>19</p>
+                Чайные напитки{" "}
+                <p className={styles.category_counter}>{categoryCounts.tea}</p>
               </Link>
               <hr className={styles.category_underline} />
             </div>
             <div className={styles.category_link_container}>
               <Link href="#" className={styles.category_link}>
                 Варенье и конфитюры{" "}
-                <p className={styles.category_counter}>30</p>
+                <p className={styles.category_counter}>{categoryCounts.jam}</p>
               </Link>
               <hr className={styles.category_underline} />
             </div>
