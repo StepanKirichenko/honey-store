@@ -44,8 +44,8 @@ a {
 
 .container {
   width: 100%;
-  max-width: 1460px;
-  padding: 0 30px;
+  max-width: calc(1400px + var(--margin-page-x) * 2);
+  padding: 0 var(--margin-page-x);
 }
 
 .row {
@@ -135,11 +135,13 @@ a {
 @media (max-width: 1400px) {
   :root {
     --fs-button-text: 15px;
+    --fs-text-small: 14px;
   }
 }
 
 @media (max-width: 1200px) {
   :root {
+    --fs-text-small: 12px;
     --margin-page-x: 50px;
   }
 }

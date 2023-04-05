@@ -43,9 +43,9 @@ export default function Home({ popularProducts, comments }: Props) {
       <main>
         <Hero />
 
-        {/* <section className={styles.section}>
-          <div className="container row gap-large">
-            <div className="col align-start">
+        <section className={styles.section}>
+          <div className={`container ${styles.description__content}`}>
+            <div className={styles.description__text}>
               <p className={styles.description_paragraph}>
                 Наш интернет-магазин меда готов предложить самые разные сорта
                 этого вкусного лакомства, которое можно купить по весьма
@@ -59,15 +59,17 @@ export default function Home({ popularProducts, comments }: Props) {
                 проблем с опорно-двигательным аппаратом.
               </p>
             </div>
-            <div className="col align-end justify-center">
+            <div className={styles.description__title_holder}>
               <p className={styles.description_paragraph_big}>
-                Мы радуем наших клиентов с 2002 года
+                Мы радуем наших
+                <br />
+                клиентов с 2002 года
               </p>
             </div>
           </div>
         </section>
 
-        <section className={styles.product_categories_section}>
+        {/*} <section className={styles.product_categories_section}>
           <div className={styles.categories_image_container}>
             <Image
               className={styles.categories_image}
