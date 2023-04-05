@@ -2,33 +2,17 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "./ImageGallery.module.css";
 
-export default function ImageGallery() {
-  const images = [
-    "/images/hero_image.png",
-    "/images/articles/article_honey_alternative_to_sugar.png",
-    "/images/articles/article_honey_in_winter.png",
-    "/images/articles/article_honey_with_ginger.png",
-  ];
+interface Props {
+  images: string[];
+  currentImage: number;
+  handleChangeImage: (index: number) => void;
+}
 
-  const [currentImage, setCurrentImage] = useState(0);
-
-  useEffect(() => {
-    let isChangeCancelled = false;
-    setTimeout(() => {
-      if (!isChangeCancelled) {
-        setCurrentImage((currentImage + 1) % images.length);
-      }
-    }, 5000);
-
-    return () => {
-      isChangeCancelled = true;
-    };
-  }, [currentImage]);
-
-  function handleChangeImage(index: number) {
-    setCurrentImage(index);
-  }
-
+export default function ImageGallery({
+  images,
+  currentImage,
+  handleChangeImage,
+}: Props) {
   return (
     <div className={styles.gallery}>
       {images.map((image, index) => (

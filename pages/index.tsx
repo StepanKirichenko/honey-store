@@ -13,6 +13,7 @@ import ReviewCard from "@/components/ReviewCard";
 import ListScrollArrows from "@/components/ListScrollArrows";
 import Button, { ButtonLink } from "@/components/Button";
 import ImageGallery from "@/components/ImageGallery";
+import { useEffect, useState } from "react";
 
 export async function getServerSideProps() {
   const products = await getAllProducts();
@@ -41,19 +42,7 @@ export default function Home({ popularProducts, comments }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <section className={styles.hero}>
-          <div className={styles.hero__text}>
-            <h2 className={styles.hero__heading}>Натуральный дикий мёд</h2>
-            <p className={styles.hero__description}>
-              Мы продаем мед с нашей пасеки, контролируя весь процесс создания
-              продукции, а также последующее хранение и доставку.
-            </p>
-            <ButtonLink href="/catalog">Перейти в каталог</ButtonLink>
-          </div>
-          <div className={styles.hero__img_container}>
-            <ImageGallery />
-          </div>
-        </section>
+        <Hero />
 
         <section className={styles.section}>
           <div className="container row gap-large">
@@ -256,5 +245,53 @@ export default function Home({ popularProducts, comments }: Props) {
         </section>
       </main>
     </>
+  );
+}
+
+function Hero() {
+  const images = [
+    "/images/hero_image.png",
+    "/images/articles/article_honey_alternative_to_sugar.png",
+    "/images/articles/article_honey_in_winter.png",
+    "/images/articles/article_honey_with_ginger.png",
+  ];
+
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    let isChangeCancelled = false;
+    setTimeout(() => {
+      if (!isChangeCancelled) {
+        setCurrentImage((currentImage + 1) % images.length);
+      }
+    }, 5000);
+
+    return () => {
+      isChangeCancelled = true;
+    };
+  }, [currentImage]);
+
+  function handleChangeImage(index: number) {
+    setCurrentImage(index);
+  }
+
+  return (
+    <section className={styles.hero}>
+      <div className={styles.hero__text}>
+        <h2 className={styles.hero__heading}>Натуральный дикий мёд</h2>
+        <p className={styles.hero__description}>
+          Мы продаем мед с нашей пасеки, контролируя весь процесс создания
+          продукции, а также последующее хранение и доставку.
+        </p>
+        <ButtonLink href="/catalog">Перейти в каталог</ButtonLink>
+      </div>
+      <div className={styles.hero__img_container}>
+        <ImageGallery
+          images={images}
+          currentImage={currentImage}
+          handleChangeImage={handleChangeImage}
+        />
+      </div>
+    </section>
   );
 }
