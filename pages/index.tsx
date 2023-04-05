@@ -12,7 +12,6 @@ import ProductGrid from "@/components/ProductGrid";
 import ReviewCard from "@/components/ReviewCard";
 import ListScrollArrows from "@/components/ListScrollArrows";
 import Button, { ButtonLink } from "@/components/Button";
-import ImageGallery from "@/components/ImageGallery";
 import { useEffect, useState } from "react";
 
 export async function getServerSideProps() {
@@ -286,11 +285,31 @@ function Hero() {
         <ButtonLink href="/catalog">Перейти в каталог</ButtonLink>
       </div>
       <div className={styles.hero__img_container}>
-        <ImageGallery
-          images={images}
-          currentImage={currentImage}
-          handleChangeImage={handleChangeImage}
-        />
+        <div className={styles.hero__gallery}>
+          {images.map((image, index) => (
+            <Image
+              key={index}
+              className={`${styles.hero__image} ${
+                index === currentImage ? styles.current : ""
+              }`}
+              src={image}
+              width={962}
+              height={944}
+              alt=""
+            />
+          ))}
+          <div className={styles.hero__buttonsHolder}>
+            {[0, 1, 2, 3].map((i) => (
+              <button
+                key={i}
+                className={`${styles.hero__button} ${
+                  i === currentImage ? styles.current : ""
+                }`}
+                onClick={() => handleChangeImage(i)}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
