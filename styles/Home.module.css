@@ -21,9 +21,9 @@
 .hero {
   display: grid;
   grid-template-columns:
-    minmax(30px, 1fr)
+    minmax(var(--margin-page-x), 1fr)
     repeat(2, minmax(100px, 700px))
-    minmax(30px, 1fr);
+    minmax(var(--margin-page-x), 1fr);
   min-height: 100vh;
 }
 
@@ -50,7 +50,7 @@
 
 .hero__heading {
   font-weight: 500;
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: var(--fs-heading-1);
   margin-bottom: 30px;
 }
 
@@ -276,7 +276,7 @@
   min-height: 450px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .hero {
     grid-template-columns: 1fr 1fr;
   }
@@ -286,7 +286,89 @@
     margin-left: var(--margin-page-x);
   }
 
+  .hero__heading {
+    font-size: 60px;
+  }
+
+  .hero__description {
+    font-size: 18px;
+  }
+
   .hero__img_container {
     grid-column: 2 / 3;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero__heading {
+    font-size: 50px;
+  }
+
+  .hero__description {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+@media (max-width: 960px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+  }
+
+  .hero__text {
+    background-color: var(--accent-color-1);
+    margin-left: 0;
+    margin-right: 0;
+    padding-right: var(--margin-page-x);
+    padding-left: var(--margin-page-x);
+    padding-top: 160px;
+    padding-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero__heading,
+  .hero__description {
+    color: white;
+    text-align: center;
+    max-width: 360px;
+  }
+
+  .hero__heading {
+    margin-bottom: 14px;
+  }
+
+  .hero__description {
+    margin-bottom: 20px;
+  }
+
+  .hero__img_container {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+  }
+
+  .hero__buttonsHolder {
+    flex-direction: row;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    bottom: -30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__heading {
+    font-size: 36px;
+    margin-bottom: 8px;
+    max-width: 260px;
+  }
+
+  .hero__description {
+    font-size: 10px;
+    line-height: 14px;
+    margin-bottom: 18px;
+    max-width: 250px;
   }
 }

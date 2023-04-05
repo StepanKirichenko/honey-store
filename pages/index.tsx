@@ -43,7 +43,7 @@ export default function Home({ popularProducts, comments }: Props) {
       <main>
         <Hero />
 
-        <section className={styles.section}>
+        {/* <section className={styles.section}>
           <div className="container row gap-large">
             <div className="col align-start">
               <p className={styles.description_paragraph}>
@@ -241,7 +241,7 @@ export default function Home({ popularProducts, comments }: Props) {
             </div>
             <ListScrollArrows />
           </div>
-        </section>
+        </section> */}
       </main>
     </>
   );
