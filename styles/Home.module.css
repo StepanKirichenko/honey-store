@@ -162,9 +162,9 @@
 .product_categories_section {
   display: grid;
   grid-template-columns:
-    minmax(30px, 1fr)
+    minmax(var(--margin-page-x), 1fr)
     repeat(2, minmax(100px, 700px))
-    minmax(30px, 1fr);
+    minmax(var(--margin-page-x), 1fr);
 }
 
 .categories_image_container {
@@ -184,14 +184,12 @@
   justify-content: center;
   align-items: center;
   grid-column: 3 / 4;
-  /* max-width: 700px; */
   padding-left: 6rem;
-  /* margin-right: 3rem; */
   gap: 42px;
 }
 
 .category_link_container {
-  width: 20000px;
+  width: 100%;
   max-width: 100%;
 }
 
@@ -202,8 +200,8 @@
 
 .category_counter {
   position: absolute;
-  top: -1rem;
-  right: -1.5rem;
+  top: -1em;
+  right: -1.5em;
   font-size: var(--fs-text);
 }
 
@@ -320,6 +318,33 @@
   .description_paragraph_big {
     font-size: 30px;
   }
+
+  .product_categories_section {
+    grid-template-columns: 50% 50%;
+  }
+
+  .categories_image_container {
+    grid-column: 1 / 2;
+  }
+
+  .categories_links {
+    grid-column: 2 / 3;
+    padding-left: 80px;
+    padding-right: var(--margin-page-x);
+    gap: 30px;
+  }
+
+  .category_link {
+    font-size: 20px;
+  }
+
+  .category_counter {
+    font-size: 16px;
+  }
+
+  .category_underline {
+    margin-top: 10px;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -330,6 +355,19 @@
   .hero__description {
     font-size: 14px;
     line-height: 18px;
+  }
+
+  .categories_links {
+    padding-left: 70px;
+    gap: 28px;
+  }
+
+  .category_link {
+    font-size: 18px;
+  }
+
+  .category_counter {
+    font-size: 14px;
   }
 }
 
@@ -398,6 +436,23 @@
     flex-direction: row;
     gap: 80px;
   }
+
+  .categories_links {
+    padding-left: 30px;
+    gap: 22px;
+  }
+
+  .category_link {
+    font-size: 14px;
+  }
+
+  .category_counter {
+    font-size: 10px;
+  }
+
+  .category_underline {
+    margin-top: 8px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -429,5 +484,35 @@
 
   .description_paragraph_big {
     font-size: 22px;
+  }
+
+  .product_categories_section {
+    grid-template-columns: 100%;
+    row-gap: 30px;
+  }
+
+  .categories_image_container {
+    grid-column: unset;
+  }
+
+  .categories_image {
+    aspect-ratio: 2 / 1;
+    object-position: center bottom;
+  }
+
+  .categories_links {
+    grid-column: unset;
+    padding-left: var(--margin-page-x);
+    padding-right: var(--margin-page-x);
+    margin-bottom: var(--margin-section-y);
+    gap: 20px;
+  }
+
+  .category_link {
+    font-size: 12px;
+  }
+
+  .category_counter {
+    font-size: 9px;
   }
 }

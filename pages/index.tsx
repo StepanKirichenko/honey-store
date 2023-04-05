@@ -69,7 +69,7 @@ export default function Home({ popularProducts, comments }: Props) {
           </div>
         </section>
 
-        {/*} <section className={styles.product_categories_section}>
+        <section className={styles.product_categories_section}>
           <div className={styles.categories_image_container}>
             <Image
               className={styles.categories_image}
@@ -102,7 +102,7 @@ export default function Home({ popularProducts, comments }: Props) {
           </div>
         </section>
 
-        <section className={styles.section}>
+        {/*<section className={styles.section}>
           <div className="container">
             <h2 className={styles.section_heading}>Популярные товары</h2>
             <ProductGrid products={popularProducts} columns={3} />
