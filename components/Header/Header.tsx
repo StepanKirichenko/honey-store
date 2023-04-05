@@ -4,27 +4,46 @@ import styles from "./Header.module.css";
 import { FC, ReactNode, useContext } from "react";
 import { CartContext } from "@/contexts/CartContext";
 import { useRouter } from "next/router";
-import { JsxElement } from "typescript";
 
 export default function Header() {
   return (
     <header className={styles.background}>
       <nav className={styles.container}>
-        <PageLink href="/catalog">Каталог</PageLink>
-        <PageLink href="/services">Услуги</PageLink>
-        <PageLink href="/reviews">Отзывы</PageLink>
-        <PageLink href="/blog">Блог</PageLink>
-        <Link href="/">
-          <Image
-            src="/images/logos/sota_logo_dark.svg"
-            alt="Логотип Sota"
-            width={140}
-            height={55}
-          />
-        </Link>
-        <PageLink href="/about">О компании</PageLink>
-        <PageLink href="/contacts">Контакты</PageLink>
-        <CartLink />
+        <div className={styles.full_nav}>
+          <PageLink href="/catalog">Каталог</PageLink>
+          <PageLink href="/services">Услуги</PageLink>
+          <PageLink href="/reviews">Отзывы</PageLink>
+          <PageLink href="/blog">Блог</PageLink>
+          <Link href="/">
+            <Image
+              src="/images/logos/sota_logo_dark.svg"
+              alt="Логотип Sota"
+              width={140}
+              height={55}
+              className={styles.logo}
+            />
+          </Link>
+          <PageLink href="/about">О компании</PageLink>
+          <PageLink href="/contacts">Контакты</PageLink>
+          <CartLink />
+        </div>
+        <div className={styles.mobile_nav}>
+          <Link href="/">
+            <Image
+              src="/images/logos/sota_logo_dark.svg"
+              alt="Логотип Sota"
+              width={140}
+              height={55}
+              className={styles.logo}
+            />
+          </Link>
+          <button className={styles.hamburger_button}>
+            <img
+              className={styles.hamburger_image}
+              src="/images/icons/hamburger.svg"
+            />
+          </button>
+        </div>
       </nav>
     </header>
   );
