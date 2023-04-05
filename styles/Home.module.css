@@ -323,7 +323,7 @@
     margin-right: 0;
     padding-right: var(--margin-page-x);
     padding-left: var(--margin-page-x);
-    padding-top: 160px;
+    padding-top: 140px;
     padding-bottom: 30px;
     justify-content: center;
     align-items: center;
@@ -359,6 +359,10 @@
 }
 
 @media (max-width: 640px) {
+  .hero__text {
+    padding-top: 100px;
+  }
+
   .hero__heading {
     font-size: 36px;
     margin-bottom: 8px;
