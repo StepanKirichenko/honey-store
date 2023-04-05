@@ -42,7 +42,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   grid-column: 2 / 3;
   padding-right: 3rem;
   padding-top: 100px;
@@ -51,16 +51,14 @@
 .hero__heading {
   font-weight: 500;
   font-size: clamp(3rem, 6vw, 5.5rem);
-  text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 30px;
 }
 
 .hero__description {
   font-size: 22px;
   line-height: 25px;
-  text-align: center;
   color: var(--primary-color-600);
-  margin-bottom: 1.5rem;
+  margin-bottom: 30px;
 }
 
 .hero__catalog_link {
@@ -276,4 +274,19 @@
   grid-template-columns: repeat(4, 1fr);
   column-gap: 26px;
   min-height: 450px;
+}
+
+@media (max-width: 1200px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero__text {
+    grid-column: 1 / 2;
+    margin-left: var(--margin-page-x);
+  }
+
+  .hero__img_container {
+    grid-column: 2 / 3;
+  }
 }
