@@ -91,7 +91,10 @@ export default function Home({
           </div>
           <div className={styles.categories_links}>
             <div className={styles.category_link_container}>
-              <Link href="#" className={styles.category_link}>
+              <Link
+                href="/catalog?category=honey"
+                className={styles.category_link}
+              >
                 Мёд{" "}
                 <p className={styles.category_counter}>
                   {categoryCounts.honey}
@@ -100,14 +103,20 @@ export default function Home({
               <hr className={styles.category_underline} />
             </div>
             <div className={styles.category_link_container}>
-              <Link href="#" className={styles.category_link}>
+              <Link
+                href="/catalog?category=tea"
+                className={styles.category_link}
+              >
                 Чайные напитки{" "}
                 <p className={styles.category_counter}>{categoryCounts.tea}</p>
               </Link>
               <hr className={styles.category_underline} />
             </div>
             <div className={styles.category_link_container}>
-              <Link href="#" className={styles.category_link}>
+              <Link
+                href="/catalog?category=jam"
+                className={styles.category_link}
+              >
                 Варенье и конфитюры{" "}
                 <p className={styles.category_counter}>{categoryCounts.jam}</p>
               </Link>

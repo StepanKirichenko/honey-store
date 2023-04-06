@@ -9,6 +9,7 @@ import {
 } from "@/utils/products";
 import styles from "@/styles/Catalog.module.css";
 import Pagination from "@/components/Pagination";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps(context: any) {
   const honeySettings = await getHoneyFilterSettings();
@@ -49,12 +50,20 @@ export default function Catalog({
   honeyFilterSettings,
   teaAndJamFilterSettings,
 }: Props) {
+  const router = useRouter();
+  const categoryQuery = router.query.category;
+  let defaultCategory = "honey";
+  if (categoryQuery === "tea") {
+    defaultCategory = "tea";
+  } else if (categoryQuery === "jam") {
+    defaultCategory = "jam";
+  }
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
   const [settings, setSettings] =
     useState<FilterSetting[]>(honeyFilterSettings);
-  const [category, setCategory] = useState("honey");
+  const [category, setCategory] = useState(defaultCategory);
   const [sortingMethod, setSortingMethod] = useState("cheapest");
   const [products, setProducts] = useState<Product[]>([]);
 
