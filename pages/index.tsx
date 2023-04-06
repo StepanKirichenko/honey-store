@@ -130,7 +130,7 @@ export default function Home({
           </div>
         </section>
 
-        {/*<section className={styles.offer_section}>
+        <section className={styles.offer_section}>
           <div className={styles.offer_text_column}>
             <h2 className={styles.offer_heading}>
               Получите скидку на первый заказ
@@ -152,7 +152,7 @@ export default function Home({
           </div>
         </section>
 
-        <section
+        {/*<section
           className={styles.section + " " + styles.collaboration_section}
         >
           <div className="cotainer">
