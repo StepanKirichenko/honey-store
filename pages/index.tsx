@@ -124,6 +124,9 @@ export default function Home({
                 <ProductCard key={p.id} product={p} />
               ))}
             </div>
+            <div className={styles.products__catalog_link_row}>
+              <ButtonLink href="/catalog">Перейти в каталог</ButtonLink>
+            </div>
           </div>
         </section>
 
