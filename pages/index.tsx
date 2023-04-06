@@ -15,6 +15,7 @@ import ReviewCard from "@/components/ReviewCard";
 import ListScrollArrows from "@/components/ListScrollArrows";
 import Button, { ButtonLink } from "@/components/Button";
 import { useEffect, useState } from "react";
+import ProductCard from "@/components/ProductCard";
 
 export async function getServerSideProps() {
   const products = await getAllProducts();
@@ -115,14 +116,19 @@ export default function Home({
           </div>
         </section>
 
-        {/*<section className={styles.section}>
+        <section className={styles.section}>
           <div className="container">
             <h2 className={styles.section_heading}>Популярные товары</h2>
-            <ProductGrid products={popularProducts} columns={3} />
+            {/* <ProductGrid products={popularProducts} columns={3} /> */}
+            <div className={styles.product_grid}>
+              {popularProducts.map((p) => (
+                <ProductCard key={p.id} product={p} />
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className={styles.offer_section}>
+        {/*<section className={styles.offer_section}>
           <div className={styles.offer_text_column}>
             <h2 className={styles.offer_heading}>
               Получите скидку на первый заказ

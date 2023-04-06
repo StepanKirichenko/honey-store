@@ -212,6 +212,15 @@
   margin-top: 16px;
 }
 
+/* --- POPULAR PRODUCTS SECTION --- */
+
+.product_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 40px;
+  row-gap: 130px;
+}
+
 /* --- OFFER SECTION --- */
 
 .offer_section {
@@ -355,6 +364,11 @@
   .category_underline {
     margin-top: 10px;
   }
+
+  .product_grid {
+    column-gap: 20px;
+    row-gap: 60px;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -378,6 +392,10 @@
 
   .category_counter {
     font-size: 14px;
+  }
+
+  .product_grid {
+    row-gap: 50px;
   }
 }
 
@@ -463,6 +481,11 @@
   .category_underline {
     margin-top: 8px;
   }
+
+  .product_grid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 40px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -532,5 +555,10 @@
 
   .category_counter {
     font-size: 9px;
+  }
+
+  .product_grid {
+    grid-template-columns: 1fr;
+    row-gap: 60px;
   }
 }
