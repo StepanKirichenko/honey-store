@@ -152,10 +152,10 @@ export default function Home({
           </div>
         </section>
 
-        {/*<section
+        <section
           className={styles.section + " " + styles.collaboration_section}
         >
-          <div className="cotainer">
+          <div className={styles.collaboration_container}>
             <h2 className={styles.section_heading}>
               Преимущества сотрудничества
             </h2>
@@ -166,6 +166,7 @@ export default function Home({
                   alt="отличное качество"
                   width={150}
                   height={150}
+                  className={styles.collaboration_point_image}
                 />
                 <h3 className={styles.collaboration_point_heading}>
                   Отличное качетсво
@@ -181,6 +182,7 @@ export default function Home({
                   alt="Низкие цены"
                   width={150}
                   height={150}
+                  className={styles.collaboration_point_image}
                 />
                 <h3 className={styles.collaboration_point_heading}>
                   Низкие цены
@@ -195,6 +197,7 @@ export default function Home({
                   alt="21 год опыта"
                   width={150}
                   height={150}
+                  className={styles.collaboration_point_image}
                 />
                 <h3 className={styles.collaboration_point_heading}>
                   21 год опыта
@@ -209,6 +212,7 @@ export default function Home({
                   alt="Отзывчивый сервис"
                   width={150}
                   height={150}
+                  className={styles.collaboration_point_image}
                 />
                 <h3 className={styles.collaboration_point_heading}>
                   Отзывчивый сервис
@@ -223,6 +227,7 @@ export default function Home({
                   alt="Большой выбор"
                   width={150}
                   height={150}
+                  className={styles.collaboration_point_image}
                 />
                 <h3 className={styles.collaboration_point_heading}>
                   Большой выбор
@@ -238,6 +243,7 @@ export default function Home({
                   alt="Соответствие ГОСТам"
                   width={150}
                   height={150}
+                  className={styles.collaboration_point_image}
                 />
                 <h3 className={styles.collaboration_point_heading}>
                   Соответствие ГОСТам
@@ -254,7 +260,7 @@ export default function Home({
           </div>
         </section>
 
-        <section className={styles.section}>
+        {/*<section className={styles.section}>
           <div className="container">
             <h2 className={styles.section_heading}>Отзывы</h2>
             <div className={styles.reviews_grid}>
