@@ -25,30 +25,35 @@ export default function ReviewCard({
             alt="заполненное сердце"
             width={20}
             height={20}
+            className={styles.heart}
           />
           <Image
             src="/images/icons/full_heart.svg"
             alt="заполненное сердце"
             width={20}
             height={20}
+            className={styles.heart}
           />
           <Image
             src="/images/icons/full_heart.svg"
             alt="заполненное сердце"
             width={20}
             height={20}
+            className={styles.heart}
           />
           <Image
             src="/images/icons/full_heart.svg"
             alt="заполненное сердце"
             width={20}
             height={20}
+            className={styles.heart}
           />
           <Image
             src="/images/icons/full_heart.svg"
             alt="заполненное сердце"
             width={20}
             height={20}
+            className={styles.heart}
           />
         </div>
         <p className={styles.date}>{date}</p>
