@@ -433,6 +433,11 @@
     width: 94px;
     height: auto;
   }
+
+  .reviews_grid {
+    column-gap: 20px;
+    min-height: 320px;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -584,6 +589,15 @@
   .collaboration_point_paragraph {
     font-size: 14px;
   }
+
+  .reviews_grid {
+    column-gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .reviews_grid > :last-child {
+    display: none;
+  }
 }
 
 @media (max-width: 640px) {
@@ -690,5 +704,10 @@
   .collaboration_grid {
     grid-template-columns: 1fr;
     row-gap: 50px;
+  }
+
+  .reviews_grid {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
   }
 }

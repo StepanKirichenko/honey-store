@@ -260,7 +260,7 @@ export default function Home({
           </div>
         </section>
 
-        {/*<section className={styles.section}>
+        <section className={styles.section}>
           <div className="container">
             <h2 className={styles.section_heading}>Отзывы</h2>
             <div className={styles.reviews_grid}>
@@ -270,7 +270,7 @@ export default function Home({
             </div>
             <ListScrollArrows />
           </div>
-        </section> */}
+        </section>
       </main>
     </>
   );
