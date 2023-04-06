@@ -303,6 +303,10 @@
 }
 
 @media (max-width: 1400px) {
+  .section_heading {
+    margin-bottom: 50px;
+  }
+
   .hero {
     grid-template-columns: 1fr 1fr;
   }
@@ -400,6 +404,10 @@
 }
 
 @media (max-width: 960px) {
+  .section_heading {
+    margin-bottom: 25px;
+  }
+
   .hero {
     display: flex;
     flex-direction: column;

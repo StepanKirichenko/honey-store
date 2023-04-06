@@ -119,7 +119,6 @@ export default function Home({
         <section className={styles.section}>
           <div className="container">
             <h2 className={styles.section_heading}>Популярные товары</h2>
-            {/* <ProductGrid products={popularProducts} columns={3} /> */}
             <div className={styles.product_grid}>
               {popularProducts.map((p) => (
                 <ProductCard key={p.id} product={p} />

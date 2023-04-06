@@ -136,6 +136,7 @@ a {
 
 @media (max-width: 1400px) {
   :root {
+    --fs-heading-2: 45px;
     --fs-button-text: 15px;
     --fs-text-small: 14px;
 
@@ -153,6 +154,7 @@ a {
 
 @media (max-width: 960px) {
   :root {
+    --fs-heading-2: 30px;
     --fs-button-text: 12px;
     --margin-page-x: 30px;
     --margin-section-y: 45px;
@@ -161,6 +163,7 @@ a {
 
 @media (max-width: 640px) {
   :root {
+    --fs-heading-2: 22px;
     --fs-button-text: 10px;
     --margin-page-x: 10px;
     --margin-section-y: 24px;
