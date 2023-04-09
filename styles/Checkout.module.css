@@ -10,6 +10,26 @@
   margin-bottom: 40px;
 }
 
+.order__heading_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+
+.order__heading {
+  font-size: var(--fs-heading-3);
+  font-weight: 300;
+}
+
+.order__change_link {
+  color: var(--secondary-color-300);
+}
+
+.order__change_link:hover {
+  text-decoration: underline;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

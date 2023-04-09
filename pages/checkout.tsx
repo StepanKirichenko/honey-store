@@ -5,6 +5,7 @@ import { getProductsById, getProductPrice, Product } from "@/utils/products";
 import { useContext, useEffect, useState } from "react";
 import ListScrollArrows from "@/components/ListScrollArrows";
 import Button from "@/components/Button";
+import Link from "next/link";
 
 interface ProductInCart {
   product: Product;
@@ -117,7 +118,12 @@ export default function Checkout() {
             <Dropdown>Выберите способ оплаты</Dropdown>
           </div>
           <div className="col">
-            <h2 className={styles.section_title}>Ваш заказ</h2>
+            <div className={styles.order__heading_row}>
+              <h2 className={styles.order__heading}>Ваш заказ</h2>
+              <Link href="/cart" className={styles.order__change_link}>
+                Изменить
+              </Link>
+            </div>
             <div className={styles.product_images_grid}>{productElements}</div>
             <ListScrollArrows />
             <div className="row justify-space-between mt-medium">
