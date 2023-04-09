@@ -33,6 +33,14 @@ export default function Checkout() {
       .then((products) => setProductsInCart(products));
   }, []);
 
+  useEffect(() => {
+    setProductsInCart(
+      productsInCart.filter(
+        (p) => cart.items.findIndex((i) => i.productId === p.product.id) !== -1
+      )
+    );
+  }, [cart]);
+
   const productsPrice = productsInCart.reduce(
     (total, p) => total + getProductPrice(p.product) * p.amount,
     0
@@ -42,9 +50,8 @@ export default function Checkout() {
 
   const totalPrice = productsPrice + deliveryPrice;
 
-  const productElements = productsInCart
-    .slice(0, 3)
-    .map((item) => (
+  const productElements = productsInCart.slice(0, 3).map((item) => (
+    <div className={styles.product_image_container}>
       <Image
         key={item.product.id}
         className={styles.product_image}
@@ -53,7 +60,14 @@ export default function Checkout() {
         width={450}
         height={602}
       />
-    ));
+      <button
+        className={styles.product_remove_button}
+        onClick={() => cart.handleRemoveFromCart(item.product.id)}
+      >
+        &times;
+      </button>
+    </div>
+  ));
 
   return (
     <main className="mt-page-start mb-page-end row justify-center">
