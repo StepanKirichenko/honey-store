@@ -50,7 +50,7 @@ export default function Checkout() {
 
   const totalPrice = productsPrice + deliveryPrice;
 
-  const productElements = productsInCart.slice(0, 3).map((item) => (
+  const productElements = productsInCart.map((item) => (
     <div className={styles.product_image_container}>
       <Image
         key={item.product.id}
@@ -138,8 +138,9 @@ export default function Checkout() {
                 Изменить
               </Link>
             </div>
-            <div className={styles.product_images_grid}>{productElements}</div>
-            <ListScrollArrows />
+            <ProductList productElements={productElements} />
+            {/* <div className={styles.product_images_grid}>{productElements}</div> */}
+            {/* <ListScrollArrows /> */}
             <div className="row justify-space-between mt-medium">
               <p className={styles.price_text}>Сумма заказа</p>
               <p className={styles.price_text}>{productsPrice} р</p>
@@ -178,5 +179,68 @@ function Dropdown({ children }: any) {
         </div>
       </div>
     </div>
+  );
+}
+
+interface ProductListProps {
+  productElements: JSX.Element[];
+}
+
+function ProductList({ productElements }: ProductListProps) {
+  const [startIndex, setStartIndex] = useState(0);
+
+  const showCount = 3;
+
+  if (startIndex >= productElements.length && startIndex > 0) {
+    setStartIndex(Math.max(0, productElements.length - showCount));
+  }
+
+  const canScrollBack = startIndex - showCount >= 0;
+  const canScrollForward = startIndex + showCount < productElements.length;
+
+  function handleIncreaseStartIndex() {
+    if (!canScrollForward) {
+      return;
+    }
+    let newIndex = startIndex + showCount;
+    setStartIndex(newIndex);
+  }
+
+  function handleDecreaseStartIndex() {
+    if (!canScrollBack) {
+      return;
+    }
+    let newIndex = startIndex - showCount;
+    setStartIndex(newIndex);
+  }
+
+  return (
+    <>
+      <div className={styles.product_images_grid}>
+        {productElements.slice(startIndex, startIndex + showCount)}
+      </div>
+      <div className={styles.product_list_arrows_container}>
+        <Image
+          src="/images/icons/angle_arrow_left.svg"
+          alt="стрелка влево"
+          width={15}
+          height={25}
+          className={`${styles.product_list_arrow} ${
+            canScrollBack ? "" : styles.inactive
+          }`}
+          onClick={handleDecreaseStartIndex}
+        />
+        <Image
+          src="/images/icons/angle_arrow_right.svg"
+          alt="стрелка влево"
+          width={15}
+          height={25}
+          className={`${styles.product_list_arrow} ${
+            canScrollForward ? "" : styles.inactive
+          }`}
+          onClick={handleIncreaseStartIndex}
+        />
+      </div>
+    </>
   );
 }
