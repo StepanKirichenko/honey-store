@@ -567,6 +567,11 @@ export async function getProductById(id: string): Promise<Product | null> {
   return res ? (res as Product) : null;
 }
 
+export async function getProductsById(ids: string[]): Promise<Product[]> {
+  const res = allProducts.filter((p) => ids.includes(p.id)) as Product[];
+  return res;
+}
+
 export async function getProductGroup(id: string): Promise<Product[]> {
   const groupId = id.split("-")[0];
   const productsInGroup = allProducts

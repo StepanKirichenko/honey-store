@@ -1,30 +1,39 @@
 import Image from "next/image";
 import { CartContext } from "@/contexts/CartContext";
 import styles from "@/styles/Checkout.module.css";
-import { getAllProducts, Product } from "@/utils/products";
-import { useContext } from "react";
+import { getProductsById, getProductPrice, Product } from "@/utils/products";
+import { useContext, useEffect, useState } from "react";
 import ListScrollArrows from "@/components/ListScrollArrows";
 import Button from "@/components/Button";
 
-export async function getServerSideProps() {
-  const allProducts = await getAllProducts();
-
-  return {
-    props: {
-      allProducts,
-    },
-  };
+interface ProductInCart {
+  product: Product;
+  amount: number;
 }
 
-export default function Checkout(props: { allProducts: Product[] }) {
+export default function Checkout() {
   const cart = useContext(CartContext);
-  const productsInCart = cart.items.map((i) => ({
-    product: props.allProducts.find((p) => p.id === i.productId) as Product,
-    amount: i.amount,
-  }));
+  const [productsInCart, setProductsInCart] = useState<ProductInCart[]>([]);
+
+  useEffect(() => {
+    const ids = cart.items.map((i) => `id=${i.productId}`).join("&");
+    fetch(`/api/products/get-products-by-id?${ids}`)
+      .then((res) => res.json())
+      .then((products) => products as Product[])
+      .then((products) =>
+        products.map(
+          (p) =>
+            ({
+              product: p,
+              amount: cart.items.find((i) => i.productId === p.id)?.amount,
+            } as ProductInCart)
+        )
+      )
+      .then((products) => setProductsInCart(products));
+  }, []);
 
   const productsPrice = productsInCart.reduce(
-    (total, p) => total + p.product.price * p.amount,
+    (total, p) => total + getProductPrice(p.product) * p.amount,
     0
   );
 
