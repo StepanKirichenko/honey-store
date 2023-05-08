@@ -5,13 +5,14 @@ import { Product } from "@/utils/products";
 import Head from "next/head";
 import { useContext, useEffect, useState } from "react";
 import { ButtonLink, SecondaryButtonLink } from "@/components/Button";
+import { useEffectOnlyOnce } from "@/utils/hooks/useEffectOnlyOnce";
 
 
 export default function Cart() {
   const cart = useContext(CartContext);
   const [products, setProducts] = useState<Product[]>([]);
 
-  useEffect(() => {
+  useEffectOnlyOnce(() => {
     if (cart.items.length > 0) {
       Promise.all(
         cart.items.map((item) =>
@@ -21,7 +22,7 @@ export default function Cart() {
         )
       ).then((value) => setProducts(value));
     }
-  }, []);
+  });
 
   const productsInCart = products
     .filter((p) => cart.items.find((i) => i.productId === p.id) !== undefined)
