@@ -88,7 +88,7 @@ export default function Catalog({
     setSettings(
       category === "honey" ? honeyFilterSettings : teaAndJamFilterSettings
     );
-  }, [category]);
+  }, [category, honeyFilterSettings, teaAndJamFilterSettings]);
 
   useEffect(() => {
     setIsLoading(true);
