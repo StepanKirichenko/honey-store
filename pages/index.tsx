@@ -306,7 +306,7 @@ function Hero() {
     return () => {
       isChangeCancelled = true;
     };
-  }, [currentImage]);
+  }, [currentImage, images.length]);
 
   function handleChangeImage(index: number) {
     setCurrentImage(index);

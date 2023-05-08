@@ -24,144 +24,144 @@ export default function Checkout() {
       .then((products) =>
         products.map(
           (p) =>
-            ({
-              product: p,
-              amount: cart.items.find((i) => i.productId === p.id)?.amount,
-            } as ProductInCart)
+          ({
+            product: p,
+            amount: cart.items.find((i) => i.productId === p.id)?.amount,
+          } as ProductInCart)
         )
       )
       .then((products) => setProductsInCart(products));
   });
 
   useEffect(() => {
-    setProductsInCart(
-      productsInCart.filter(
+    setProductsInCart((prods) => {
+      return prods.filter(
         (p) => cart.items.findIndex((i) => i.productId === p.product.id) !== -1
       )
-    );
+    });
   }, [cart]);
 
-  const productsPrice = productsInCart.reduce(
-    (total, p) => total + getProductPrice(p.product) * p.amount,
-    0
-  );
+const productsPrice = productsInCart.reduce(
+  (total, p) => total + getProductPrice(p.product) * p.amount,
+  0
+);
 
-  const deliveryPrice = 300;
+const deliveryPrice = 300;
 
-  const totalPrice = productsPrice + deliveryPrice;
+const totalPrice = productsPrice + deliveryPrice;
 
-  const productElements = productsInCart.map((item) => (
-    <div className={styles.product_image_container}>
-      <Image
-        key={item.product.id}
-        className={styles.product_image}
-        src={`/images/products/${item.product.image}`}
-        alt=""
-        width={450}
-        height={602}
-      />
-      <button
-        className={styles.product_remove_button}
-        onClick={() => cart.handleRemoveFromCart(item.product.id)}
-      >
-        &times;
-      </button>
-    </div>
-  ));
+const productElements = productsInCart.map((item) => (
+  <div key={item.product.id} className={styles.product_image_container}>
+    <Image
+      key={item.product.id}
+      className={styles.product_image}
+      src={`/images/products/${item.product.image}`}
+      alt=""
+      width={450}
+      height={602}
+    />
+    <button
+      className={styles.product_remove_button}
+      onClick={() => cart.handleRemoveFromCart(item.product.id)}
+    >
+      &times;
+    </button>
+  </div>
+));
 
-  return (
-    <main className="mt-page-start mb-page-end row justify-center">
-      <div className="container">
-        <h1 className={styles.page_title}>Оформление заказа</h1>
-        <div className={styles.grid}>
-          <div className="col">
-            <h2 className={styles.section_title}>Адрес и доставка</h2>
-            <div className="row gap-small">
-              <Dropdown>Выберите город</Dropdown>
-              <Dropdown>Способ доставки</Dropdown>
-            </div>
-            <h2 className={styles.section_title + " " + "mt-medium"}>
-              Получатель
-            </h2>
-            <input
-              className={styles.text_input}
-              type="text"
-              name="first_name"
-              placeholder="Имя"
-            />
-            <input
-              className={styles.text_input}
-              type="text"
-              name="last_name"
-              placeholder="Фамилия"
-            />
-            <input
-              className={styles.text_input}
-              type="text"
-              name="patronymic"
-              placeholder="Отчество"
-            />
-            <p className={styles.secondary_text}>
-              Обязательно при доставке почтой
-            </p>
-            <input
-              className={styles.text_input}
-              type="tel"
-              name="tel"
-              placeholder="Телефон"
-            />
-            <input
-              className={styles.text_input}
-              type="email"
-              name="email"
-              placeholder="E-mail"
-            />
-            <p className={styles.secondary_text}>Необходим для отправки чека</p>
-            <label className={styles.checkbox}>
-              <input type="checkbox" className={styles.checkbox__checkmark} />я
-              ознакомился и согласен с политикой обработки персональных данных и
-              пользовательским соглашением
-            </label>
-            <label className={styles.checkbox}>
-              <input type="checkbox" className={styles.checkbox__checkmark} />я
-              согласен получать новости об акциях и специальных предложениях
-            </label>
-
-            <div className="mt-medium"></div>
-            <h2 className={styles.section_title}>Оплата заказа</h2>
-            <Dropdown>Выберите способ оплаты</Dropdown>
+return (
+  <main className="mt-page-start mb-page-end row justify-center">
+    <div className="container">
+      <h1 className={styles.page_title}>Оформление заказа</h1>
+      <div className={styles.grid}>
+        <div className="col">
+          <h2 className={styles.section_title}>Адрес и доставка</h2>
+          <div className="row gap-small">
+            <Dropdown>Выберите город</Dropdown>
+            <Dropdown>Способ доставки</Dropdown>
           </div>
-          <div className="col">
-            <div className={styles.order__heading_row}>
-              <h2 className={styles.order__heading}>Ваш заказ</h2>
-              <Link href="/cart" className={styles.order__change_link}>
-                Изменить
-              </Link>
-            </div>
-            <ProductList productElements={productElements} />
-            {/* <div className={styles.product_images_grid}>{productElements}</div> */}
-            {/* <ListScrollArrows /> */}
-            <div className="row justify-space-between mt-medium">
-              <p className={styles.price_text}>Сумма заказа</p>
-              <p className={styles.price_text}>{productsPrice} р</p>
-            </div>
-            <div className="row justify-space-between mt-small">
-              <p className={styles.price_text}>Доставка</p>
-              <p className={styles.price_text}>{deliveryPrice} р</p>
-            </div>
-            <hr className={styles.divider} />
-            <div className="row justify-space-between">
-              <p className={styles.price_text_total}>Итого</p>
-              <p className={styles.price_text_total}>{totalPrice} р</p>
-            </div>
-            <div className="row justify-center mt-medium">
-              <Button>Завершить оформление</Button>
-            </div>
+          <h2 className={styles.section_title + " " + "mt-medium"}>
+            Получатель
+          </h2>
+          <input
+            className={styles.text_input}
+            type="text"
+            name="first_name"
+            placeholder="Имя"
+          />
+          <input
+            className={styles.text_input}
+            type="text"
+            name="last_name"
+            placeholder="Фамилия"
+          />
+          <input
+            className={styles.text_input}
+            type="text"
+            name="patronymic"
+            placeholder="Отчество"
+          />
+          <p className={styles.secondary_text}>
+            Обязательно при доставке почтой
+          </p>
+          <input
+            className={styles.text_input}
+            type="tel"
+            name="tel"
+            placeholder="Телефон"
+          />
+          <input
+            className={styles.text_input}
+            type="email"
+            name="email"
+            placeholder="E-mail"
+          />
+          <p className={styles.secondary_text}>Необходим для отправки чека</p>
+          <label className={styles.checkbox}>
+            <input type="checkbox" className={styles.checkbox__checkmark} />я
+            ознакомился и согласен с политикой обработки персональных данных и
+            пользовательским соглашением
+          </label>
+          <label className={styles.checkbox}>
+            <input type="checkbox" className={styles.checkbox__checkmark} />я
+            согласен получать новости об акциях и специальных предложениях
+          </label>
+
+          <div className="mt-medium"></div>
+          <h2 className={styles.section_title}>Оплата заказа</h2>
+          <Dropdown>Выберите способ оплаты</Dropdown>
+        </div>
+        <div className="col">
+          <div className={styles.order__heading_row}>
+            <h2 className={styles.order__heading}>Ваш заказ</h2>
+            <Link href="/cart" className={styles.order__change_link}>
+              Изменить
+            </Link>
+          </div>
+          <ProductList productElements={productElements} />
+          {/* <div className={styles.product_images_grid}>{productElements}</div> */}
+          {/* <ListScrollArrows /> */}
+          <div className="row justify-space-between mt-medium">
+            <p className={styles.price_text}>Сумма заказа</p>
+            <p className={styles.price_text}>{productsPrice} р</p>
+          </div>
+          <div className="row justify-space-between mt-small">
+            <p className={styles.price_text}>Доставка</p>
+            <p className={styles.price_text}>{deliveryPrice} р</p>
+          </div>
+          <hr className={styles.divider} />
+          <div className="row justify-space-between">
+            <p className={styles.price_text_total}>Итого</p>
+            <p className={styles.price_text_total}>{totalPrice} р</p>
+          </div>
+          <div className="row justify-center mt-medium">
+            <Button>Завершить оформление</Button>
           </div>
         </div>
       </div>
-    </main>
-  );
+    </div>
+  </main>
+);
 }
 
 function Dropdown({ children }: any) {
@@ -225,9 +225,8 @@ function ProductList({ productElements }: ProductListProps) {
           alt="стрелка влево"
           width={15}
           height={25}
-          className={`${styles.product_list_arrow} ${
-            canScrollBack ? "" : styles.inactive
-          }`}
+          className={`${styles.product_list_arrow} ${canScrollBack ? "" : styles.inactive
+            }`}
           onClick={handleDecreaseStartIndex}
         />
         <Image
@@ -235,9 +234,8 @@ function ProductList({ productElements }: ProductListProps) {
           alt="стрелка влево"
           width={15}
           height={25}
-          className={`${styles.product_list_arrow} ${
-            canScrollForward ? "" : styles.inactive
-          }`}
+          className={`${styles.product_list_arrow} ${canScrollForward ? "" : styles.inactive
+            }`}
           onClick={handleIncreaseStartIndex}
         />
       </div>
