@@ -104,6 +104,12 @@ export default function Catalog({
       });
   }, [category, sortingMethod, settings, currentPage, formRequest]);
 
+  function resetFilters() {
+    setSettings(
+      category === "honey" ? honeyFilterSettings : teaAndJamFilterSettings
+    );
+  }
+
   function handleChangeFilterSetting(
     settingName: string,
     optionValue: string,
