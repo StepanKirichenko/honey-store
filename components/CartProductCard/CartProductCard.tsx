@@ -47,7 +47,7 @@ export default function CartProductCard({ product, amount }: Props) {
           </div>
         </div>
         <div className={styles.button_container}>
-          <button className={styles.empty_button}>
+          <div className={styles.empty_button}>
             <h4 className={styles.button_title}>Количество</h4>
             <div className={styles.button_content}>
               <button
@@ -64,7 +64,7 @@ export default function CartProductCard({ product, amount }: Props) {
                 +
               </button>
             </div>
-          </button>
+          </div>
         </div>
         <div className={styles.button_container}>
           <button className={styles.empty_button}>

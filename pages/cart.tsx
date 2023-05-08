@@ -1,25 +1,11 @@
 import CartProductCard from "@/components/CartProductCard";
 import { CartContext } from "@/contexts/CartContext";
 import styles from "@/styles/Cart.module.css";
-import { getAllProducts, Product } from "@/utils/products";
+import { Product } from "@/utils/products";
 import Head from "next/head";
 import { useContext, useEffect, useState } from "react";
-import Button, { ButtonLink, SecondaryButtonLink } from "@/components/Button";
-import { SecondaryButton } from "@/components/Button";
+import { ButtonLink, SecondaryButtonLink } from "@/components/Button";
 
-interface Props {
-  // allProducts: Product[];
-}
-
-export async function getServerSideProps({ params }: any) {
-  // const allProducts = await getAllProducts();
-
-  return {
-    props: {
-      // allProducts,
-    },
-  };
-}
 
 export default function Cart() {
   const cart = useContext(CartContext);
