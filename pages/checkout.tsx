@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { CartContext } from "@/contexts/CartContext";
 import styles from "@/styles/Checkout.module.css";
-import { getProductsById, getProductPrice, Product } from "@/utils/products";
+import { getProductPrice, Product } from "@/utils/products";
 import { useContext, useEffect, useState } from "react";
-import ListScrollArrows from "@/components/ListScrollArrows";
 import Button from "@/components/Button";
 import Link from "next/link";
+import { useEffectOnlyOnce } from "@/utils/hooks/useEffectOnlyOnce";
 
 interface ProductInCart {
   product: Product;
@@ -16,7 +16,7 @@ export default function Checkout() {
   const cart = useContext(CartContext);
   const [productsInCart, setProductsInCart] = useState<ProductInCart[]>([]);
 
-  useEffect(() => {
+  useEffectOnlyOnce(() => {
     const ids = cart.items.map((i) => `id=${i.productId}`).join("&");
     fetch(`/api/products/get-products-by-id?${ids}`)
       .then((res) => res.json())
@@ -31,7 +31,7 @@ export default function Checkout() {
         )
       )
       .then((products) => setProductsInCart(products));
-  }, []);
+  });
 
   useEffect(() => {
     setProductsInCart(

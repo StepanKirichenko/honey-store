@@ -1,4 +1,4 @@
-import { DOMElement, ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import DropdownSelector from "@/components/DropdownSelector";
 import ProductGrid from "@/components/ProductGrid";
@@ -92,7 +92,7 @@ export default function Catalog({
   useEffect(() => {
     setCurrentPage(1);
     resetFilters();
-  }, [category]);
+  }, [category, resetFilters]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -106,7 +106,7 @@ export default function Catalog({
         setIsLoading(false);
         setProducts(pageData.products);
       });
-  }, [category, sortingMethod, settings, currentPage]);
+  }, [category, sortingMethod, settings, currentPage, formRequest]);
 
   function handleChangeFilterSetting(
     settingName: string,
