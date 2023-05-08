@@ -1,15 +1,50 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./Header.module.css";
-import { FC, ReactNode, useContext } from "react";
+import { ReactNode, useContext, useEffect, useState } from "react";
 import { CartContext } from "@/contexts/CartContext";
 import { useRouter } from "next/router";
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onWindowResize = () => {
+      if (window.innerWidth > 1200 && isMenuOpen) {
+        console.log("done did it");
+        setIsMenuOpen(false);
+      }
+    }
+    window.addEventListener("resize", onWindowResize);
+    return () => window.removeEventListener("resize", onWindowResize);
+  }, [isMenuOpen]);
+
+  const linkListStyles = `${styles.full_nav} ${isMenuOpen ? styles.open : ""}`;
+
   return (
     <header className={styles.background}>
       <nav className={styles.container}>
-        <div className={styles.full_nav}>
+        <div className={styles.mobile_nav}>
+          <Link href="/">
+            <Image
+              src="/images/logos/sota_logo_dark.svg"
+              alt="Логотип Sota"
+              width={140}
+              height={55}
+              className={styles.logo}
+            />
+          </Link>
+          <button
+            className={styles.hamburger_button}
+            onClick={() => setIsMenuOpen(x => !x)}
+          >
+            <img
+              className={styles.hamburger_image}
+              src="/images/icons/hamburger.svg"
+            />
+          </button>
+        </div>
+        <div className={linkListStyles}>
           <PageLink href="/catalog">Каталог</PageLink>
           <PageLink href="/services">Услуги</PageLink>
           <PageLink href="/reviews">Отзывы</PageLink>
@@ -27,23 +62,6 @@ export default function Header() {
           <PageLink href="/contacts">Контакты</PageLink>
           <CartLink />
         </div>
-        <div className={styles.mobile_nav}>
-          <Link href="/">
-            <Image
-              src="/images/logos/sota_logo_dark.svg"
-              alt="Логотип Sota"
-              width={140}
-              height={55}
-              className={styles.logo}
-            />
-          </Link>
-          <button className={styles.hamburger_button}>
-            <img
-              className={styles.hamburger_image}
-              src="/images/icons/hamburger.svg"
-            />
-          </button>
-        </div>
       </nav>
     </header>
   );
@@ -54,7 +72,7 @@ type PageLinkProps = {
   children: ReactNode;
 };
 
-const PageLink: FC<PageLinkProps> = (props) => {
+function PageLink (props: PageLinkProps) {
   const currentRoute = useRouter();
   const currentPage = currentRoute.pathname;
   const className =
@@ -69,7 +87,7 @@ const PageLink: FC<PageLinkProps> = (props) => {
   );
 };
 
-const CartLink: FC = () => {
+function CartLink() {
   const cart = useContext(CartContext);
   const currentRoute = useRouter();
   const currentPage = currentRoute.pathname;
