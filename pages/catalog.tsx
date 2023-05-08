@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import DropdownSelector from "@/components/DropdownSelector";
 import ProductGrid from "@/components/ProductGrid";
@@ -69,7 +69,7 @@ export default function Catalog({
 
   const topPageRef = useRef<null | HTMLDivElement>(null);
 
-  function formRequest(): string {
+  const formRequest = useCallback((): string => {
     const opts = [];
     opts.push(`limit=${16}`);
     opts.push(`page=${currentPage}`);
@@ -81,18 +81,14 @@ export default function Catalog({
       });
     });
     return opts.join("&");
-  }
-
-  function resetFilters() {
-    setSettings(
-      category === "honey" ? honeyFilterSettings : teaAndJamFilterSettings
-    );
-  }
+  }, [currentPage, category, sortingMethod, settings]);
 
   useEffect(() => {
     setCurrentPage(1);
-    resetFilters();
-  }, [category, resetFilters]);
+    setSettings(
+      category === "honey" ? honeyFilterSettings : teaAndJamFilterSettings
+    );
+  }, [category]);
 
   useEffect(() => {
     setIsLoading(true);
