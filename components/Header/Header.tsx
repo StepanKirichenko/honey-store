@@ -55,7 +55,7 @@ export default function Header() {
               alt="Логотип Sota"
               width={140}
               height={55}
-              className={styles.logo}
+              className={`${styles.logo} ${styles.main_logo}`}
             />
           </Link>
           <PageLink href="/about">О компании</PageLink>
